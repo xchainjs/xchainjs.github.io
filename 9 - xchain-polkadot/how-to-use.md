@@ -10,6 +10,12 @@ sort: 2
 yarn add @xchainjs/xchain-polkadot
 ```
 
+Following peer dependencies have to be installed into your project. These are not included in `@xchainjs/xchain-polkadot`.
+
+```
+yarn add @polkadot/api
+```
+
 ## Polkadot Client Testing
 
 ```
@@ -17,8 +23,45 @@ yarn install
 yarn test
 ```
 
-Following peer dependencies have to be installed into your project. These are not included in `@xchainjs/xchain-polkadot`.
+## Create a client instance.
+
+Set `phrase` and `network` when creating an instance.
 
 ```
-yarn add @polkadot/api
+const client = new Client({ phrase, network })
 ```
+
+## Available functions
+
+### Config and Setup
+
+* setNetwork(net: Network): void
+* getNetwork(): Network
+* setPhrase(phrase: string): Address
+* getAddress(): Address
+* validateAddress(address: string): boolean
+
+### Explorer URL
+
+* getExplorerUrl(): string
+* getExplorerAddressUrl(address: Address): string
+* getExplorerTxUrl(txID: string): string
+
+### Querying
+
+* getBalance(address?: Address, asset?: Asset): Promise<Balances>
+* getTransactions(params?: TxHistoryParams): Promise<TxsPage>
+* getTransactionData(txId: string): Promise<Tx>
+
+### Get fee info
+
+* getFees(): Promise<Fees>
+* estimateFees(params: TxParams): Promise<Fees>
+
+### Transfer
+
+* transfer(params: TxParams): Promise<TxHash>
+
+### Purge
+
+* purgeClient(): void

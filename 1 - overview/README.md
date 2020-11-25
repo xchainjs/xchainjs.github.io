@@ -17,8 +17,9 @@ The interface supports as a minimum the following functions for each blockchain:
 2) Get the address, with support for BIP44 path derivations (default is Index 0)
 3) Get the balance (UTXO or account-based)
 4) Get transaction history for that address
-5) Make a simple transfer
-6) Get blockchain fee information (standard, fast, fastest)
+5) Get transaction data for the transaction ID/hash
+6) Make a simple transfer
+7) Get blockchain fee information (standard, fast, fastest)
 
 ### Extended Interface
 
