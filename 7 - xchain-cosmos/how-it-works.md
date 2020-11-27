@@ -9,8 +9,8 @@ sort: 1
 It communicates with Cosmos Chain by using [`cosmos-client`](https://github.com/cosmos-client/cosmos-client-ts)
 
 ### Client URL
-* Mainnet: [`https://api.cosmos.network`]
-* Testnet: [`http://lcd.gaia.bigdipper.live:1317`]
+* Mainnet: `https://api.cosmos.network`
+* Testnet: `http://lcd.gaia.bigdipper.live:1317`
 
 ### Explorer URL
 * Mainnet: [`https://cosmos.bigdipper.live`](https://cosmos.bigdipper.live)
@@ -29,6 +29,7 @@ It communicates with Cosmos Chain by using [`cosmos-client`](https://github.com/
 ## Address Generation
 
 It supports the [`BIP44 path derivations`](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+
 By default, the index is 0. - `44/118/0/0`
 
 ## Blockchain-specific functions

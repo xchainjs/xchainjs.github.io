@@ -9,8 +9,8 @@ sort: 1
 It communicates with Binance Chain by using [`binance-chain/javascript-sdk`](https://github.com/binance-chain/javascript-sdk)
 
 ### Client URL
-* Mainnet: [`https://dex.binance.org`]
-* Testnet: [`https://testnet-dex.binance.org`]
+* Mainnet: `https://dex.binance.org`
+* Testnet: `https://testnet-dex.binance.org`
 
 ### Explorer URL
 * Mainnet: [`https://explorer.binance.org`](https://explorer.binance.org)
@@ -25,6 +25,7 @@ It communicates with Binance Chain by using [`binance-chain/javascript-sdk`](htt
 ## Address Generation
 
 It supports the [`BIP44 path derivations`](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+
 By default, the index is 0. - `44/714/0/0`
 
 ## Blockchain-specific functions

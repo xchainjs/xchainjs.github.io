@@ -11,8 +11,8 @@ It communicates with Polkadot Chain by using [`@polkadot/api`](https://github.co
 ### Client URL
 
 Use [`subscan.io`](https://docs.api.subscan.io/) for querying the balances and transactions.
-* Mainnet: [`https://polkadot.subscan.io`]
-* Testnet: [`https://westend.subscan.io`]
+* Mainnet: `https://polkadot.subscan.io`
+* Testnet: `https://westend.subscan.io`
 
 Use WS provider for making a transfer.
 * Mainnet: [`wss://rpc.polkadot.io`]
@@ -32,7 +32,7 @@ Use WS provider for making a transfer.
 ## Address Generation
 
 It supports the [`BIP44 path derivations`](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
-By default, the index is 0. - `44/931/0/0`
+By default, the index is 0. - `44/354/0/0/0`
 
 ## Blockchain-specific functions
 

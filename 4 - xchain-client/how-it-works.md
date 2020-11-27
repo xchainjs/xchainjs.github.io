@@ -14,7 +14,7 @@ During configuration, the following can be passed in:
 * Service Keys (optional, if null, client will use config defaults or free service limits.)
 
 ### Set Network
-Used to set a type of NETWORK, which is either MAINNET or TESTNET. 
+Sets a type of NETWORK, which is either MAINNET or TESTNET. 
 ```
 enum Network {
   TEST = 'testnet',
@@ -25,7 +25,7 @@ setNetwork(net: Network): XChainClient
 Returns the client. 
 
 ### Set Phrase
-Used to set the master BIP39 phrase, from which the private key is extracted and the address decoded.
+Sets the master BIP39 phrase, from which the private key is extracted and the address decoded.
 ```
 setPhrase(phrase: string): address
 ```

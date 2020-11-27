@@ -9,8 +9,8 @@ sort: 1
 It communicates with Thorchain by using [`cosmos-client`](https://github.com/cosmos-client/cosmos-client-ts)
 
 ### Client URL
-* Mainnet: [`http://138.68.125.107:1317`]
-* Testnet: [`http://134.209.138.247:1317`]
+* Mainnet: `http://138.68.125.107:1317`
+* Testnet: `http://134.209.138.247:1317`
 
 Available mainnet seeds [`here`](https://chaosnet-seed.thorchain.info/)
 Available testnet seeds [`here`](https://testnet-seed.thorchain.info/)

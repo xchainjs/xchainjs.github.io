@@ -7,157 +7,144 @@ sort: 2
 ## Installation
 
 ```
-yarn add @xchainjs/xchain-client
+yarn add @xchainjs/xchain-bitcoin
 ```
 
-Following dependencies will be installed into your project:
+## Bitcoin Client Testing
 
-- bitcoinjs-lib
-- bip39
-- wif
-- moment
-- axios
-
-## Testing
-
-Uses a dotenv file to hold a `USER_PHRASE` and a `VAULT_PHRASE`
+```
+yarn install
+yarn test
+```
 
 ## Usage
 
-Initialize client and use class methods:
+## Create a client instance.
+
+Set `phrase`, `network`, `nodeUrl`, `nodeApiKey` when creating an instance.
 
 ```
-import { Client, Network } from '../src/client'
-
-const btcClient = new Client(Network.TEST)
-
-const newPhrase = btcClient.generatePhrase()
+const client = new Client({ phrase, network, nodeUrl, nodeApiKey })
 ```
 
-### .generatePhrase()
+Or use following to set them.
 
-Generate a 12 word BIP-39 seed phrase.
+```
+client.setNetwork(network)
 
-**Return**: `string`
+client.setPhrase(phrase')
 
-### .setPhrase(`phrase`)
+client.setNodeURL(nodeUrl)
 
-Loads a 12 word BIP-39 seed phrase to use as a BTC send/receive address.
+client.setNodeAPIKey(nodeApiKey)
+```
 
-**phrase**: 12 word BIP-39 seed phrase as `string`
+## Available functions
 
-**Return**: `void`
+### Config and Setup
 
-### .validatePhrase(`phrase`)
+#### `setNetwork(net: Network): void`
+Sets the network: `mainnet` or `testnet`.
 
-Validates if provided `phrase` is BIP-39.
+#### `setPhrase(phrase: string): Address`
+Sets the phrase. The phrase will be used to generate the address.
 
-**phrase**: 12 word BIP-39 seed phrase as `string`
+#### `setNodeURL(url: string): void`
+Sets the node URL which will be used to interact with the node.
 
-**Return**: `boolean`
+e.g. `https://api.blockchair.com/bitcoin` for mainnet and `https://api.blockchair.com/bitcoin/testnet` for testnet
 
-### .purgeClient()
+#### `setNodeAPIKey(key: string): void`
+Sets the node API key.
 
-Clears UTXOs and seed phrase from client class properties.
+#### `getNetwork(): Network`
+Returns the network: `mainnet` or `testnet`
 
-**Return**: `void`
+#### `getAddress(): Address`
+Returns the Address generated from the `BIP39` phrase.
 
-### .setNetwork(`net`)
+It supports the [`BIP44 path derivations`](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
 
-Set testnet or mainnet network using the `Network` interface.
+#### `validateAddress(address: string): boolean`
+Checks if the address is valid.
 
-**net**: `Network.TEST` or `Network.MAIN`
+#### `isTestnet(): boolean`
+Checks if current network is testnet.
 
-**Return**: `void` 
+#### `derivePath(): string`
+Returns the derive path.
 
-### .setBaseUrl(`endpoint`)
+* Mainnet: `84'/0'/0'/0/0`
+* Testnet: `84'/1'/0'/0/0`
 
-Set an electrs REST API endpoint to use for chain data.
+### Explorer URL
 
-**endpoint**: endpoint as `string`
+#### `getExplorerUrl(): string`
+Returns explorer URL.
 
-**Return**: `void` 
+#### `getExplorerAddressUrl(address: Address): string`
+Returns explorer URL for the address.
 
-### .getAddress()
+#### `getExplorerTxUrl(txID: string): string`
+Returns explorer URL for the transaction.
 
-Gets a P2WPKH address using the seed phrase set in `.setPhrase()` or initialization. If no phrase is set will error.
+### Scan UTXOs
 
-**Return**: `string` 
-
-### .validateAddress(`address`)
-
-Validates if provided `address` is p2wpkh and same network as the client.
-
-**address**: `string`
-
-**Return**: `boolean` 
-
-### .scanUTXOs()
-
-_Async_
-
+#### `scanUTXOs(): Promise<void>`
 Scans the UTXOs on the set seed phrase in `.setPhrase()` and stores them in class properties.
 
-**Return**: `void` 
+### Querying
 
-### .getBalance()
+#### `getBalance(address?: Address): Promise<Balances>`
+Returns the balances of the address.
 
-Get the balance of UTXOs from `.scanUTXOs()`
+* `address` is optional, if not set, it will use the one generated from the phrase.
 
-**Return**: `number` in sats
+#### `getTransactions(params?: TxHistoryParams): Promise<TxsPage>`
+Returns a simplied array of recent transactions for an address. 
 
-### .getBalanceForAddress(`address`)
+`params` is optional, if not set, it will return the latest transactions of the address generated from the phrase.
 
-_Async_ 
+Following parameters are available:
+* `address`: the address which will be used to fetch transctions
+* `offset`: optional, used for the pagination
+* `limit`: optional, used for the pagination
 
-Get the balance of UTXOs for an external address
+#### `getTransactionData(txId: string): Promise<Tx>`
+Returns a transaction information from the transaction ID/hash. 
 
-**address**: `string`
+### Get fee info
 
-**Return**: `number` in sats 
+#### `getFeesWithRates(memo?: string): Promise<FeesWithRates>`
+Returns rates and fees.
 
-### .getTransactions(`address`)
+#### `getFees(): Promise<Fees>`
+Returns fees for transactions.
 
-_Async_ 
+If you want to get `Fees` and `FeeRates` at once, use `getFeesAndRates` method
 
-Get transactions for an address
+#### `getFeesWithMemo(memo: string): Promise<Fees>`
+Returns fees for transactions with a memo.
 
-**address**: `string`
+If you want to get `Fees` and `FeeRates` at once, use `getFeesAndRates` method
 
-**Return**: `Array` of `objects` 
+#### `getFeeRates(): Promise<FeeRates>`
+Returns fee rates for transactions.
 
-### .calcFees(`memo`)
+If you want to get `Fees` and `FeeRates` at once, use `getFeesAndRates` method
 
-_Async_ 
+### Transfer
 
-Calculates the fee rate and the fee total estimate for fast, regular, and slow transactions. Add a `memo` for a vault TX
+#### `transfer(params: TxParams & { feeRate: FeeRate }): Promise<TxHash>`
+Used to sign and broadcast transactions.
 
-**memo**: `string` _optional_
+Following parameters are available:
+* `asset`: optional, `AssetBTC` will be used by default
+* `amount`: the amount of tokens to be sent
+* `recipient`: the address that will send tokens to
+* `memo`: optional, additional memo for the transaction
+* `feeRate`: the fee rate for the transaction
 
-**Return**: `object` of `objects`
+### Purge
 
-### .vaultTx(`addressVault`, `valueOut`, `memo`, `feeRate`)
-
-_Async_ 
-
-Generates a valid Vault TX hex to be broadcast
-
-**addressVault**: `string`
-
-**valueOut**: `number` in sats
-
-**memo**: `string`
-
-**feeRate**: `number`
-
-### .normalTx(`addressTo`, `valueOut`, `feeRate`)
-
-_Async_ 
-
-Generates a valid Vault TX hex to be broadcast
-
-**addressTo**: `string`
-
-**valueOut**: `number` in sats
-
-**feeRate**: `number`
+#### `purgeClient(): void`
