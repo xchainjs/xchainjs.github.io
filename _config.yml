@@ -2,14 +2,6 @@ title: XChainjs Documentation
 lang: en
 description: XChainJS is a library with a common interface for multiple blockchains, built for simple and fast integration for wallets and more. 
 
-## local method ##
-# theme: jekyll-rtd-theme
-# debug:
-#   compress: false
-#   dist: true
-#   shortcodes: true
-
-## remote method ##
 remote_theme: rundocs/jekyll-rtd-theme
 
 readme_index:

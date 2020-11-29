@@ -14,7 +14,7 @@ yarn add @xchainjs/xchain-client
 
 Implement the XChainClient common interface.
 ```
-export interface XChainClient {
+interface XChainClient {
   setNetwork(net: Network): void
   getNetwork(): Network
 

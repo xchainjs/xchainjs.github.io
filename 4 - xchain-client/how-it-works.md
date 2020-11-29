@@ -91,7 +91,7 @@ Example of returned array:
 ### Get Transactions
 Gets a simplied array of recent transactions for an address. 
 ```
-export type TxHistoryParams = {
+type TxHistoryParams = {
   address: Address // Address to get history for
   offset?: number // Optional Offset
   limit?: number // Optional Limit of transactions
@@ -227,7 +227,7 @@ https://dex.binance.org/api/v1/broadcast
 ```
 
 ```
-export type TxParams = {
+type TxParams = {
   asset?: Asset // BTC.BTC
   amount: BaseAmount // in base format (10**8)
   recipient: Address // address

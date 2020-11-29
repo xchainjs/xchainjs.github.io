@@ -8,22 +8,11 @@ Typically keystore files encrypt a `seed` to a file, however this is not appropr
 
 Crypto design:
 
-[entropy] -> [phrase] -> [seed] -> [privateKey] -> [publicKey] -> [address]
+[`entropy`] -> [`phrase`] -> [`seed`] -> [`privateKey`] -> [`publicKey`] -> [`address`]
 
-Instead, XCHAIN-CRYPTO stores the phrase in a keystore file, then decrypts and passes this phrase to other clients:
+Instead, `XCHAIN-CRYPTO` stores the phrase in a keystore file, then decrypts and passes this phrase to other clients:
 
-[keystore] -> XCHAIN-CRYPTO -> [phrase] -> ChainClient
+[`keystore`] -> `XCHAIN-CRYPTO` -> [`phrase`] -> `ChainClient`
 
 The ChainClients can then convert this into their respective key-pairs and addresses.
 Users can also export their phrases after the fact, ensuring they have saved it securely. This could enhance UX onboarding since users aren't forced to write their phrases down immediately for empty or test wallets.
-
-```js
-// Crypto Constants for xchain
-const cipher = 'aes-128-ctr'
-const kdf = 'pbkdf2'
-const prf = 'hmac-sha256'
-const dklen = 32
-const c = 262144
-const hashFunction = 'sha256'
-const meta = 'xchain-keystore'
-```

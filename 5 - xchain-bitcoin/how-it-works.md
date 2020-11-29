@@ -37,9 +37,9 @@ By default, the index is 0. - `84'/0'/0'/0/0` for mainnet, `84'/1'/0'/0/0` for t
 * `getFeeRates`
 
 ```
-export type FeeRate = number
-export type FeeRates = Record<FeeOptionKey, FeeRate>
-export type FeesWithRates = { rates: FeeRates; fees: Fees }
+type FeeRate = number
+type FeeRates = Record<FeeOptionKey, FeeRate>
+type FeesWithRates = { rates: FeeRates; fees: Fees }
 
 getFeesWithRates(memo?: string): Promise<FeesWithRates>
 getFeesWithMemo(memo: string): Promise<Fees>

@@ -33,12 +33,12 @@ By default, the index is 0. - `44/714/0/0`
 ### Transfer multi tranactions.
 
 ```
-export type MultiTransfer = {
+type MultiTransfer = {
   to: Address
   coins: Coin[]
 }
 
-export type MultiSendParams = {
+type MultiSendParams = {
   address?: Address
   transactions: MultiTransfer[]
   memo?: string

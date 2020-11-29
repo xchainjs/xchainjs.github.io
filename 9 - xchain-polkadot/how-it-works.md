@@ -40,7 +40,7 @@ By default, the index is 0. - `44/354/0/0/0`
 
 Estimate fees before transfer.
 ```
-export type TxParams = {
+type TxParams = {
   asset?: Asset // BTC.BTC
   amount: BaseAmount // in base format (10**8)
   recipient: Address // address
