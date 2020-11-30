@@ -4,29 +4,50 @@ sort: 1
 
 # How it works
 
-Implements the following:
+## Third-party library
 
-```javascript
-interface BitcoinClient {
-  generatePhrase(): string
-  setPhrase(phrase?: string): void
-  validatePhrase(phrase: string): boolean
-  purgeClient(): void
-  setNetwork(net: Network): void
-  getNetwork(net: Network): Bitcoin.networks.Network
-  setBaseUrl(endpoint: string): void
-  getAddress(): string
-  validateAddress(address: string): boolean
-  scanUTXOs(): Promise<void>
-  getBalance(): number
-  getBalanceForAddress(address?: string): Promise<number>
-  getTransactions(address: string): Promise<Txs>
-  calcFees(memo?: string): Promise<object>
-  vaultTx(addressVault: string, valueOut: number, memo: string, feeRate: number): Promise<string>
-  normalTx(addressTo: string, valueOut: number, feeRate: number): Promise<string>
-}
+It communicates with Bitcoin by using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib)
+
+### Client URL
+* Mainnet: `https://api.blockchair.com/bitcoin`
+* Testnet: `https://api.blockchair.com/bitcoin/testnet`
+
+### Explorer URL
+* Mainnet: [`https://blockstream.info`](https://blockstream.info)
+* Testnet: [`https://blockstream.info/testnet`](https://blockstream.info)
+
+## Dependencies
+
+* [`@xchainjs/xchain-client`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-client)
+* [`@xchainjs/xchain-crypto`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-crypto)
+* [`@xchainjs/xchain-util`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-util)
+
+## Address Generation
+
+It supports the [`BIP44 path derivations`](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+
+By default, the index is 0. - `84'/0'/0'/0/0` for mainnet, `84'/1'/0'/0/0` for testnet
+
+## Blockchain-specific functions
+
+### Additional functions to get fee information
+
+* `getFeesWithRates`
+* `getFeesWithMemo`
+* `getFeeRates`
+
+```
+type FeeRate = number
+type FeeRates = Record<FeeOptionKey, FeeRate>
+type FeesWithRates = { rates: FeeRates; fees: Fees }
+
+getFeesWithRates(memo?: string): Promise<FeesWithRates>
+getFeesWithMemo(memo: string): Promise<Fees>
+getFeeRates(): Promise<FeeRates>
 ```
 
-## Modules
+### Scans UTXOs on the address
 
-- `client` - Custom client for communicating with Bitcoin using [BIP39](https://github.com/bitcoinjs/bip39) [bitcoinjs-lib](https://github.com/bitcoinjs/bitcoinjs-lib) and [WIF](https://github.com/bitcoinjs/wif)
+```
+scanUTXOs(): Promise<void>
+```
