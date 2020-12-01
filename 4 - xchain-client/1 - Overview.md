@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# How it works
+# Overview
 
 ## Config and Setup
 
@@ -203,6 +203,7 @@ https://ethgasstation.info/api/ethgasAPI.json?api-key=XXAPI_Key_HereXXX
 
 ```
 getFees(): Promise<Fees>
+getDefaultFees(): Promise<Fees>
 
 type Fees = {
   "type": "byte" | "base"

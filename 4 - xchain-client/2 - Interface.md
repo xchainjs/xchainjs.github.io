@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# How to use
+# Interface
 
 ## Installation
 
@@ -33,6 +33,7 @@ interface XChainClient {
   getTransactionData(txId: string): Promise<Tx>
 
   getFees(): Promise<Fees>
+  getDefaultFees(): Promise<Fees>
 
   transfer(params: TxParams): Promise<TxHash>
 
