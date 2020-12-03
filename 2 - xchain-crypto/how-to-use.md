@@ -77,50 +77,11 @@ const phrase = generatePhrase()
 const seed = getSeed(phrase)
 ```
 
-## Get address
-
-Use `getAddress` to get address from a given phrase. It will derive hd-path for thorchain(`m/44'/931'/0'/0/0`) internally.
-```
-getAddress(phrase: string): string
-```
-
-Example:
-```js
-import { generatePhrase, getAddress } from '@xchainjs/xchain-crypto'
-
-const phrase = generatePhrase()
-const address = getAddress(phrase)
-```
-
-## Get public keys
-
-Use `getPublicKeyPair` to get `secp256k1` and `ed25519` public keys from a given phrase at once.
-```
-type PublicKeyPair = {
-  secp256k1: PubKeySecp256k1 | null
-  ed25519: PubKeyEd25519
-}
-
-getPublicKeyPair(phrase: string): PublicKeyPair
-```
-
-Example:
-```js
-import { generatePhrase, getPublicKeyPair } from '@xchainjs/xchain-crypto'
-
-const phrase = generatePhrase()
-const public_keys = getPublicKeyPair(phrase)
-
-const secp256k1_pub_key = public_keys.secp256k1 // secp256k1 public key
-const ed25519_pub_key = public_keys.ed25519 // ed25519 public key
-```
-
 ### Generate keystore
 
 Use `encryptToKeyStore` to generate a new keystore.
 ```
 type Keystore = {
-  publickeys: PublicKeyPair
   crypto: {
     cipher: string
     ciphertext: string
