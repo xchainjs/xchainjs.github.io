@@ -161,7 +161,7 @@ Returns fees for multi transfer.
 Used to send a normal transfer.
 
 Following parameters are available:
-* `asset`: optional, `AssetBTC` will be used by default
+* `asset`: optional, `AssetBNB` will be used by default
 * `amount`: the amount of tokens that will be transfered
 * `recipient`: the address that will send tokens to
 * `memo`: optional, additional memo for the transaction
@@ -170,10 +170,12 @@ Following parameters are available:
 Used to send a multi transfer.
 
 Following parameters are available:
-* `asset`: optional, `AssetBTC` will be used by default
+* `asset`: optional, `AssetBNB` will be used by default
 * `transactions`: array of transfers. each transfer has the recipient address and the amount of tokens
 * `memo`: optional, additional memo for the transaction
 
 #### Purge
 
 ##### `purgeClient(): void`
+
+Used to remove `privateKey`, `phrase` and `address` from memory.
