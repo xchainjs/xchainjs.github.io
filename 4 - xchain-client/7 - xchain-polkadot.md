@@ -189,3 +189,5 @@ Following parameters are available:
 #### Purge
 
 ##### `purgeClient(): void`
+
+It disconnects provider (if connected) and empties `phrase` and `address`. 
