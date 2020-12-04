@@ -12,8 +12,8 @@ yarn add @xchainjs/xchain-client
 
 ## Implement XChainClient
 
-Implement the XChainClient common interface.
-```
+Implement the `XChainClient` common interface as described [here](https://github.com/xchainjs/xchainjs-lib/blob/master/packages/xchain-client/README.md) (code [here](https://github.com/xchainjs/xchainjs-lib/blob/master/packages/xchain-client/src/types.ts#L75-L99))
+```ts
 interface XChainClient {
   setNetwork(net: Network): void
   getNetwork(): Network
@@ -33,7 +33,7 @@ interface XChainClient {
   getTransactionData(txId: string): Promise<Tx>
 
   getFees(): Promise<Fees>
-  getDefaultFees(): Promise<Fees>
+  getDefaultFees(): Fees
 
   transfer(params: TxParams): Promise<TxHash>
 
@@ -46,7 +46,7 @@ interface XChainClient {
 Add blockchain-specific queries/transactions, such as Binance Chain multi-send.
 
 ```
-class XXXClient implements XChainClient {
+class Client implements XChainClient {
 
   ... implement XChainClient ...
 
