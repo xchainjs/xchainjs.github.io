@@ -44,19 +44,19 @@ It doesn't have any blockchain-specific functions.
 
 ### Installation
 
-```
+```bash
 yarn add @xchainjs/xchain-cosmos
 ```
 
 Following peer dependencies have to be installed into your project. These are not included in `@xchainjs/xchain-cosmos`.
 
-```
+```bash
 yarn add cosmos-client
 ```
 
 ### Cosmos Client Testing
 
-```
+```bash
 yarn install
 yarn test
 ```
@@ -65,7 +65,7 @@ yarn test
 
 Set `phrase` and `network` when creating an instance.
 
-```
+```ts
 const client = new Client({ phrase, network })
 ```
 
@@ -164,3 +164,5 @@ Following parameters are available:
 #### Purge
 
 ##### `purgeClient(): void`
+
+It removes values of privateKey, address and phrase from memory.
