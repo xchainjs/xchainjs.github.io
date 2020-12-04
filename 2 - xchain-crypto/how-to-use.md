@@ -31,13 +31,13 @@ yarn test
 ### Generate phrase
 
 Use `generatePhrase` to generate a new phrase.
-```
+```ts
 generatePhrase(size = 12): string
 ```
 By default, it will generate 12 words phrase.
 
 Example:
-```js
+```ts
 import { generatePhrase } from '@xchainjs/xchain-crypto'
 
 const phrase = generatePhrase() // 12 words phrase
@@ -48,12 +48,12 @@ const phrase = generatePhrase(24) // 24 words phrase
 ### Validate phrase
 
 Use `validatePhrase` to generate a new phrase.
-```
+```ts
 validatePhrase(phrase: string): boolean
 ```
 
 Example:
-```js
+```ts
 import { generatePhrase, validatePhrase } from '@xchainjs/xchain-crypto'
 
 const phrase = generatePhrase()
@@ -65,12 +65,12 @@ const is_valid = validatePhrase('invalid phrase here') // false
 ## Get seed
 
 Use `getSeed` to get seed from a given phrase. It will use `bip39.mnemonicToSeedSync(phrase)` internally.
-```
+```ts
 getSeed = (phrase: string): Buffer
 ```
 
 Example:
-```js
+```ts
 import { generatePhrase, getSeed } from '@xchainjs/xchain-crypto'
 
 const phrase = generatePhrase()
@@ -80,7 +80,7 @@ const seed = getSeed(phrase)
 ### Generate keystore
 
 Use `encryptToKeyStore` to generate a new keystore.
-```
+```ts
 type Keystore = {
   crypto: {
     cipher: string
@@ -105,7 +105,7 @@ encryptToKeyStore(phrase: string, password: string): Promise<Keystore>
 ```
 
 Example:
-```js
+```ts
 import { generatePhrase, encryptToKeyStore } from '@xchainjs/xchain-crypto'
 
 const phrase = generatePhrase()
@@ -116,12 +116,12 @@ const keystore = await encryptToKeyStore(phrase, password)
 ## Decrypt keystore
 
 Use `decryptFromKeystore` to get phrase back from a keystore.
-```
+```ts
 decryptFromKeystore(keystore: Keystore, password: string): Promise<string>
 ```
 
 Example:
-```js
+```ts
 import { generatePhrase, encryptToKeyStore } from '@xchainjs/xchain-crypto'
 
 const phrase = generatePhrase()
