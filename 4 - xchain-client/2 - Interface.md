@@ -45,7 +45,7 @@ interface XChainClient {
 
 Add blockchain-specific queries/transactions, such as Binance Chain multi-send.
 
-```
+```ts
 class Client implements XChainClient {
 
   ... implement XChainClient ...
