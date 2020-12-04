@@ -33,12 +33,12 @@ yarn test
 ### `asset` - Utilities for handling assets
 
 Default number of asset decimals:
-```js
+```ts
 const ASSET_DECIMAL = 8
 ```
 
 Major types for `amounts` and `assets` used in `asset`:
-```js
+```ts
 type Amount<T> = {
   type: T
   amount: () => BigNumber
@@ -156,7 +156,7 @@ Parameters:
 Helper to delay anything within an `async` function
 
 Example: 
-```js
+```ts
 const anyAsyncFunc = async () => {
   // do something
   console.log('before delay')
@@ -213,7 +213,7 @@ Parameters:
 ### `chain` - Utilities for multi-chain
 
 Examples of available chains:
-```js
+```ts
 const BNBChain = 'BNB'
 const BTCChain = 'BTC'
 const ETHChain = 'ETH'
