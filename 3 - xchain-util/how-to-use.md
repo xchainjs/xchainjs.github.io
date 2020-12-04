@@ -212,12 +212,14 @@ Parameters:
 
 ### `chain` - Utilities for multi-chain
 
-Following chains are available:
+Examples of available chains:
 ```js
 const BNBChain = 'BNB'
 const BTCChain = 'BTC'
 const ETHChain = 'ETH'
 const THORChain = 'THOR'
+const CosmosChain = 'GAIA'
+const PolkadotChain = 'POLKA'
 ```
 
 #### `isChain`
