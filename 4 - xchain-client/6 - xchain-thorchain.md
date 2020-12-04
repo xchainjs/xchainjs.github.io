@@ -161,3 +161,5 @@ Following parameters are available:
 #### Purge
 
 ##### `purgeClient(): void`
+
+It removes values of `privateKey`, `address` and `phrase` from memory.
