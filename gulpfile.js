@@ -34,11 +34,10 @@ var packages = [
     module: 'xchain-binance',
     path: 'xchain-client/xchain-binance/available-functions',
   },
-  // Currently commented out xchain-ethereum
-  // {
-  //   module: 'xchain-ethereum',
-  //   path: 'xchain-client/xchain-ethereum/available-functions',
-  // },
+  {
+    module: 'xchain-ethereum',
+    path: 'xchain-client/xchain-ethereum/available-functions',
+  },
   {
     module: 'xchain-cosmos',
     path: 'xchain-client/xchain-cosmos/available-functions',
