@@ -6,4 +6,3 @@ sort: 3
 
 Utitity helpers for XChain clients
 
-{% include list.liquid all=true %}
