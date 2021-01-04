@@ -4,7 +4,27 @@
 
 ## BNBChain
 
-Chains
+Binance Chain
+
+## BTCChain
+
+Bitcoin Chain
+
+## ETHChain
+
+Ethereum Chain
+
+## THORChain
+
+Thorchain
+
+## CosmosChain
+
+Cosmos Chain
+
+## PolkadotChain
+
+Polkadot Chain
 
 ## chains
 

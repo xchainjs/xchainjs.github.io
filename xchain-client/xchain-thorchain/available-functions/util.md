@@ -4,27 +4,33 @@
 
 ## getDenom
 
-Get denom from Asset
+Get denomination from Asset
 
 ### Parameters
 
--   `v`  
+-   `asset` **Asset** 
+
+Returns **[string][1]** The denomination of the given asset.
 
 ## getDenomWithChain
 
-Get denom with chainname from Asset
+Get denomination with chainname from Asset
 
 ### Parameters
 
--   `v`  
+-   `asset` **Asset** 
+
+Returns **[string][1]** The denomination with chainname of the given asset.
 
 ## getAsset
 
-Get Asset from denom
+Get Asset from denomination
 
 ### Parameters
 
--   `v`  
+-   `denom` **[string][1]** 
+
+Returns **(Asset \| null)** The asset of the given denomination.
 
 ## isBroadcastSuccess
 
@@ -32,7 +38,9 @@ Response guard for transaction broadcast
 
 ### Parameters
 
--   `v`  
+-   `response` **any** The response from the node.
+
+Returns **[boolean][2]** `true` or `false`.
 
 ## isTransferEvent
 
@@ -40,7 +48,9 @@ Type guard for transfer event
 
 ### Parameters
 
--   `v`  
+-   `txEvent` **TxEvent** The transaction event.
+
+Returns **[boolean][2]** `true` or `false`.
 
 ## isRecipient
 
@@ -48,7 +58,9 @@ Type guard for recipient attribute
 
 ### Parameters
 
--   `v`  
+-   `txEventAttribute` **TxEvent** The transaction event attribute.
+
+Returns **[boolean][2]** `true` or `false`.
 
 ## isSender
 
@@ -56,7 +68,9 @@ Type guard for sender attribute
 
 ### Parameters
 
--   `v`  
+-   `txEventAttribute` **TxEvent** The transaction event attribute.
+
+Returns **[boolean][2]** `true` or `false`.
 
 ## isAmount
 
@@ -64,15 +78,19 @@ Type guard for amount attribute
 
 ### Parameters
 
--   `v`  
+-   `txEventAttribute` **TxEvent** The transaction event attribute.
+
+Returns **[boolean][2]** `true` or `false`.
 
 ## parseAmountString
 
-Parse amount string to value and denom
+Parse amount string to value and denomination
 
 ### Parameters
 
--   `v`  
+-   `amountStr` **[string][1]** The amount string.
+
+Returns **(Balance \| [undefined][3])** The balance parsed from the amount string.
 
 ## getTxsFromHistory
 
@@ -80,5 +98,21 @@ Parse transaction type
 
 ### Parameters
 
--   `txs`  
--   `mainAsset`  
+-   `txs` **[Array][4]&lt;TxResponse>** The transaction response from the node.
+-   `mainAsset` **Asset** Current main asset which depends on the network.
+
+Returns **Txs** The parsed transaction result.
+
+## getDefaultFees
+
+Get the default fee.
+
+Returns **Fees** The default fee.
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

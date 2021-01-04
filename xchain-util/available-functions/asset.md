@@ -5,12 +5,12 @@
 ## ASSET_DECIMAL
 
 Default number of asset decimals
-
 For history reason and by starting the project on Binance chain assets, it's 8 decimal.
 
 For example:
-RUNE has a maximum of 8 digits of decimal
-0.00000001 RUNE == 1 ð (tor)
+
+    RUNE has a maximum of 8 digits of decimal
+    0.00000001 RUNE == 1 ð (tor)
 
 Type: [number][1]
 
@@ -20,8 +20,10 @@ Factory to create values of assets (e.g. RUNE)
 
 ### Parameters
 
--   `value`  Asset amount - If the value is undefined, AssetAmount with value `0` will be returned
--   `decimal`  (optional) - Decimal places - default 8\* (optional, default `ASSET_DECIMAL`)
+-   `value` **([string][2] \| [number][1] \| BigNumber \| [undefined][3])** The asset amount, If the value is undefined, AssetAmount with value `0` will be returned.
+-   `decimal` **[number][1]** The decimal places. (optional) (optional, default `ASSET_DECIMAL`)
+
+Returns **AssetAmount** The asset amount from the given value and decimal.\*
 
 ## baseAmount
 
@@ -29,8 +31,11 @@ Factory to create base amounts (e.g. tor)
 
 ### Parameters
 
--   `value`  Base amount - If the value is undefined, BaseAmount with value `0` will be returned
--   `decimal`  Decimal places - default 8\* (optional, default `ASSET_DECIMAL`)
+-   `value` **([string][2] \| [number][1] \| BigNumber \| [undefined][3])** The base amount, If the value is undefined, BaseAmount with value `0` will be returned.
+-   `decimal` **[number][1]** The decimal places of its associated AssetAmount. (optional) (optional, default `ASSET_DECIMAL`)
+
+Returns **BaseAmount** The base amount from the given value and decimal.
+\*
 
 ## baseToAsset
 
@@ -38,7 +43,9 @@ Helper to convert values for a asset from base values (e.g. RUNE from tor)
 
 ### Parameters
 
--   `base`  
+-   `base` **BaseAmount** 
+
+Returns **AssetAmount** The asset amount from the given base amount.
 
 ## assetToBase
 
@@ -46,7 +53,9 @@ Helper to convert asset to base values (e.g. tor -> RUNE)
 
 ### Parameters
 
--   `asset`  
+-   `asset` **AssetAmount** 
+
+Returns **BaseAmount** The base amount from the given AssetAmount.
 
 ## isAssetAmount
 
@@ -54,7 +63,9 @@ Guard to check whether value is an amount of asset or not
 
 ### Parameters
 
--   `v`  
+-   `v` **(BaseAmount \| AssetAmount)** 
+
+Returns **[boolean][4]** `true` or `false`.
 
 ## isBaseAmount
 
@@ -62,7 +73,9 @@ Guard to check whether value is an amount of a base value or not
 
 ### Parameters
 
--   `v`  
+-   `v` **(BaseAmount \| AssetAmount)** 
+
+Returns **[boolean][4]** `true` or `false`.
 
 ## formatAssetAmount
 
@@ -73,10 +86,12 @@ Note: `trimZeros` wins over `decimal`
 
 ### Parameters
 
--   `$0` **[Object][2]** 
-    -   `$0.amount`  
-    -   `$0.decimal`  
-    -   `$0.trimZeros`   (optional, default `false`)
+-   `param` **Params** The asset amount format options.
+    -   `param.amount`  
+    -   `param.decimal`  
+    -   `param.trimZeros`   (optional, default `false`)
+
+Returns **[string][2]** The formatted asset amount string from the given options.
 
 ## formatBaseAmount
 
@@ -84,14 +99,63 @@ Formats a `BaseAmount` value into a `string`
 
 ### Parameters
 
--   `amount`  
+-   `amount` **BaseAmount** 
+
+Returns **[string][2]** The formatted base amount string from the given base amount.
 
 ## AssetBNB
 
-Base "chain" assets
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset of Binance chain.
 
 Based on definition in Thorchain `common`
-see [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][3]
+
+## AssetBTC
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset on bitcoin main net.
+
+Based on definition in Thorchain `common`
+
+## AssetETH
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset on ethereum main net.
+
+Based on definition in Thorchain `common`
+
+## AssetRune67C
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset for RUNE-67C on Binance test net.
+
+Based on definition in Thorchain `common`
+
+## AssetRuneB1A
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset for RUNE-B1A on Binance main net.
+
+Based on definition in Thorchain `common`
+
+## AssetRuneNative
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset on thorchain main net.
+
+Based on definition in Thorchain `common`
 
 ## isValidAsset
 
@@ -99,11 +163,13 @@ Helper to check whether asset is valid
 
 ### Parameters
 
--   `a`  
+-   `asset` **Asset** 
+
+Returns **[boolean][4]** `true` or `false`
 
 ## assetFromString
 
--   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][4]
+-   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][6]
 
     If the naming convention fails, it returns null
     **
@@ -119,11 +185,13 @@ symbol: `BBB-CCC` or `CCC` (if no ticker available)
 
 ### Parameters
 
--   `s`  
+-   `s` **[string][2]** The given string.
+
+Returns **(Asset \| null)** The asset from the given string.
 
 ## assetToString
 
--   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][4]
+-   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][6]
     **
 
 Returns an `Asset` as a string using following naming convention:
@@ -136,9 +204,11 @@ symbol: `BBB-CCC` or `CCC` (if no ticker available)
 
 ### Parameters
 
--   `$0` **[Object][2]** 
-    -   `$0.chain`  
-    -   `$0.symbol`  
+-   `asset` **Asset** The given asset.
+    -   `asset.chain`  
+    -   `asset.symbol`  
+
+Returns **[string][2]** The string from the given asset.
 
 ## AssetCurrencySymbol
 
@@ -146,12 +216,14 @@ Currency symbols currently supported
 
 ## currencySymbolByAsset
 
-Returns currency symbols by givven `Asset`
+Returns currency symbols by given `Asset`
 
 ### Parameters
 
--   `$0` **[Object][2]** 
-    -   `$0.ticker`  
+-   `asset` **Asset** The given asset.
+    -   `asset.ticker`  
+
+Returns **[string][2]** The currency symbol from the given asset.
 
 ## formatAssetAmountCurrency
 
@@ -164,11 +236,13 @@ Note: `trimZeros` wins over `decimal`
 
 ### Parameters
 
--   `$0` **[Object][2]** 
-    -   `$0.amount`  
-    -   `$0.asset`  
-    -   `$0.decimal`  
-    -   `$0.trimZeros`   (optional, default `false`)
+-   `params` **Params** The asset amount currency format options.
+    -   `params.amount`  
+    -   `params.asset`  
+    -   `params.decimal`  
+    -   `params.trimZeros`   (optional, default `false`)
+
+Returns **[string][2]** The formatted asset amount string using its currency format.
 
 ## formatBaseAsAssetAmount
 
@@ -179,15 +253,21 @@ Note: `trimZeros` wins over `decimal`
 
 ### Parameters
 
--   `$0` **[Object][2]** 
-    -   `$0.amount`  
-    -   `$0.decimal`  
-    -   `$0.trimZeros`   (optional, default `false`)
+-   `params` **Params** The base amount currency format options.
+    -   `params.amount`  
+    -   `params.decimal`  
+    -   `params.trimZeros`   (optional, default `false`)
+
+Returns **[string][2]** The formatted base amount string using its currency format.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[3]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
-[4]: https://docs.thorchain.org/developers/transaction-memos#asset-notation
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[5]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24
+
+[6]: https://docs.thorchain.org/developers/transaction-memos#asset-notation

@@ -1,6 +1,7 @@
 var gulp = require('gulp')
 var clean = require('gulp-clean')
 var rename = require('gulp-rename')
+var replace = require('gulp-replace')
 var header = require('gulp-header')
 var documentation = require('gulp-documentation')
 var mergeStream = require('merge-stream')
@@ -109,6 +110,7 @@ function xchain_lib_documentation(lib, dest) {
           .pipe(
             header(`# ${getTitle(file.split('.').slice(0, -1).join('-'))}\n\n`)
           )
+          .pipe(replace(/\*\*\(.*\s(\|)\s.*\)\*\*/g, (match) => match.replace(/\\\|/g, '|').replace(/\|/g, '\\|')))
           .pipe(gulp.dest(`${dest}`))
       )
   )
@@ -128,6 +130,6 @@ exports.clean = gulp.series(cleanAll)
 
 exports.build = gulp.series(buildAll)
 
-exports.build = gulp.series(documentationAll)
+exports.documentation = gulp.series(documentationAll)
 
 exports.default = gulp.series(cleanAll, buildAll, documentationAll, cleanLib)

@@ -8,7 +8,9 @@ Shortcut to create a BigNumber
 
 ### Parameters
 
--   `value`  
+-   `value` **([string][1] \| [number][2] \| BigNumber.Instance)** 
+
+Returns **BigNumber** The BigNumber interface from the given value.
 
 ## isValidBN
 
@@ -16,7 +18,9 @@ Helper to check whether a BigNumber is valid or not
 
 ### Parameters
 
--   `value`  
+-   `value` **BigNumber** 
+
+Returns **[boolean][3]** `true` or `false`.
 
 ## bnOrZero
 
@@ -25,7 +29,9 @@ If it fails to create a big number, a big number with value 0 will be returned i
 
 ### Parameters
 
--   `value`  
+-   `value` **([string][1] \| [number][2] \| [undefined][4])** 
+
+Returns **BigNumber** The BigNumber interface from the given value. If invalid one is provided, will return `0`.
 
 ## validBNOrZero
 
@@ -34,7 +40,9 @@ If the given valie is invalid or undefined, 0 is returned as a BigNumber
 
 ### Parameters
 
--   `value`  
+-   `value` **(BigNumber \| [undefined][4])** 
+
+Returns **[boolean][3]** `true` or `false`.
 
 ## formatBN
 
@@ -42,8 +50,15 @@ Format a BaseNumber to a string depending on given decimal places
 
 ### Parameters
 
--   `value`  
--   `decimalPlaces`   (optional, default `2`)
+-   `value` **BigNumber** 
+-   `decimal` **[number][2]** The decimal place. (optional) (optional, default `2`)
+
+Returns **[string][1]** The formatted string from the given BigNumber and decimal place.
+
+## SymbolPosition
+
+The enumuration for symbol position.
+`before` or `after`
 
 ## formatBNCurrency
 
@@ -51,10 +66,12 @@ Formats a big number value by prefixing it with `$`
 
 ### Parameters
 
--   `n`  
--   `decimalPlaces`   (optional, default `2`)
--   `symbol`   (optional, default `'$'`)
--   `position`   (optional, default `SymbolPosition.BEFORE`)
+-   `n` **BigNumber** 
+-   `decimalPlaces` **[number][2]** The decimal place. (optional) (optional, default `2`)
+-   `symbol` **[string][1]** The currency symbol. (optional) (optional, default `'$'`)
+-   `position` **[position][5]** The symbol position. (optional) (optional, default `SymbolPosition.BEFORE`)
+
+Returns **[string][1]** The formatted string from the given BigNumber, decimal places, symbol and position.
 
 ## fixedBN
 
@@ -63,5 +80,17 @@ Returns zero `BigNumber` if `value` is invalid
 
 ### Parameters
 
--   `value`  
--   `decimalPlaces`   (optional, default `2`)
+-   `value` **([number][2] \| [string][1] \| BigNumber \| [undefined][4])** 
+-   `decimalPlaces` **[number][2]** The decimal place. (optional) (optional, default `2`)
+
+Returns **BigNumber** The BigNumber interface from the given value and decimal.
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[5]: https://developer.mozilla.org/docs/Web/API/Position

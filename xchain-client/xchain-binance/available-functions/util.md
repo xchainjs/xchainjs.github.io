@@ -7,11 +7,13 @@
 -   **See: [https://docs.binance.org/api-reference/dex-api/ws-streams.html#3-transfer][1]
     **
 
-Get `hash` from transfer event sent by Binance chain
+Get `hash` from transfer event sent by Binance chain.
 
 ### Parameters
 
--   `transfer`  
+-   `transfer` **TransferEvent** The transfer event. (optional)
+
+Returns **([string][2] \| [undefined][3])** The hash from transfer event.
 
 ## getTxHashFromMemo
 
@@ -19,7 +21,9 @@ Get `hash` from memo
 
 ### Parameters
 
--   `transfer`  
+-   `transfer` **TransferEvent** The transfer event. (optional)
+
+Returns **([string][2] \| [undefined][3])** The hash from the memo.
 
 ## isFee
 
@@ -27,7 +31,9 @@ Type guard for runtime checks of `Fee`
 
 ### Parameters
 
--   `v`  
+-   `v` **(Fee \| TransferFee \| DexFees)** 
+
+Returns **[boolean][4]** `true` or `false`.
 
 ## isTransferFee
 
@@ -35,7 +41,9 @@ Type guard for `TransferFee`
 
 ### Parameters
 
--   `v`  
+-   `v` **(Fee \| TransferFee \| DexFees)** 
+
+Returns **[boolean][4]** `true` or `false`.
 
 ## isDexFees
 
@@ -43,7 +51,9 @@ Type guard for `DexFees`
 
 ### Parameters
 
--   `v`  
+-   `v` **(Fee \| TransferFee \| DexFees)** 
+
+Returns **[boolean][4]** `true` or `false`.
 
 ## getTxType
 
@@ -51,7 +61,9 @@ Get TxType
 
 ### Parameters
 
--   `t`  
+-   `t` **BinanceTxType** 
+
+Returns **TxType** `transfer` or `unknown`.
 
 ## parseTx
 
@@ -60,5 +72,32 @@ Parse Tx
 ### Parameters
 
 -   `tx`  
+-   `t` **BinanceTx** The transaction to be parsed. (optional)
+
+Returns **(Tx \| null)** The transaction parsed from the binance tx.
+
+## getDerivePath
+
+Get DerivePath
+
+### Parameters
+
+-   `index` **[number][5]** (optional) (optional, default `0`)
+
+Returns **DerivePath** The binance derivation path by the index.
+
+## getDefaultFees
+
+Get the default fee.
+
+Returns **Fees** The default fee.
 
 [1]: https://docs.binance.org/api-reference/dex-api/ws-streams.html#3-transfer
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

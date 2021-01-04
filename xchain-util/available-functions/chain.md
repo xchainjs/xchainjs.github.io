@@ -8,4 +8,20 @@ Type guard to check whether string  is based on type `Chain`
 
 ### Parameters
 
--   `c`  
+-   `c` **[string][1]** The chain string.
+
+Returns **[boolean][2]** `true` or `false`
+
+## chainToString
+
+Convert chain to string.
+
+### Parameters
+
+-   `chainId`  
+
+Returns **[string][1]** The string based on the given chain type.
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

@@ -12,7 +12,8 @@ Helper to delay anything within an `async` function
 
 ### Examples
 
-```javascript
+````javascript
+```
 const anyAsyncFunc = async () => {
  // do something
  console.log('before delay')
@@ -22,3 +23,4 @@ const anyAsyncFunc = async () => {
  console.log('after delay')
 }
 ```
+````

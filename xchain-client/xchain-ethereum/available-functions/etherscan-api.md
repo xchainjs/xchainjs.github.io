@@ -11,7 +11,11 @@ SafeGasPrice, ProposeGasPrice And FastGasPrice returned in string-Gwei
 
 ### Parameters
 
--   `baseUrl`  
--   `apiKey`  
+-   `baseUrl` **[string][2]** The etherscan node url.
+-   `apiKey` **[string][2]** The etherscan API key. (optional)
+
+Returns **GasOracleResponse** LastBlock, SafeGasPrice, ProposeGasPrice, FastGasPrice
 
 [1]: https://etherscan.io/apis#gastracker
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

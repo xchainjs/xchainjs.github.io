@@ -10,8 +10,12 @@ Removes leading / trailing zeros from a string of numbers
 
 ### Parameters
 
--   `value`  
+-   `value` **[string][3]** 
+
+Returns **[string][3]** The result after removing trailing zeros.
 
 [1]: https://stackoverflow.com/a/53397618/2032698
 
 [2]: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch06s06.html
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
