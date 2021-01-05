@@ -112,7 +112,7 @@ function xchain_lib_documentation(lib, dest) {
             .pipe(documentation('md'))
             .pipe(rename(`${name}.md`))
             .pipe(replace(/(.*\n)+##\s.*\n/g, `# ${title}\n`))
-            .pipe(replace(/## /g, `# `))
+            .pipe(replace(/## /g, '# '))
             .pipe(replace(/\*\*\(.*\s(\|)\s.*\)\*\*/g, (match) => match.replace(/\\\|/g, '|').replace(/\|/g, '\\|')))
             .pipe(gulp.dest(`${dest}`))
         } else {
