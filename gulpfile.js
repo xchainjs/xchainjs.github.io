@@ -102,17 +102,29 @@ function xchain_lib_documentation(lib, dest) {
     ...fs
       .readdirSync(`lib/${lib}`)
       .filter((file) => !file.endsWith('.test.js') && file !== 'index.js')
-      .map((file) =>
-        gulp
-          .src(`lib/${lib}/${file}`)
-          .pipe(documentation('md'))
-          .pipe(rename(`${file.split('.').slice(0, -1).join('.')}.md`))
-          .pipe(
-            header(`# ${getTitle(file.split('.').slice(0, -1).join('-'))}\n\n`)
-          )
-          .pipe(replace(/\*\*\(.*\s(\|)\s.*\)\*\*/g, (match) => match.replace(/\\\|/g, '|').replace(/\|/g, '\\|')))
-          .pipe(gulp.dest(`${dest}`))
-      )
+      .map((file) =>{
+        const name = file.split('.').slice(0, -1).join('.')
+        const title = getTitle(file.split('.').slice(0, -1).join('-'))
+
+        if (name == 'client') {
+          return gulp
+            .src(`lib/${lib}/${file}`)
+            .pipe(documentation('md'))
+            .pipe(rename(`${name}.md`))
+            .pipe(replace(/(.*\n)+##\s.*\n/g, `# ${title}\n`))
+            .pipe(replace(/## /g, `# `))
+            .pipe(replace(/\*\*\(.*\s(\|)\s.*\)\*\*/g, (match) => match.replace(/\\\|/g, '|').replace(/\|/g, '\\|')))
+            .pipe(gulp.dest(`${dest}`))
+        } else {
+          return gulp
+            .src(`lib/${lib}/${file}`)
+            .pipe(documentation('md'))
+            .pipe(rename(`${name}.md`))
+            .pipe(header(`# ${title}\n\n`))
+            .pipe(replace(/\*\*\(.*\s(\|)\s.*\)\*\*/g, (match) => match.replace(/\\\|/g, '|').replace(/\|/g, '\\|')))
+            .pipe(gulp.dest(`${dest}`))
+        }
+      })
   )
 }
 
