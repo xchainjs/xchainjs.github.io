@@ -10,6 +10,12 @@ readme_index:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - xchainjs-lib
+  - node_modules
+  - gulpfile.js
+  - lerna.json
+  - .eslintrc.json
+  - yarn.lock
 
 plugins:
   - jemoji
