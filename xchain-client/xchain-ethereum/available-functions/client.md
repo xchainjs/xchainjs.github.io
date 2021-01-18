@@ -6,8 +6,9 @@ Custom Ethereum client
 
 -   `params` **ClientParams** 
     -   `params.network`   (optional, default `'testnet'`)
-    -   `params.blockchairUrl`   (optional, default `''`)
-    -   `params.blockchairNodeApiKey`   (optional, default `''`)
+    -   `params.ethplorerUrl`  
+    -   `params.ethplorerApiKey`  
+    -   `params.explorerUrl`  
     -   `params.phrase`  
     -   `params.vault`  
     -   `params.etherscanApiKey`  
@@ -18,23 +19,23 @@ Purge client.
 
 Returns **void** 
 
-## setBlockchairNodeURL
+## setEthplorerURL
 
-Set/Update the blockchair url.
+Set/Update the ethplorer url.
 
 ### Parameters
 
--   `url` **[string][1]** The new blockchair url.
+-   `url` **[string][1]** The new ethplorer url.
 
 Returns **void** 
 
-## setBlockchairNodeAPIKey
+## setExplorerURL
 
-Set/Update the blockchair api key.
+Set/Update the explorer url.
 
 ### Parameters
 
--   `key` **[string][1]** The new blockchair api key.
+-   `url` **[string][1]** The explorer url.
 
 Returns **void** 
 
@@ -80,11 +81,49 @@ Get etherjs EtherscanProvider interface.
 
 Returns **EtherscanProvider** The current etherjs EtherscanProvider interface.
 
+## getEthplorerUrl
+
+Get the ethplorer API url.
+
+Returns **[string][1]** The ethplorer API url for thorchain based on the current network.
+
+## getDefaultEthplorerURL
+
+Get the ethplorer API url.
+
+Returns **ClientUrl** The ethplorer API url (both mainnet and testnet) for ethereum.
+
+## getEthplorerUrlByNetwork
+
+Get the ethplorer API url.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** The ethplorer API url for ethereum based on the network.
+
 ## getExplorerUrl
 
 Get the explorer url.
 
-Returns **[string][1]** The explorer url.
+Returns **[string][1]** The explorer url for ethereum based on the current network.
+
+## getDefaultExplorerURL
+
+Get the explorer url.
+
+Returns **ExplorerUrl** The explorer url (both mainnet and testnet) for ethereum.
+
+## getExplorerUrlByNetwork
+
+Get the explorer url.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** The explorer url for ethereum based on the network.
 
 ## getExplorerAddressUrl
 
@@ -173,23 +212,7 @@ Get the ETH balance of a given address.
 
 -   `address` **Address** By default, it will return the balance of the current wallet. (optional)
 
-Returns **[Array][3]&lt;Balance>** The ETH balance of the address.
-
-## getERC20Balance
-
-Gets the erc20 asset balance of a given address.
-By default it will return the balance of the current wallet.
-
-### Parameters
-
--   `assetAddress` **Address** The erc20 asset address.
--   `address` **Address** (optional)
-
-
--   Throws **`"Invalid Address"`** Thrown if address is invalid.
--   Throws **`"Invalid Asset Address"`** Thrown if asset address is invalid.
-
-Returns **[Array][3]&lt;Balance>** The ETH balance of the address.
+Returns **[Array][3]&lt;ETHBalance>** The all balance of the address.
 
 ## getTransactions
 
@@ -199,6 +222,9 @@ By default it will return the transaction history of the current wallet.
 ### Parameters
 
 -   `params` **TxHistoryParams** The options to get transaction history. (optional)
+
+
+-   Throws **`"Need to provide ethplorer API key for token transactions"`** Thrown if the ethplorer API key is not provided.
 
 Returns **TxsPage** The transaction history.
 
@@ -210,6 +236,9 @@ Get the transaction details of a given transaction id.
 
 -   `txId` **[string][1]** The transaction id.
 
+
+-   Throws **`"Need to provide valid txId"`** Thrown if the given txId is invalid.
+
 Returns **Tx** The transaction details of the given transaction id.
 
 ## transfer
@@ -219,9 +248,15 @@ Transfer ETH.
 ### Parameters
 
 -   `params` **TxParams** The transfer options.
+    -   `params.asset`  
     -   `params.memo`  
     -   `params.amount`  
     -   `params.recipient`  
+    -   `params.gasLimit`  
+    -   `params.gasPrice`  
+
+
+-   Throws **`"Invalid asset address"`** Thrown if the given asset is invalid.
 
 Returns **TxHash** The transaction hash.
 
@@ -247,9 +282,11 @@ Send a transaction to the vault.
 
 ### Parameters
 
--   `address` **Address** The contract address.
--   `amount` **BaseAmount** The amount to be transferred.
--   `memo` **[string][1]** The memo to be set.
+-   `params` **VaultTxOpts** The Vault transaction options.
+    -   `params.address`  
+    -   `params.amount`  
+    -   `params.memo`  
+    -   `params.overrides`  
 
 Returns **TransactionResponse** The vault transaction result.
 
@@ -272,7 +309,7 @@ Get the current gas price.
 
 Returns **Fees** The current gas price.
 
-## estimateNormalTx
+## estimateGasNormalTx
 
 Estimate gas for ETH transfer.
 
@@ -291,10 +328,11 @@ Estimate gas for erc20 token transfer.
 
 ### Parameters
 
--   `params` **EstimateGasERC20Opts** The erc20 transaction options.
+-   `params` **Erc20TxOpts** The erc20 transaction options.
     -   `params.assetAddress`  
     -   `params.recipient`  
     -   `params.amount`  
+    -   `params.overrides`  
 
 
 -   Throws **`"Invalid Address"`** Thrown if the given address is invalid.

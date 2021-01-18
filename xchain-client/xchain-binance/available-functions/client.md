@@ -40,12 +40,6 @@ Get the explorer url for the given transaction id.
 
 Returns **[string][1]** The explorer url for the given transaction id based on the network.
 
-## getPrefix
-
-Get current address prefix based on the network.
-
-Returns **Prefix** The prefix based on the network.
-
 ## setPhrase
 
 Set/update a new phrase

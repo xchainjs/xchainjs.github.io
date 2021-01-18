@@ -92,6 +92,16 @@ Get the default fee.
 
 Returns **Fees** The default fee.
 
+## getPrefix
+
+Get address prefix based on the network.
+
+### Parameters
+
+-   `network` **[string][2]** 
+
+Returns **[string][2]** The address prefix based on the network.\*
+
 [1]: https://docs.binance.org/api-reference/dex-api/ws-streams.html#3-transfer
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

@@ -109,6 +109,16 @@ Get the default fee.
 
 Returns **Fees** The default fee.
 
+## getPrefix
+
+Get address prefix based on the network.
+
+### Parameters
+
+-   `network` **[string][1]** 
+
+Returns **[string][1]** The address prefix based on the network.\*
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

@@ -22,8 +22,70 @@ EthNetwork -> XChainNetwork
 
 Returns **XChainNetwork** 
 
+## validateAddress
+
+Validate the given address.
+
+### Parameters
+
+-   `address` **Address** 
+
+Returns **[boolean][1]** `true` or `false`
+
+## getTokenAddress
+
+Get token address from asset.
+
+### Parameters
+
+-   `asset` **Asset** 
+
+Returns **([string][2] \| null)** The token address.
+
+## validateSymbol
+
+Check if the symbol is valid.
+
+### Parameters
+
+-   `symbol` **([string][2] \| null \| [undefined][3])** 
+
+Returns **[boolean][1]** `true` or `false`.
+
+## getTxFromOperation
+
+Get transactions from operation
+
+### Parameters
+
+-   `operation` **TransactionOperation** 
+
+Returns **(Tx \| null)** The parsed transaction.
+
+## getTxFromEthTransaction
+
+Get transactions from ETH transaction
+
+### Parameters
+
+-   `txInfo` **TransactionInfo** 
+
+Returns **Tx** The parsed transaction.
+
 ## getDefaultFees
 
 Get the default gas price.
 
 Returns **Fees** The default gas price.
+
+## getPrefix
+
+Get address prefix based on the network.
+
+Returns **[string][2]** The address prefix based on the network.\*
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined

@@ -8,6 +8,7 @@ Custom Thorchain Client
     -   `params.network`   (optional, default `'testnet'`)
     -   `params.phrase`  
     -   `params.clientUrl`  
+    -   `params.explorerUrl`  
 
 ## purgeClient
 
@@ -66,23 +67,43 @@ Get the client url.
 
 Returns **[string][1]** The client url for thorchain based on the network.
 
-## getChainId
+## setExplorerUrl
 
-Get the chain id.
+Set/update the explorer URL.
 
-Returns **[string][1]** The chain id based on the network.
+### Parameters
 
-## getPrefix
+-   `explorerUrl` **ExplorerUrl** The explorer url to be set.
 
-Get current address prefix based on the network.
-
-Returns **Prefix** The prefix based on the network.
+Returns **void** 
 
 ## getExplorerUrl
 
 Get the explorer url.
 
-Returns **[string][1]** The explorer url.
+Returns **[string][1]** The explorer url for thorchain based on the current network.
+
+## getDefaultExplorerUrl
+
+Get the explorer url.
+
+Returns **ExplorerUrl** The explorer url (both mainnet and testnet) for thorchain.
+
+## getExplorerUrlByNetwork
+
+Get the explorer url.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** The explorer url for thorchain based on the network.
+
+## getChainId
+
+Get the chain id.
+
+Returns **[string][1]** The chain id based on the network.
 
 ## getExplorerAddressUrl
 
