@@ -8,6 +8,7 @@ Custom Thorchain Client
     -   `params.network`   (optional, default `'testnet'`)
     -   `params.phrase`  
     -   `params.clientUrl`  
+    -   `params.explorerUrl`  
 
 ## purgeClient
 
@@ -48,7 +49,7 @@ Returns **void**
 
 Get the client url.
 
-Returns **[string][1]** The client url for thorchain based on the current network.
+Returns **NodeUrl** The client url for thorchain based on the current network.
 
 ## getDefaultClientUrl
 
@@ -64,25 +65,45 @@ Get the client url.
 
 -   `network` **Network** 
 
-Returns **[string][1]** The client url for thorchain based on the network.
+Returns **NodeUrl** The client url (both node, rpc) for thorchain based on the network.
+
+## setExplorerUrl
+
+Set/update the explorer URL.
+
+### Parameters
+
+-   `explorerUrl` **ExplorerUrl** The explorer url to be set.
+
+Returns **void** 
+
+## getExplorerUrl
+
+Get the explorer url.
+
+Returns **[string][1]** The explorer url for thorchain based on the current network.
+
+## getDefaultExplorerUrl
+
+Get the explorer url.
+
+Returns **ExplorerUrl** The explorer url (both mainnet and testnet) for thorchain.
+
+## getExplorerUrlByNetwork
+
+Get the explorer url.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** The explorer url for thorchain based on the network.
 
 ## getChainId
 
 Get the chain id.
 
 Returns **[string][1]** The chain id based on the network.
-
-## getPrefix
-
-Get current address prefix based on the network.
-
-Returns **Prefix** The prefix based on the network.
-
-## getExplorerUrl
-
-Get the explorer url.
-
-Returns **[string][1]** The explorer url.
 
 ## getExplorerAddressUrl
 
@@ -93,6 +114,17 @@ Get the explorer url for the given address.
 -   `address` **Address** 
 
 Returns **[string][1]** The explorer url for the given address.
+
+## getExplorerNodeUrl
+
+Get the explorer url for the given node.
+
+### Parameters
+
+-   `address`  
+-   `node` **Address** address
+
+Returns **[string][1]** The explorer url for the given node.
 
 ## getExplorerTxUrl
 
@@ -167,6 +199,20 @@ Get the transaction details of a given transaction id.
 
 Returns **Tx** The transaction details of the given transaction id.
 
+## buildDepositTx
+
+Structure StdTx from MsgNativeTx.
+
+### Parameters
+
+-   `msgNativeTx`  
+-   `txId` **[string][1]** The transaction id.
+
+
+-   Throws **`"Invalid client url"`** Thrown if the client url is an invalid one.
+
+Returns **Tx** The transaction details of the given transaction id.
+
 ## deposit
 
 Transaction with MsgNativeTx.
@@ -177,6 +223,10 @@ Transaction with MsgNativeTx.
     -   `params.asset`   (optional, default `types_1.AssetRune`)
     -   `params.amount`  
     -   `params.memo`  
+
+
+-   Throws **`"insufficient funds"`** Thrown if the wallet has insufficient funds.
+-   Throws **`"failed to broadcast transaction"`** Thrown if failed to broadcast transaction.
 
 Returns **TxHash** The transaction hash.
 
@@ -193,6 +243,12 @@ Transfer balances with MsgSend
     -   `params.memo`  
 
 Returns **TxHash** The transaction hash.
+
+## getFees
+
+Get the fees.
+
+Returns **Fees** 
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 

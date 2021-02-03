@@ -6,10 +6,8 @@ Custom Ethereum client
 
 -   `params` **ClientParams** 
     -   `params.network`   (optional, default `'testnet'`)
-    -   `params.blockchairUrl`   (optional, default `''`)
-    -   `params.blockchairNodeApiKey`   (optional, default `''`)
+    -   `params.explorerUrl`  
     -   `params.phrase`  
-    -   `params.vault`  
     -   `params.etherscanApiKey`  
 
 ## purgeClient
@@ -18,23 +16,13 @@ Purge client.
 
 Returns **void** 
 
-## setBlockchairNodeURL
+## setExplorerURL
 
-Set/Update the blockchair url.
-
-### Parameters
-
--   `url` **[string][1]** The new blockchair url.
-
-Returns **void** 
-
-## setBlockchairNodeAPIKey
-
-Set/Update the blockchair api key.
+Set/Update the explorer url.
 
 ### Parameters
 
--   `key` **[string][1]** The new blockchair api key.
+-   `url` **[string][1]** The explorer url.
 
 Returns **void** 
 
@@ -51,14 +39,6 @@ Get the current address.
 -   Throws **`"Phrase must be provided"`** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
 
 Returns **Address** The current address.
-
-## getVault
-
-Get the vault address.
-
--   Throws **`"Vault must be provided"`** Thrown if vault has not been set before. A vault is needed to send a vault transaction.
-
-Returns **Address** The current vault address.
 
 ## getWallet
 
@@ -84,7 +64,23 @@ Returns **EtherscanProvider** The current etherjs EtherscanProvider interface.
 
 Get the explorer url.
 
-Returns **[string][1]** The explorer url.
+Returns **[string][1]** The explorer url for ethereum based on the current network.
+
+## getDefaultExplorerURL
+
+Get the explorer url.
+
+Returns **ExplorerUrl** The explorer url (both mainnet and testnet) for ethereum.
+
+## getExplorerUrlByNetwork
+
+Get the explorer url.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** The explorer url for ethereum based on the network.
 
 ## getExplorerAddressUrl
 
@@ -129,19 +125,6 @@ Set/update the current network.
 
 Returns **void** 
 
-## setVault
-
-Set/update the current vault address.
-
-### Parameters
-
--   `vault` **[string][1]** A new vault address.
-
-
--   Throws **`"Vault address must be provided"`** Thrown if the given vault address is empty.
-
-Returns **void** 
-
 ## setPhrase
 
 Set/update a new phrase (Eg. If user wants to change wallet)
@@ -172,24 +155,12 @@ Get the ETH balance of a given address.
 ### Parameters
 
 -   `address` **Address** By default, it will return the balance of the current wallet. (optional)
-
-Returns **[Array][3]&lt;Balance>** The ETH balance of the address.
-
-## getERC20Balance
-
-Gets the erc20 asset balance of a given address.
-By default it will return the balance of the current wallet.
-
-### Parameters
-
--   `assetAddress` **Address** The erc20 asset address.
--   `address` **Address** (optional)
+-   `asset`  
 
 
--   Throws **`"Invalid Address"`** Thrown if address is invalid.
--   Throws **`"Invalid Asset Address"`** Thrown if asset address is invalid.
+-   Throws **`"Invalid asset"`** throws when the give asset is an invalid one
 
-Returns **[Array][3]&lt;Balance>** The ETH balance of the address.
+Returns **[Array][3]&lt;Balances>** The all balance of the address.
 
 ## getTransactions
 
@@ -209,21 +180,12 @@ Get the transaction details of a given transaction id.
 ### Parameters
 
 -   `txId` **[string][1]** The transaction id.
+-   `assetAddress` **[string][1]** The asset address. (optional)
+
+
+-   Throws **`"Need to provide valid txId"`** Thrown if the given txId is invalid.
 
 Returns **Tx** The transaction details of the given transaction id.
-
-## transfer
-
-Transfer ETH.
-
-### Parameters
-
--   `params` **TxParams** The transfer options.
-    -   `params.memo`  
-    -   `params.amount`  
-    -   `params.recipient`  
-
-Returns **TxHash** The transaction hash.
 
 ## call
 
@@ -241,88 +203,124 @@ Call a contract function.
 
 Returns **T** The result of the contract function call.
 
-## vaultTx
+## isApproved
 
-Send a transaction to the vault.
-
-### Parameters
-
--   `address` **Address** The contract address.
--   `amount` **BaseAmount** The amount to be transferred.
--   `memo` **[string][1]** The memo to be set.
-
-Returns **TransactionResponse** The vault transaction result.
-
-## normalTx
-
-Send ETH transaction.
+Check allowance.
 
 ### Parameters
 
--   `params` **NormalTxOpts** The ETH transaction options.
-    -   `params.recipient`  
-    -   `params.amount`  
-    -   `params.overrides`  
+-   `spender` **Address** The spender address.
+-   `sender` **Address** The sender address.
+-   `amount` **BaseAmount** The amount of token.
+
+Returns **[boolean][2]** `true` or `false`.
+
+## approve
+
+Check allowance.
+
+### Parameters
+
+-   `spender` **Address** The spender address.
+-   `sender` **Address** The sender address.
+-   `amount` **BaseAmount** The amount of token. By default, it will be unlimited token allowance. (optional)
 
 Returns **TransactionResponse** The transaction result.
+
+## transfer
+
+Transfer ETH.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.asset`  
+    -   `$0.memo`  
+    -   `$0.amount`  
+    -   `$0.recipient`  
+    -   `$0.feeOptionKey`  
+    -   `$0.gasPrice`  
+    -   `$0.gasLimit`  
+-   `params` **TxParams** The transfer options.
+-   `FeeOptionKey` **feeOptionKey** Fee option (optional)
+-   `BaseAmount` **gasPrice** Gas price (optional)
+-   `BigNumber` **gasLimit** Gas limit (optional)A given `feeOptionKey` wins over `gasPrice` and `gasLimit`
+
+
+-   Throws **`"Invalid asset address"`** Thrown if the given asset is invalid.
+
+Returns **TxHash** The transaction hash.
+
+## estimateGasPrices
+
+-   **See: [https://etherscan.io/apis#gastracker][5]
+    **
+
+Estimate gas price.
+
+-   Throws **`"Failed to estimate gas price"`** Thrown if failed to estimate gas price.
+
+Returns **GasPrices** The gas prices (average, fast, fastest) in `Wei` (`BaseAmount`)
+
+## estimateGasLimit
+
+Estimate gas.
+
+### Parameters
+
+-   `params` **EstimateGasOpts** The transaction options.
+    -   `params.asset`  
+    -   `params.recipient`  
+    -   `params.amount`  
+    -   `params.gasPrice`  
+
+
+-   Throws **`"Failed to estimate gas limit"`** Thrown if failed to estimate gas limit.
+
+Returns **BaseAmount** The estimated gas fee.
+
+## estimateGasLimits
+
+Estimate gas limits (average, fast fastest).
+
+### Parameters
+
+-   `params` **GasLimitsParams** 
+
+Returns **GasLimits** The estimated gas limits.
+
+## estimateFeesWithGasPricesAndLimits
+
+Estimate gas prices/limits (average, fast fastest).
+
+### Parameters
+
+-   `params` **FeesParams** 
+
+
+-   Throws **`"Failed to estimate fees, gas price, gas limit"`** Thrown if failed to estimate fees, gas price, gas limit.
+
+Returns **FeesWithGasPricesAndLimits** The estimated gas prices/limits.
 
 ## getFees
 
-Get the current gas price.
-
-Returns **Fees** The current gas price.
-
-## estimateNormalTx
-
-Estimate gas for ETH transfer.
+Get fees.
 
 ### Parameters
 
--   `params` **NormalTxOpts** The ETH transaction options.
-    -   `params.recipient`  
-    -   `params.amount`  
-    -   `params.overrides`  
-
-Returns **BaseAmount** The estimated gas fee.
-
-## estimateGasERC20Tx
-
-Estimate gas for erc20 token transfer.
-
-### Parameters
-
--   `params` **EstimateGasERC20Opts** The erc20 transaction options.
-    -   `params.assetAddress`  
-    -   `params.recipient`  
-    -   `params.amount`  
+-   `params` **FeesParams** 
 
 
--   Throws **`"Invalid Address"`** Thrown if the given address is invalid.
--   Throws **`"Invalid Asset Address"`** Thrown if the given asset address is invalid.
-    \*
+-   Throws **`"Failed to get fees"`** Thrown if failed to get fees.
 
-Returns **BaseAmount** The estimated gas fee.
-
-## erc20Tx
-
-Transfer erc20 tokens.
-
-### Parameters
-
--   `params` **Erc20TxOpts** The erc20 transaction options.
-    -   `params.assetAddress`  
-    -   `params.recipient`  
-    -   `params.amount`  
-    -   `params.overrides`  
-
-
--   Throws **`"Invalid Address"`** Thrown if the given address is invalid.
--   Throws **`"Invalid Asset Address"`** Thrown if the given asset address is invalid.
-
-Returns **TransactionResponse** The transaction result.
+Returns **Fees** The average/fast/fastest fees.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[5]: https://etherscan.io/apis#gastracker
