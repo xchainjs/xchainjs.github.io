@@ -26,6 +26,14 @@ Cosmos Chain
 
 Polkadot Chain
 
+## BCHChain
+
+Bitcoin Cash
+
+## LTCChain
+
+Litecoin Chain
+
 ## chains
 
 All possible chains XChainJS currently supports

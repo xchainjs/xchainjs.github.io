@@ -12,26 +12,15 @@ Compile memo.
 
 Returns **[Buffer][2]** The compiled memo.
 
-## getVaultFee
+## getFee
 
-Get the vault transaction fee.
-
-### Parameters
-
--   `inputs` **UTXOs** The UTXOs.
--   `data` **[Buffer][2]** The compiled memo.
--   `feeRate` **FeeRate** The fee rate.
-
-Returns **[number][3]** The fee amount.
-
-## getNormalFee
-
-Get the normal transaction fee.
+Get the transaction fee.
 
 ### Parameters
 
 -   `inputs` **UTXOs** The UTXOs.
 -   `feeRate` **FeeRate** The fee rate.
+-   `data` **[Buffer][2]** The compiled memo (Optional). (optional, default `null`)
 
 Returns **[number][3]** The fee amount.
 
@@ -55,15 +44,15 @@ Check if give network is a testnet.
 
 Returns **[boolean][5]** `true` or `false`
 
-## btcNetwork
+## ltcNetwork
 
-Get Bitcoin network to be used with bitcoinjs.
+Get Litecoin network to be used with bitcoinjs.
 
 ### Parameters
 
 -   `network` **Network** 
 
-Returns **Bitcoin.Network** The BTC network.
+Returns **Litecoin.Network** The LTC network.
 
 ## getBalance
 
@@ -71,11 +60,11 @@ Get the balances of an address.
 
 ### Parameters
 
+-   `nodeUrl` **[string][1]** sochain Node URL.
+-   `network` **[string][1]** 
 -   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
 
-Returns **[Array][4]&lt;Balance>** The balances of the give address.
+Returns **[Array][4]&lt;Balance>** The balances of the given address.
 
 ## getChange
 
@@ -84,15 +73,15 @@ Get the balance changes amount.
 ### Parameters
 
 -   `valueOut` **[number][3]** 
+-   `nodeUrl` **[string][1]** sochain Node URL.
+-   `network`  
 -   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
 
 Returns **[number][3]** The change amount.
 
 ## validateAddress
 
-Validate the BTC address.
+Validate the LTC address.
 
 ### Parameters
 
@@ -103,13 +92,13 @@ Returns **[boolean][5]** `true` or `false`.
 
 ## scanUTXOs
 
-Scan UTXOs from blockchair.
+Scan UTXOs from sochain.
 
 ### Parameters
 
--   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
+-   `nodeUrl` **[string][1]** sochain Node URL.
+-   `network` **[string][1]** 
+-   `address` **Address** 
 
 Returns **[Array][4]&lt;UTXO>** The UTXOs of the given address.
 
@@ -127,7 +116,6 @@ Build transcation.
     -   `params.sender`  
     -   `params.network`  
     -   `params.nodeUrl`  
-    -   `params.nodeApiKey`  
 
 Returns **Transaction** 
 
@@ -138,9 +126,9 @@ Broadcast the transaction.
 ### Parameters
 
 -   `params` **BroadcastTxParams** The transaction broadcast options.
+    -   `params.network`  
     -   `params.txHex`  
     -   `params.nodeUrl`  
-    -   `params.nodeApiKey`  
 
 Returns **TxHash** The transaction hash.
 
@@ -152,7 +140,7 @@ Get DerivePath.
 
 -   `index` **[number][3]** (optional) (optional, default `0`)
 
-Returns **DerivePath** The bitcoin derivation path by the index. (both mainnet and testnet)
+Returns **DerivePath** The litecoin derivation path by the index. (both mainnet and testnet)
 
 ## calcFee
 

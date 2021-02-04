@@ -121,6 +121,15 @@ Base "chain" asset on bitcoin main net.
 
 Based on definition in Thorchain `common`
 
+## AssetLTC
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
+    **
+
+Base "chain" asset on litecoin main net.
+
+Based on definition in Thorchain `common`
+
 ## AssetETH
 
 -   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]

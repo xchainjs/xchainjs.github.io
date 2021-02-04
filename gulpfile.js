@@ -51,6 +51,10 @@ var packages = [
     module: 'xchain-thorchain',
     path: 'xchain-client/xchain-thorchain/available-functions',
   },
+  {
+    module: 'xchain-litecoin',
+    path: 'xchain-client/xchain-litecoin/available-functions',
+  },
 ]
 
 function getGeneratedFiles(dir) {
