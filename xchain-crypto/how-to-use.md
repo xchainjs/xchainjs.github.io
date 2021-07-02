@@ -47,7 +47,7 @@ const phrase = generatePhrase(24) // 24 words phrase
 
 ### Validate phrase
 
-Use `validatePhrase` to generate a new phrase.
+Use `validatePhrase` to validate a new phrase.
 ```ts
 validatePhrase(phrase: string): boolean
 ```
