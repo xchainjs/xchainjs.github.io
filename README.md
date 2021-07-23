@@ -10,6 +10,7 @@ XChainJS is a library with a common interface for multiple blockchains, built fo
 ```bash
 yarn install
 yarn build
+bundle install
 ```
 
 ### Generate documentation
