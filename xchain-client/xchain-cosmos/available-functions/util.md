@@ -55,7 +55,7 @@ Parse transaction type
 -   `txs` **[Array][3]&lt;TxResponse>** The transaction response from the node.
 -   `mainAsset` **Asset** Current main asset which depends on the network.
 
-Returns **Txs** The parsed transaction result.
+Returns **[Array][3]&lt;Tx>** The parsed transaction result.
 
 ## getQueryString
 

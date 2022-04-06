@@ -44,10 +44,6 @@ var packages = [
     path: 'xchain-client/xchain-cosmos/available-functions',
   },
   {
-    module: 'xchain-polkadot',
-    path: 'xchain-client/xchain-polkadot/available-functions',
-  },
-  {
     module: 'xchain-thorchain',
     path: 'xchain-client/xchain-thorchain/available-functions',
   },

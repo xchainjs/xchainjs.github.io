@@ -12,28 +12,17 @@ Compile memo.
 
 Returns **[Buffer][2]** The compiled memo.
 
-## getVaultFee
+## getFee
 
-Get the vault transaction fee.
-
-### Parameters
-
--   `inputs` **UTXOs** The UTXOs.
--   `data` **[Buffer][2]** The compiled memo.
--   `feeRate` **FeeRate** The fee rate.
-
-Returns **[number][3]** The fee amount.
-
-## getNormalFee
-
-Get the normal transaction fee.
+Get the transaction fee.
 
 ### Parameters
 
--   `inputs` **UTXOs** The UTXOs.
+-   `inputs` **[Array][3]&lt;UTXO>** The UTXOs.
 -   `feeRate` **FeeRate** The fee rate.
+-   `data` **[Buffer][2]** The compiled memo (Optional). (optional, default `null`)
 
-Returns **[number][3]** The fee amount.
+Returns **[number][4]** The fee amount.
 
 ## arrayAverage
 
@@ -41,19 +30,9 @@ Get the average value of an array.
 
 ### Parameters
 
--   `array` **[Array][4]&lt;[number][3]>** 
+-   `array` **[Array][3]&lt;[number][4]>** 
 
-Returns **[number][3]** The average value.
-
-## isTestnet
-
-Check if give network is a testnet.
-
-### Parameters
-
--   `network` **Network** 
-
-Returns **[boolean][5]** `true` or `false`
+Returns **[number][4]** The average value.
 
 ## btcNetwork
 
@@ -71,24 +50,15 @@ Get the balances of an address.
 
 ### Parameters
 
--   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
+-   `$0` **[Object][5]** 
+    -   `$0.params`  
+    -   `$0.haskoinUrl`  
+    -   `$0.confirmedOnly`  
+-   `sochainUrl` **[string][1]** sochain Node URL.
+-   `network` **Network** 
+-   `address` **Address** 
 
-Returns **[Array][4]&lt;Balance>** The balances of the give address.
-
-## getChange
-
-Get the balance changes amount.
-
-### Parameters
-
--   `valueOut` **[number][3]** 
--   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
-
-Returns **[number][3]** The change amount.
+Returns **[Array][3]&lt;Balance>** The balances of the given address.
 
 ## validateAddress
 
@@ -96,22 +66,42 @@ Validate the BTC address.
 
 ### Parameters
 
--   `address` **[string][1]** 
+-   `address` **Address** 
 -   `network` **Network** 
 
-Returns **[boolean][5]** `true` or `false`.
+Returns **[boolean][6]** `true` or `false`.
 
-## scanUTXOs
+## getTxHex
 
-Scan UTXOs from blockchair.
+Helper to get `hex` of `Tx`
+
+It will try to get it from cache before requesting it from Sochain
 
 ### Parameters
 
--   `address` **[string][1]** 
--   `nodeUrl` **[string][1]** Blockchair Node URL.
--   `nodeApiKey` **[string][1]** Blockchair API key.
+-   `$0` **[Object][5]** 
+    -   `$0.txHash`  
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
 
-Returns **[Array][4]&lt;UTXO>** The UTXOs of the given address.
+## scanUTXOs
+
+Scan UTXOs from sochain.
+
+### Parameters
+
+-   `$0` **[Object][5]** 
+    -   `$0.sochainUrl`  
+    -   `$0.haskoinUrl`  
+    -   `$0.network`  
+    -   `$0.address`  
+    -   `$0.confirmedOnly`   (optional, default `true`)
+    -   `$0.withTxHex`   (optional, default `false`)
+-   `sochainUrl` **[string][1]** sochain Node URL.
+-   `network` **Network** 
+-   `address` **Address** 
+
+Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
 
 ## buildTx
 
@@ -126,8 +116,10 @@ Build transcation.
     -   `params.feeRate`  
     -   `params.sender`  
     -   `params.network`  
-    -   `params.nodeUrl`  
-    -   `params.nodeApiKey`  
+    -   `params.sochainUrl`  
+    -   `params.haskoinUrl`  
+    -   `params.spendPendingUTXO`   (optional, default `false`)
+    -   `params.withTxHex`   (optional, default `false`)
 
 Returns **Transaction** 
 
@@ -138,21 +130,10 @@ Broadcast the transaction.
 ### Parameters
 
 -   `params` **BroadcastTxParams** The transaction broadcast options.
+    -   `params.haskoinUrl`  
     -   `params.txHex`  
-    -   `params.nodeUrl`  
-    -   `params.nodeApiKey`  
 
 Returns **TxHash** The transaction hash.
-
-## getDerivePath
-
-Get DerivePath.
-
-### Parameters
-
--   `index` **[number][3]** (optional) (optional, default `0`)
-
-Returns **DerivePath** The bitcoin derivation path by the index. (both mainnet and testnet)
 
 ## calcFee
 
@@ -183,7 +164,7 @@ Get address prefix based on the network.
 
 ### Parameters
 
--   `network` **[string][1]** 
+-   `network` **Network** 
 
 Returns **[string][1]** The address prefix based on the network.\*
 
@@ -191,8 +172,10 @@ Returns **[string][1]** The address prefix based on the network.\*
 
 [2]: https://nodejs.org/api/buffer.html
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

@@ -1,62 +1,28 @@
 # Client
 
+**Extends xchain_client_1.UTXOClient**
+
 Custom Litecoin client
 
 ## Parameters
 
 -   `params` **LitecoinClientParams** 
-    -   `params.network`   (optional, default `'testnet'`)
-    -   `params.nodeUrl`   (optional, default `''`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.sochainUrl`   (optional, default `'https://sochain.com/api/v2'`)
     -   `params.phrase`  
+    -   `params.nodeUrl`  
+    -   `params.nodeAuth`   (optional, default `{username:'thorchain',password:'password'}`)
+    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/84'/2'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/84'/1'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/84'/2'/0'/0/`}``)
 
-## setNodeURL
+## setSochainUrl
 
-Set/Update the node url.
-
-### Parameters
-
--   `url` **[string][1]** The new node url.
-
-Returns **void** 
-
-## setPhrase
-
-Set/update a new phrase.
+Set/Update the sochain url.
 
 ### Parameters
 
--   `phrase` **[string][1]** A new phrase.
-
-
--   Throws **`"Invalid phrase"`** Thrown if the given phase is invalid.
-
-Returns **Address** The address from the given phrase
-
-## purgeClient
-
-Purge client.
+-   `url` **[string][1]** The new sochain url.
 
 Returns **void** 
-
-## setNetwork
-
-Set/update the current network.
-
-### Parameters
-
--   `net`  
--   `network` **Network** `mainnet` or `testnet`.
-
-
--   Throws **`"Network must be provided"`** Thrown if network has not been set before.
-
-Returns **void** 
-
-## getNetwork
-
-Get the current network.
-
-Returns **Network** The current network. (`mainnet` or `testnet`)
 
 ## getExplorerUrl
 
@@ -90,6 +56,11 @@ Get the current address.
 
 Generates a network-specific key-pair by first converting the buffer to a Wallet-Import-Format (WIF)
 The address is then decoded into type P2WPKH and returned.
+
+### Parameters
+
+-   `index`   (optional, default `0`)
+
 
 -   Throws **`"Phrase must be provided"`** Thrown if phrase has not been set before.
 -   Throws **`"Address not defined"`** Thrown if failed creating account from phrase.
@@ -137,40 +108,6 @@ Get the transaction details of a given transaction id.
 
 Returns **Tx** The transaction details of the given transaction id.
 
-## getFeesWithRates
-
-Get the rates and fees.
-
-### Parameters
-
--   `memo` **[string][1]** The memo to be used for fee calculation (optional)
-
-Returns **FeesWithRates** The fees and rates
-
-## getFees
-
-Get the current fees.
-
-Returns **Fees** The fees without memo
-
-## getFeesWithMemo
-
-Get the fees for transactions with memo.
-If you want to get `Fees` and `FeeRates` at once, use `getFeesAndRates` method
-
-### Parameters
-
--   `memo` **[string][1]** 
-
-Returns **Fees** The fees with memo
-
-## getFeeRates
-
-Get the fee rates for transactions without a memo.
-If you want to get `Fees` and `FeeRates` at once, use `getFeesAndRates` method
-
-Returns **FeeRates** The fee rate
-
 ## transfer
 
 Transfer LTC.
@@ -180,12 +117,6 @@ Transfer LTC.
 -   `params` **TxParams&FeeRate** The transfer options.
 
 Returns **TxHash** The transaction hash.
-
-## derivePath
-
-Get DerivePath
-
-Returns **[string][1]** The litecoin derivation path based on the network.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 

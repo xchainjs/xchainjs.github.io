@@ -11,92 +11,92 @@ Get address information.
 
 ### Parameters
 
--   `baseUrl` **[string][2]** The sochain node url.
--   `network` **[string][2]** 
--   `address` **[string][2]** 
+-   `$0` **[Object][2]** 
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+    -   `$0.address`  
+-   `sochainUrl` **[string][3]** The sochain node url.
+-   `network` **[string][3]** 
+-   `address` **[string][3]** 
 
 Returns **LtcAddressDTO** 
 
 ## getTx
 
--   **See: [https://sochain.com/api#get-tx][3]
+-   **See: [https://sochain.com/api#get-tx][4]
     **
 
 Get transaction by hash.
 
 ### Parameters
 
--   `baseUrl` **[string][2]** The sochain node url.
--   `network` **[string][2]** network id
--   `hash` **[string][2]** The transaction hash.
+-   `$0` **[Object][2]** 
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+    -   `$0.hash`  
+-   `sochainUrl` **[string][3]** The sochain node url.
+-   `network` **[string][3]** network id
+-   `hash` **[string][3]** The transaction hash.
 
 Returns **Transactions** 
 
 ## getBalance
 
--   **See: [https://sochain.com/api#get-balance][4]
+-   **See: [https://sochain.com/api#get-balance][5]
     **
 
 Get address balance.
 
 ### Parameters
 
--   `baseUrl` **[string][2]** The sochain node url.
--   `network` **[string][2]** 
--   `address` **[string][2]** 
+-   `$0` **[Object][2]** 
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+    -   `$0.address`  
+-   `sochainUrl` **[string][3]** The sochain node url.
+-   `network` **[string][3]** 
+-   `address` **[string][3]** 
 
-Returns **[number][5]** 
+Returns **[number][6]** 
 
 ## getUnspentTxs
 
--   **See: [https://sochain.com/api#get-unspent-tx][6]
+-   **See: [https://sochain.com/api#get-unspent-tx][7]
     **
 
 Get unspent txs
 
 ### Parameters
 
--   `baseUrl` **[string][2]** The sochain node url.
--   `network` **[string][2]** 
--   `address` **[string][2]** 
+-   `$0` **[Object][2]** 
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+    -   `$0.address`  
+    -   `$0.startingFromTxId`  
+-   `sochainUrl` **[string][3]** The sochain node url.
+-   `network` **[string][3]** 
+-   `address` **[string][3]** 
 
-Returns **LtcAddressUTXOs** 
+Returns **[Array][8]&lt;LtcAddressUTXO>** 
 
-## broadcastTx
+## getSuggestedTxFee
 
--   **See: [https://sochain.com/api#send-transaction][7]
-    **
+Get Litecoin suggested transaction fee.
 
-Broadcast transaction.
-
-### Parameters
-
--   `baseUrl` **[string][2]** The sochain node url.
--   `network` **[string][2]** 
--   `txHex` **[string][2]** 
-
-Returns **[string][2]** Transaction ID.
-
-## litecoinStats
-
-Get Litecoin stats.
-
-### Parameters
-
--   `baseUrl` **[string][2]** The sochain node url.
-
-Returns **ChainStatsLtc** The Litecoin stats.
+Returns **[number][6]** The Litecoin suggested transaction fee per bytes in sat.
 
 [1]: https://sochain.com/api#get-display-data-address
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[3]: https://sochain.com/api#get-tx
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[4]: https://sochain.com/api#get-balance
+[4]: https://sochain.com/api#get-tx
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[5]: https://sochain.com/api#get-balance
 
-[6]: https://sochain.com/api#get-unspent-tx
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[7]: https://sochain.com/api#send-transaction
+[7]: https://sochain.com/api#get-unspent-tx
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

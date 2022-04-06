@@ -18,11 +18,11 @@ Get the transaction fee.
 
 ### Parameters
 
--   `inputs` **UTXOs** The UTXOs.
+-   `inputs` **[Array][3]&lt;UTXO>** The UTXOs.
 -   `feeRate` **FeeRate** The fee rate.
 -   `data` **[Buffer][2]** The compiled memo (Optional). (optional, default `null`)
 
-Returns **[number][3]** The fee amount.
+Returns **[number][4]** The fee amount.
 
 ## arrayAverage
 
@@ -30,19 +30,9 @@ Get the average value of an array.
 
 ### Parameters
 
--   `array` **[Array][4]&lt;[number][3]>** 
+-   `array` **[Array][3]&lt;[number][4]>** 
 
-Returns **[number][3]** The average value.
-
-## isTestnet
-
-Check if give network is a testnet.
-
-### Parameters
-
--   `network` **Network** 
-
-Returns **[boolean][5]** `true` or `false`
+Returns **[number][4]** The average value.
 
 ## ltcNetwork
 
@@ -60,24 +50,9 @@ Get the balances of an address.
 
 ### Parameters
 
--   `nodeUrl` **[string][1]** sochain Node URL.
--   `network` **[string][1]** 
--   `address` **[string][1]** 
+-   `params` **AddressParams** 
 
-Returns **[Array][4]&lt;Balance>** The balances of the given address.
-
-## getChange
-
-Get the balance changes amount.
-
-### Parameters
-
--   `valueOut` **[number][3]** 
--   `nodeUrl` **[string][1]** sochain Node URL.
--   `network`  
--   `address` **[string][1]** 
-
-Returns **[number][3]** The change amount.
+Returns **[Array][3]&lt;Balance>** The balances of the given address.
 
 ## validateAddress
 
@@ -90,17 +65,32 @@ Validate the LTC address.
 
 Returns **[boolean][5]** `true` or `false`.
 
+## getTxHex
+
+Helper to get `hex` of `Tx`
+
+It will try to get it from cache before requesting it from Sochain
+
+### Parameters
+
+-   `$0` **[Object][6]** 
+    -   `$0.txHash`  
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+
 ## scanUTXOs
 
 Scan UTXOs from sochain.
 
 ### Parameters
 
--   `nodeUrl` **[string][1]** sochain Node URL.
--   `network` **[string][1]** 
--   `address` **Address** 
+-   `params` **ScanUTXOParam** 
+    -   `params.sochainUrl`  
+    -   `params.network`  
+    -   `params.address`  
+    -   `params.withTxHex`   (optional, default `false`)
 
-Returns **[Array][4]&lt;UTXO>** The UTXOs of the given address.
+Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
 
 ## buildTx
 
@@ -115,7 +105,8 @@ Build transcation.
     -   `params.feeRate`  
     -   `params.sender`  
     -   `params.network`  
-    -   `params.nodeUrl`  
+    -   `params.sochainUrl`  
+    -   `params.withTxHex`   (optional, default `false`)
 
 Returns **Transaction** 
 
@@ -126,21 +117,8 @@ Broadcast the transaction.
 ### Parameters
 
 -   `params` **BroadcastTxParams** The transaction broadcast options.
-    -   `params.network`  
-    -   `params.txHex`  
-    -   `params.nodeUrl`  
 
 Returns **TxHash** The transaction hash.
-
-## getDerivePath
-
-Get DerivePath.
-
-### Parameters
-
--   `index` **[number][3]** (optional) (optional, default `0`)
-
-Returns **DerivePath** The litecoin derivation path by the index. (both mainnet and testnet)
 
 ## calcFee
 
@@ -171,7 +149,7 @@ Get address prefix based on the network.
 
 ### Parameters
 
--   `network` **[string][1]** 
+-   `network` **Network** 
 
 Returns **[string][1]** The address prefix based on the network.\*
 
@@ -179,8 +157,10 @@ Returns **[string][1]** The address prefix based on the network.\*
 
 [2]: https://nodejs.org/api/buffer.html
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

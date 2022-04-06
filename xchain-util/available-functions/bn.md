@@ -36,7 +36,7 @@ Returns **BigNumber** The BigNumber interface from the given value. If invalid o
 ## validBNOrZero
 
 Helper to validate a possible BigNumber
-If the given valie is invalid or undefined, 0 is returned as a BigNumber
+If the given value is invalid or undefined, 0 is returned as a BigNumber
 
 ### Parameters
 

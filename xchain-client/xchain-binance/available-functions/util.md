@@ -55,6 +55,16 @@ Type guard for `DexFees`
 
 Returns **[boolean][4]** `true` or `false`.
 
+## isAccount
+
+Type guard for `Account`
+
+### Parameters
+
+-   `v` **unknown** 
+
+Returns **[boolean][4]** `true` or `false`.
+
 ## getTxType
 
 Get TxType
@@ -98,7 +108,7 @@ Get address prefix based on the network.
 
 ### Parameters
 
--   `network` **[string][2]** 
+-   `network` **Network** 
 
 Returns **[string][2]** The address prefix based on the network.\*
 
