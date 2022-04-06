@@ -30,7 +30,7 @@ By default, the index is 0. - `44/714/0/0`
 
 ## Blockchain-specific functions
 
-### Transfer multi tranactions.
+### Transfer multi transactions.
 
 ```
 type MultiTransfer = {

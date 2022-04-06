@@ -23,10 +23,4 @@ yarn install
 yarn test
 ```
 
-## Create a client instance.
-
-Set `phrase` and `network` when creating an instance.
-
-```
-const client = new Client({ phrase, network })
-```
+// Not supported yet.
