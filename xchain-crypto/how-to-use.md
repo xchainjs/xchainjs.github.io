@@ -26,60 +26,60 @@ yarn build
 yarn test
 ```
 
-## Usage
+## Basic example usage
 
-### Generate phrase
+### Generate new phrase and encrypt
 
-Use `generatePhrase` to generate a new phrase.
+By default, it will generate 12 words phrase.\
+Create a new phrase using generatePhrase()\
+Check phrase validity using validatePhrase()\
+Encrypt to keystore using encryptToKeyStore() > takes two arguements (phrase, password)\
+
 ```ts
-generatePhrase(size = 12): string
-```
-By default, it will generate 12 words phrase.
+// Imports
+import { generatePhrase, validatePhrase, encryptToKeyStore, decryptFromKeystore } from "@xchainjs/xchain-crypto"
 
-Example:
-```ts
-import { generatePhrase } from '@xchainjs/xchain-crypto'
+require('dotenv').config();
 
-const phrase = generatePhrase() // 12 words phrase
+const keystore1 = JSON.parse(fs.readFileSync('keystore.json', 'utf8'))
+const password = process.env.PASSWORD
 
-const phrase = generatePhrase(24) // 24 words phrase
-```
-
-### Validate phrase
-
-Use `validatePhrase` to generate a new phrase.
-```ts
-validatePhrase(phrase: string): boolean
-```
-
-Example:
-```ts
-import { generatePhrase, validatePhrase } from '@xchainjs/xchain-crypto'
-
-const phrase = generatePhrase()
-const is_valid = validatePhrase(phrase) // true
-
-const is_valid = validatePhrase('invalid phrase here') // false
+// Generate Keystore and save it to a keystore file
+const GenerateKeystore = async () => {
+    const phrase = generatePhrase()
+    console.log(`phrase ${phrase}`)
+    const isCorrect = validatePhrase(phrase) //validate phrase if needed returns Boolean
+    console.log(`Phrase valid?: ${isCorrect}`)
+    const keystore = await encryptToKeyStore(phrase, password)
+    fs.writeFileSync(`./keystore.json`, JSON.stringify(keystore, null, 4), 'utf8')
+}
 ```
 
-## Get seed
+### Decrypt keystore to retrieve phrase
 
-Use `getSeed` to get seed from a given phrase. It will use `bip39.mnemonicToSeedSync(phrase)` internally.
+Retrieve phrase by calling decryptFromKeystore()\
+
 ```ts
-getSeed = (phrase: string): Buffer
+const connectWallet = async () => {
+    let phrase = await decryptFromKeystore(keystore1, password)
+    console.log(`Phrase: ${phrase}`)
+}
 ```
 
-Example:
-```ts
-import { generatePhrase, getSeed } from '@xchainjs/xchain-crypto'
+### Retrieve seed
+Retrieve phrase by calling decryptFromKeystore()
 
-const phrase = generatePhrase()
-const seed = getSeed(phrase)
+```ts
+import { decryptFromKeystore, getSeed } from '@xchainjs/xchain-crypto'
+
+const connectWallet = async () => {
+    let phrase = await decryptFromKeystore(keystore1, password)
+    console.log(`Phrase: ${phrase}`)
+}
 ```
 
-### Generate keystore
+### Keystore type
 
-Use `encryptToKeyStore` to generate a new keystore.
 ```ts
 type Keystore = {
   crypto: {
@@ -104,28 +104,15 @@ type Keystore = {
 encryptToKeyStore(phrase: string, password: string): Promise<Keystore>
 ```
 
-Example:
+### Constants
+
 ```ts
-import { generatePhrase, encryptToKeyStore } from '@xchainjs/xchain-crypto'
-
-const phrase = generatePhrase()
-const password = 'thorchain'
-const keystore = await encryptToKeyStore(phrase, password)
-```
-
-## Decrypt keystore
-
-Use `decryptFromKeystore` to get phrase back from a keystore.
-```ts
-decryptFromKeystore(keystore: Keystore, password: string): Promise<string>
-```
-
-Example:
-```ts
-import { generatePhrase, encryptToKeyStore } from '@xchainjs/xchain-crypto'
-
-const phrase = generatePhrase()
-const password = 'thorchain'
-const keystore = await encryptToKeyStore(phrase, password)
-const phraseDecrypted = await decryptFromKeystore(keystore, password)
+// Crypto Constants for xchain
+const cipher = 'aes-128-ctr'
+const kdf = 'pbkdf2'
+const prf = 'hmac-sha256'
+const dklen = 32
+const c = 262144
+const hashFunction = 'sha256'
+const meta = 'xchain-keystore'
 ```

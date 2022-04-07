@@ -25,10 +25,10 @@ Available testnet seeds [`here`](https://testnet-seed.thorchain.info/)
 
 ## Dependencies
 
-* [`@xchainjs/xchain-client`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-client)
-* [`@xchainjs/xchain-cosmos`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-cosmos)
-* [`@xchainjs/xchain-crypto`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-crypto)
-* [`@xchainjs/xchain-util`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-util)
+* [`@xchainjs/xchain-cosmos`](http://docs.xchainjs.org/xchain-client/xchain-cosmos/how-to-use.html)
+* [`@xchainjs/xchain-client`](http://docs.xchainjs.org/xchain-client/interface.html)
+* [`@xchainjs/xchain-crypto`](http://docs.xchainjs.org/xchain-crypto/how-to-use.html)
+* [`@xchainjs/xchain-util`](http://docs.xchainjs.org/xchain-util/how-to-use.html)
 
 ## Address Generation
 
