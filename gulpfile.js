@@ -51,6 +51,18 @@ var packages = [
     module: 'xchain-litecoin',
     path: 'xchain-client/xchain-litecoin/available-functions',
   },
+  {
+    module: 'xchain-doge',
+    path: 'xchain-client/xchain-doge/available-functions',
+  },
+  {
+    module: 'xchain-terra',
+    path: 'xchain-client/xchain-terra/available-functions',
+  },
+  {
+    module: 'xchain-bitcoincash',
+    path: 'xchain-client/xchain-bitcoincash/available-functions',
+  },
 ]
 
 function getGeneratedFiles(dir) {
