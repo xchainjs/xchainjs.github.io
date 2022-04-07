@@ -19,7 +19,7 @@ Get address information.
 -   `network` **[string][3]** 
 -   `address` **[string][3]** 
 
-Returns **LtcAddressDTO** 
+Returns **DogeAddressDTO** 
 
 ## getTx
 
@@ -77,13 +77,7 @@ Get unspent txs
 -   `network` **[string][3]** 
 -   `address` **[string][3]** 
 
-Returns **[Array][8]&lt;LtcAddressUTXO>** 
-
-## getSuggestedTxFee
-
-Get Litecoin suggested transaction fee.
-
-Returns **[number][6]** The Litecoin suggested transaction fee per bytes in sat.
+Returns **[Array][8]&lt;DogeAddressUTXO>** 
 
 [1]: https://sochain.com/api#get-display-data-address
 

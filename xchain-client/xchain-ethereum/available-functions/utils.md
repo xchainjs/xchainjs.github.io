@@ -4,23 +4,23 @@
 
 ## xchainNetworkToEths
 
-XChainNetwork -> EthNetwork
+Network -> EthNetwork
 
 ### Parameters
 
--   `network` **XChainNetwork** 
+-   `network` **Network** 
 
 Returns **EthNetwork** 
 
 ## ethNetworkToXchains
 
-EthNetwork -> XChainNetwork
+EthNetwork -> Network
 
 ### Parameters
 
 -   `network` **EthNetwork** 
 
-Returns **XChainNetwork** 
+Returns **Network** 
 
 ## validateAddress
 
@@ -72,6 +72,26 @@ Get transactions from ETH transaction
 
 Returns **Tx** The parsed transaction.
 
+## getTxFromEthplorerTokenOperation
+
+Get transactions from operation
+
+### Parameters
+
+-   `operation` **TransactionOperation** 
+
+Returns **(Tx \| null)** The parsed transaction.
+
+## getTxFromEthplorerEthTransaction
+
+Get transactions from ETH transaction
+
+### Parameters
+
+-   `txInfo` **TransactionInfo** 
+
+Returns **Tx** The parsed transaction.
+
 ## getFee
 
 Calculate fees by multiplying .
@@ -110,6 +130,40 @@ Get address prefix based on the network.
 
 Returns **[string][2]** The address prefix based on the network.\*
 
+## filterSelfTxs
+
+Filter self txs
+
+### Parameters
+
+-   `txs`  
+
+Returns **[Array][5]&lt;T>** \*
+
+## getDecimal
+
+Get Decimals
+
+### Parameters
+
+-   `asset` **Asset** 
+-   `provider`  
+
+
+-   Throws **`"Invalid asset"`** Thrown if the given asset is invalid
+
+Returns **[Number][6]** the decimal of a given asset
+
+## getTokenBalances
+
+Get Token Balances
+
+### Parameters
+
+-   `tokenBalances` **[Array][5]&lt;TokenBalance>** 
+
+Returns **[Array][5]&lt;Balance>** the parsed balances
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
@@ -117,3 +171,7 @@ Returns **[string][2]** The address prefix based on the network.\*
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

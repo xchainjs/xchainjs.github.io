@@ -2,17 +2,16 @@
 
 **Extends xchain_client_1.UTXOClient**
 
-Custom Litecoin client
+Custom Dogecoin client
 
 ## Parameters
 
--   `params` **LitecoinClientParams** 
+-   `params` **DogecoinClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
     -   `params.sochainUrl`   (optional, default `'https://sochain.com/api/v2'`)
+    -   `params.blockcypherUrl`   (optional, default `'https://api.blockcypher.com/v1'`)
     -   `params.phrase`  
-    -   `params.nodeUrl`  
-    -   `params.nodeAuth`   (optional, default `{username:'thorchain',password:'password'}`)
-    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/84'/2'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/84'/1'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/84'/2'/0'/0/`}``)
+    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/44'/3'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/44'/3'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/44'/1'/0'/0/`}``)
 
 ## setSochainUrl
 
@@ -21,6 +20,16 @@ Set/Update the sochain url.
 ### Parameters
 
 -   `url` **[string][1]** The new sochain url.
+
+Returns **void** 
+
+## setBlockcypherUrl
+
+Set/Update the blockcypher url.
+
+### Parameters
+
+-   `url` **[string][1]** The new blockcypher url.
 
 Returns **void** 
 
@@ -79,13 +88,13 @@ Returns **[boolean][2]** `true` or `false`
 
 ## getBalance
 
-Get the LTC balance of a given address.
+Get the Doge balance of a given address.
 
 ### Parameters
 
 -   `address` **Address** By default, it will return the balance of the current wallet. (optional)
 
-Returns **[Array][3]&lt;Balance>** The LTC balance of the address.
+Returns **[Array][3]&lt;Balance>** The Doge balance of the address.
 
 ## getTransactions
 
@@ -110,7 +119,7 @@ Returns **Tx** The transaction details of the given transaction id.
 
 ## transfer
 
-Transfer LTC.
+Transfer Doge.
 
 ### Parameters
 

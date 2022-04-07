@@ -44,16 +44,24 @@ var packages = [
     path: 'xchain-client/xchain-cosmos/available-functions',
   },
   {
-    module: 'xchain-polkadot',
-    path: 'xchain-client/xchain-polkadot/available-functions',
-  },
-  {
     module: 'xchain-thorchain',
     path: 'xchain-client/xchain-thorchain/available-functions',
   },
   {
     module: 'xchain-litecoin',
     path: 'xchain-client/xchain-litecoin/available-functions',
+  },
+  {
+    module: 'xchain-doge',
+    path: 'xchain-client/xchain-doge/available-functions',
+  },
+  {
+    module: 'xchain-terra',
+    path: 'xchain-client/xchain-terra/available-functions',
+  },
+  {
+    module: 'xchain-bitcoincash',
+    path: 'xchain-client/xchain-bitcoincash/available-functions',
   },
 ]
 

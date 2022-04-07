@@ -16,33 +16,16 @@ Returns **[Buffer][2]** The compiled memo.
 
 Get the transaction fee.
 
+reference to [https://github.com/Permissionless-Software-Foundation/bch-js/blob/acc0300a444059d612daec2564da743c11e27139/src/bitcoincash.js#L408][3]
+
 ### Parameters
 
--   `inputs` **[Array][3]&lt;UTXO>** The UTXOs.
+-   `inputs` **[number][4]** The inputs count.
 -   `feeRate` **FeeRate** The fee rate.
 -   `data` **[Buffer][2]** The compiled memo (Optional). (optional, default `null`)
+-   `outputs` **[number][4]** The outputs count.
 
 Returns **[number][4]** The fee amount.
-
-## arrayAverage
-
-Get the average value of an array.
-
-### Parameters
-
--   `array` **[Array][3]&lt;[number][4]>** 
-
-Returns **[number][4]** The average value.
-
-## btcNetwork
-
-Get Bitcoin network to be used with bitcoinjs.
-
-### Parameters
-
--   `network` **Network** 
-
-Returns **Bitcoin.Network** The BTC network.
 
 ## getBalance
 
@@ -50,23 +33,91 @@ Get the balances of an address.
 
 ### Parameters
 
--   `$0` **[Object][5]** 
-    -   `$0.params`  
-    -   `$0.haskoinUrl`  
-    -   `$0.confirmedOnly`  
--   `sochainUrl` **[string][1]** sochain Node URL.
+-   `params` **AddressParams** 
+
+Returns **[Array][5]&lt;Balance>** The balances of the given address.
+
+## bchNetwork
+
+Get BCH network to be used with bitcore-lib.
+
+### Parameters
+
 -   `network` **Network** 
--   `address` **Address** 
 
-Returns **[Array][3]&lt;Balance>** The balances of the given address.
+## getPrefix
 
-## validateAddress
+BCH new addresses strategy has no any prefixes.
+Any possible prefixes at the TX addresses will be stripped out with parseTransaction
+\*
 
-Validate the BTC address.
+## stripPrefix
+
+Strips bchtest or bitcoincash prefix from address
 
 ### Parameters
 
 -   `address` **Address** 
+
+Returns **Address** The address with prefix removed
+
+## toLegacyAddress
+
+Convert to Legacy Address.
+
+### Parameters
+
+-   `address` **Address** 
+
+Returns **Address** Legacy address.
+
+## toCashAddress
+
+Convert to Cash Address.
+
+### Parameters
+
+-   `address` **Address** 
+
+Returns **Address** Cash address.
+
+## isCashAddress
+
+Checks whether address is Cash Address
+
+### Parameters
+
+-   `address` **Address** 
+
+Returns **[boolean][6]** Is cash address.
+
+## parseTransaction
+
+Parse transaction.
+
+### Parameters
+
+-   `tx` **Transaction** 
+
+Returns **Tx** Parsed transaction.\*
+
+## toBCHAddressNetwork
+
+Converts `Network` to `bchaddr.Network`
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **[string][1]** bchaddr network
+
+## validateAddress
+
+Validate the BCH address.
+
+### Parameters
+
+-   `address` **[string][1]** 
 -   `network` **Network** 
 
 Returns **[boolean][6]** `true` or `false`.
@@ -79,10 +130,9 @@ It will try to get it from cache before requesting it from Sochain
 
 ### Parameters
 
--   `$0` **[Object][5]** 
+-   `$0` **[Object][7]** 
     -   `$0.txHash`  
-    -   `$0.sochainUrl`  
-    -   `$0.network`  
+    -   `$0.haskoinUrl`  
 
 ## scanUTXOs
 
@@ -90,18 +140,13 @@ Scan UTXOs from sochain.
 
 ### Parameters
 
--   `$0` **[Object][5]** 
-    -   `$0.sochainUrl`  
+-   `$0` **[Object][7]** 
     -   `$0.haskoinUrl`  
-    -   `$0.network`  
     -   `$0.address`  
-    -   `$0.confirmedOnly`   (optional, default `true`)
-    -   `$0.withTxHex`   (optional, default `false`)
--   `sochainUrl` **[string][1]** sochain Node URL.
--   `network` **Network** 
+-   `haskoinUrl` **[string][1]** sochain Node URL.
 -   `address` **Address** 
 
-Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
+Returns **[Array][5]&lt;UTXO>** The UTXOs of the given address.
 
 ## buildTx
 
@@ -116,10 +161,7 @@ Build transcation.
     -   `params.feeRate`  
     -   `params.sender`  
     -   `params.network`  
-    -   `params.sochainUrl`  
     -   `params.haskoinUrl`  
-    -   `params.spendPendingUTXO`   (optional, default `false`)
-    -   `params.withTxHex`   (optional, default `false`)
 
 Returns **Transaction** 
 
@@ -142,7 +184,8 @@ Calculate fees based on fee rate and memo.
 ### Parameters
 
 -   `feeRate` **FeeRate** 
--   `memo` **[string][1]** 
+-   `memo` **[string][1]** (optional)
+-   `utxos` **UnspentOutput** (optional) (optional, default `[]`)
 
 Returns **BaseAmount** The calculated fees based on fee rate and the memo.
 
@@ -158,24 +201,16 @@ Get the default fees.
 
 Returns **Fees** The default fees.
 
-## getPrefix
-
-Get address prefix based on the network.
-
-### Parameters
-
--   `network` **Network** 
-
-Returns **[string][1]** The address prefix based on the network.\*
-
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://nodejs.org/api/buffer.html
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[3]: https://github.com/Permissionless-Software-Foundation/bch-js/blob/acc0300a444059d612daec2564da743c11e27139/src/bitcoincash.js#L408
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 [6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

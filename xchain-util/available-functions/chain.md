@@ -16,10 +16,6 @@ Returns **[boolean][2]** `true` or `false`
 
 Convert chain to string.
 
-### Parameters
-
--   `chainId`  
-
 Returns **[string][1]** The string based on the given chain type.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

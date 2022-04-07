@@ -1,12 +1,40 @@
 # Client
 
+**Extends xchain_client_1.BaseXChainClient**
+
 Custom Binance client
 
 ## Parameters
 
 -   `params` **XChainClientParams** 
-    -   `params.network`   (optional, default `'testnet'`)
-    -   `params.phrase`  
+
+## getBncClient
+
+Get the BncClient interface.
+
+Returns **BncClient** The BncClient from `@binance-chain/javascript-sdk`.
+
+## getNetwork
+
+Gets the current network, and enforces type limited to
+'mainnet' and 'testnet', which conflicts with `xchain-client`
+
+Remove this once @binance-chain has stagenet support.
+
+Returns **Network** 
+
+## setNetwork
+
+Set/update the current network.
+
+### Parameters
+
+-   `network` **Network** 
+
+
+-   Throws **`"Network must be provided"`** Thrown if network has not been set before.
+
+Returns **void** 
 
 ## getClientUrl
 
@@ -40,24 +68,16 @@ Get the explorer url for the given transaction id.
 
 Returns **[string][1]** The explorer url for the given transaction id based on the network.
 
-## setPhrase
-
-Set/update a new phrase
-
-### Parameters
-
--   `phrase` **[string][1]** A new phrase.
-
-
--   Throws **`"Invalid phrase"`** Thrown if the given phase is invalid.
-
-Returns **Address** The address from the given phrase
-
 ## getAddress
 
 Get the current address.
 
--   Throws **[Error][2]** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
+### Parameters
+
+-   `index` **[number][2]** (optional) Account index for the derivation path (optional, default `0`)
+
+
+-   Throws **[Error][3]** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
 
 Returns **Address** The current address.
 
@@ -69,7 +89,18 @@ Validate the given address.
 
 -   `address` **Address** 
 
-Returns **[boolean][3]** `true` or `false`
+Returns **[boolean][4]** `true` or `false`
+
+## getAccount
+
+Get account data of wallets or by given address.
+
+### Parameters
+
+-   `address` **Address** (optional) By default, it will return account data of current wallet.
+-   `index` **[number][2]** (optional) Account index for the derivation path (optional, default `0`)
+
+Returns **Account** account details of given address.
 
 ## getBalance
 
@@ -78,9 +109,10 @@ Get the balance of a given address.
 ### Parameters
 
 -   `address` **Address** By default, it will return the balance of the current wallet. (optional)
+-   `assets`  
 -   `asset` **Asset** If not set, it will return all assets available. (optional)
 
-Returns **[Array][4]&lt;Balance>** The balance of the address.
+Returns **[Array][5]&lt;Balance>** The balance of the address.
 
 ## getTransactions
 
@@ -110,7 +142,7 @@ Broadcast multi-send transaction.
 ### Parameters
 
 -   `params` **MultiSendParams** The multi-send transfer options.
-    -   `params.address`  
+    -   `params.walletIndex`   (optional, default `0`)
     -   `params.transactions`  
     -   `params.memo`   (optional, default `''`)
 
@@ -123,6 +155,7 @@ Transfer balances.
 ### Parameters
 
 -   `params` **TxParams** The transfer options.
+    -   `params.walletIndex`  
     -   `params.asset`  
     -   `params.amount`  
     -   `params.recipient`  
@@ -154,41 +187,12 @@ Get the current fee for both single and multi-send transaction.
 
 Returns **SingleAndMultiFees** The current fee for both single and multi-send transaction.
 
-## purgeClient
-
-Purge client.
-
-Returns **void** 
-
-## getBncClient
-
-Get the BncClient interface.
-
-Returns **BncClient** The BncClient from `@binance-chain/javascript-sdk`.
-
-## setNetwork
-
-Set/update the current network.
-
-### Parameters
-
--   `network` **Network** `mainnet` or `testnet`.
-
-
--   Throws **`"Network must be provided"`** Thrown if network has not been set before.
-
-Returns **void** 
-
-## getNetwork
-
-Get the current network.
-
-Returns **Network** The current network. (`mainnet` or `testnet`)
-
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

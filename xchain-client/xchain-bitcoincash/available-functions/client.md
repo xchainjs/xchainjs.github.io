@@ -2,27 +2,31 @@
 
 **Extends xchain_client_1.UTXOClient**
 
-Custom Litecoin client
+Custom Bitcoin Cash client
 
 ## Parameters
 
--   `params` **LitecoinClientParams** 
+-   `params` **BitcoinCashClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
-    -   `params.sochainUrl`   (optional, default `'https://sochain.com/api/v2'`)
+    -   `params.haskoinUrl`   (optional, default `{[xchain_client_1.Network.Testnet]:'https://haskoin.ninerealms.com/bchtest',[xchain_client_1.Network.Mainnet]:'https://haskoin.ninerealms.com/bch',[xchain_client_1.Network.Stagenet]:'https://haskoin.ninerealms.com/bch'}`)
     -   `params.phrase`  
-    -   `params.nodeUrl`  
-    -   `params.nodeAuth`   (optional, default `{username:'thorchain',password:'password'}`)
-    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/84'/2'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/84'/1'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/84'/2'/0'/0/`}``)
+    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/44'/145'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/44'/1'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/44'/145'/0'/0/`}``)
 
-## setSochainUrl
+## setHaskoinURL
 
-Set/Update the sochain url.
+Set/Update the haskoin url.
 
 ### Parameters
 
--   `url` **[string][1]** The new sochain url.
+-   `url` **[string][1]** The new haskoin url.
 
 Returns **void** 
+
+## getHaskoinURL
+
+Get the haskoin url.
+
+Returns **[string][1]** The haskoin url based on the current network.
 
 ## getExplorerUrl
 
@@ -79,13 +83,16 @@ Returns **[boolean][2]** `true` or `false`
 
 ## getBalance
 
-Get the LTC balance of a given address.
+Get the BCH balance of a given address.
 
 ### Parameters
 
 -   `address` **Address** By default, it will return the balance of the current wallet. (optional)
 
-Returns **[Array][3]&lt;Balance>** The LTC balance of the address.
+
+-   Throws **`"Invalid address"`** Thrown if the given address is an invalid address.
+
+Returns **[Array][3]&lt;Balance>** The BCH balance of the address.
 
 ## getTransactions
 
@@ -95,6 +102,12 @@ By default it will return the transaction history of the current wallet.
 ### Parameters
 
 -   `params` **TxHistoryParams** The options to get transaction history. (optional)
+    -   `params.address`  
+    -   `params.offset`  
+    -   `params.limit`  
+
+
+-   Throws **`"Invalid address"`** Thrown if the given address is an invalid address.
 
 Returns **TxsPage** The transaction history.
 
@@ -106,11 +119,14 @@ Get the transaction details of a given transaction id.
 
 -   `txId` **[string][1]** The transaction id.
 
+
+-   Throws **`"Invalid TxID"`** Thrown if the given transaction id is an invalid one.
+
 Returns **Tx** The transaction details of the given transaction id.
 
 ## transfer
 
-Transfer LTC.
+Transfer BCH.
 
 ### Parameters
 

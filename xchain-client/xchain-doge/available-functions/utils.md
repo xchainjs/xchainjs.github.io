@@ -34,15 +34,15 @@ Get the average value of an array.
 
 Returns **[number][4]** The average value.
 
-## btcNetwork
+## dogeNetwork
 
-Get Bitcoin network to be used with bitcoinjs.
+Get Dogecoin network to be used with bitcoinjs.
 
 ### Parameters
 
 -   `network` **Network** 
 
-Returns **Bitcoin.Network** The BTC network.
+Returns **Dogecoin.networks.Network** The Doge network.
 
 ## getBalance
 
@@ -50,26 +50,20 @@ Get the balances of an address.
 
 ### Parameters
 
--   `$0` **[Object][5]** 
-    -   `$0.params`  
-    -   `$0.haskoinUrl`  
-    -   `$0.confirmedOnly`  
--   `sochainUrl` **[string][1]** sochain Node URL.
--   `network` **Network** 
--   `address` **Address** 
+-   `params`  
 
 Returns **[Array][3]&lt;Balance>** The balances of the given address.
 
 ## validateAddress
 
-Validate the BTC address.
+Validate the Doge address.
 
 ### Parameters
 
--   `address` **Address** 
+-   `address` **[string][1]** 
 -   `network` **Network** 
 
-Returns **[boolean][6]** `true` or `false`.
+Returns **[boolean][5]** `true` or `false`.
 
 ## getTxHex
 
@@ -79,7 +73,7 @@ It will try to get it from cache before requesting it from Sochain
 
 ### Parameters
 
--   `$0` **[Object][5]** 
+-   `$0` **[Object][6]** 
     -   `$0.txHash`  
     -   `$0.sochainUrl`  
     -   `$0.network`  
@@ -90,16 +84,11 @@ Scan UTXOs from sochain.
 
 ### Parameters
 
--   `$0` **[Object][5]** 
-    -   `$0.sochainUrl`  
-    -   `$0.haskoinUrl`  
-    -   `$0.network`  
-    -   `$0.address`  
-    -   `$0.confirmedOnly`   (optional, default `true`)
-    -   `$0.withTxHex`   (optional, default `false`)
--   `sochainUrl` **[string][1]** sochain Node URL.
--   `network` **Network** 
--   `address` **Address** 
+-   `params` **[Object][6]** 
+    -   `params.sochainUrl`  
+    -   `params.network`  
+    -   `params.address`  
+    -   `params.withTxHex`  
 
 Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
 
@@ -117,8 +106,6 @@ Build transcation.
     -   `params.sender`  
     -   `params.network`  
     -   `params.sochainUrl`  
-    -   `params.haskoinUrl`  
-    -   `params.spendPendingUTXO`   (optional, default `false`)
     -   `params.withTxHex`   (optional, default `false`)
 
 Returns **Transaction** 
@@ -130,8 +117,6 @@ Broadcast the transaction.
 ### Parameters
 
 -   `params` **BroadcastTxParams** The transaction broadcast options.
-    -   `params.haskoinUrl`  
-    -   `params.txHex`  
 
 Returns **TxHash** The transaction hash.
 
@@ -176,6 +161,6 @@ Returns **[string][1]** The address prefix based on the network.\*
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
