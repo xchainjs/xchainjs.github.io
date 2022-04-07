@@ -23,9 +23,9 @@ It communicates with Ethereum Chain by using [`ethers`](https://github.com/ether
 
 ## Dependencies
 
-* [`@xchainjs/xchain-client`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-client)
-* [`@xchainjs/xchain-crypto`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-crypto)
-* [`@xchainjs/xchain-util`](https://github.com/xchainjs/xchainjs-lib/packages/xchain-util)
+* [`@xchainjs/xchain-client`](http://docs.xchainjs.org/xchain-client/interface.html)
+* [`@xchainjs/xchain-crypto`](http://docs.xchainjs.org/xchain-crypto/how-to-use.html)
+* [`@xchainjs/xchain-util`](http://docs.xchainjs.org/xchain-util/how-to-use.html)
 
 ## Address Generation
 
