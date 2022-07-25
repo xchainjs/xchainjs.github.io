@@ -157,14 +157,6 @@ Based on definition in Thorchain `common`
 Dogecoin asset
 Based on definition in Thorchain
 
-## AssetLUNA
-
--   **See: TBD
-    **
-
-Luna asset
-Based on definition in Thorchain
-
 ## AssetETH
 
 -   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
@@ -334,6 +326,17 @@ Note: `trimZeros` wins over `decimal`
     -   `params.trimZeros`   (optional, default `false`)
 
 Returns **[string][3]** The formatted base amount string using its currency format.
+
+## eqAsset
+
+Checks equality of two `Assets`
+
+### Parameters
+
+-   `a` **Asset** Asset one
+-   `b` **Asset** Asset two
+
+Returns **[boolean][1]** Result of equality check
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 

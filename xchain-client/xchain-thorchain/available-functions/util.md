@@ -122,6 +122,24 @@ Builds final unsigned TX
 -   `sequence`  account sequence
 -   `gasLimit`  transaction gas limit
 
+## getEstimatedGas
+
+Estimates usage of gas
+
+Note: Be careful by using this helper function,
+it's still experimental and result might be incorrect.
+Change `multiplier` to get a valid estimation of gas.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.cosmosSDKClient`  
+    -   `$0.txBody`  
+    -   `$0.privKey`  
+    -   `$0.accountNumber`  
+    -   `$0.accountSequence`  
+    -   `$0.multiplier`  
+
 ## buildDepositTx
 
 Structure a MsgDeposit

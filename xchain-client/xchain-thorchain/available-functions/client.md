@@ -213,10 +213,11 @@ Transaction with MsgNativeTx.
     -   `params.asset`   (optional, default `xchain_util_1.AssetRuneNative`)
     -   `params.amount`  
     -   `params.memo`  
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEPOSIT_GAS_LIMIT_VALUE)`)
 
 
 -   Throws **`"insufficient funds"`** Thrown if the wallet has insufficient funds.
--   Throws **`"failed to broadcast transaction"`** Thrown if failed to broadcast transaction.
+-   Throws **`"Invalid transaction hash"`** Thrown by missing tx hash
 
 Returns **TxHash** The transaction hash.
 
@@ -232,6 +233,11 @@ Transfer balances with MsgSend
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEFAULT_GAS_LIMIT_VALUE)`)
+
+
+-   Throws **`"insufficient funds"`** Thrown if the wallet has insufficient funds.
+-   Throws **`"Invalid transaction hash"`** Thrown by missing tx hash
 
 Returns **TxHash** The transaction hash.
 
@@ -247,10 +253,11 @@ Transfer without broadcast balances with MsgSend
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
-    -   `params.from_rune_balance`  
-    -   `params.from_asset_balance`   (optional, default `xchain_util_1.baseAmount(0,util_1.DECIMAL)`)
-    -   `params.from_account_number`   (optional, default `'0'`)
-    -   `params.from_sequence`   (optional, default `'0'`)
+    -   `params.fromRuneBalance`  
+    -   `params.fromAssetBalance`   (optional, default `xchain_util_1.baseAmount(0,util_1.DECIMAL)`)
+    -   `params.fromAccountNumber`   (optional, default `long_1.default.ZERO`)
+    -   `params.fromSequence`   (optional, default `long_1.default.ZERO`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEFAULT_GAS_LIMIT_VALUE)`)
 
 Returns **[string][1]** The signed transaction bytes.
 

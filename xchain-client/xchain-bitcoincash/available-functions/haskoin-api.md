@@ -108,6 +108,11 @@ Returns **[number][5]** The Bitcoin cash stats.
 ## broadcastTx
 
 -   **See: [https://app.swaggerhub.com/apis/eligecode/blockchain-api/0.0.1-oas3#/blockchain/sendTransaction][6]
+
+    Note: Because of an Haskoin issue (@see [https://github.com/haskoin/haskoin-store/issues/25][7]),
+    we need to broadcast same tx several times in case of `500` errors
+    **
+-   **See: [https://github.com/xchainjs/xchainjs-lib/issues/492][8]
     **
 
 Broadcast transaction.
@@ -131,3 +136,7 @@ Returns **TxHash** Transaction hash.
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [6]: https://app.swaggerhub.com/apis/eligecode/blockchain-api/0.0.1-oas3#/blockchain/sendTransaction
+
+[7]: https://github.com/haskoin/haskoin-store/issues/25
+
+[8]: https://github.com/xchainjs/xchainjs-lib/issues/492

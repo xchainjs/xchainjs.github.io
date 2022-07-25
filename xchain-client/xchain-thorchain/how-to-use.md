@@ -38,6 +38,7 @@ import fs = require('fs')
 import { Client, getChainIds, getDefaultClientUrl} from '@xchainjs/xchain-thorchain'
 import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
+import { Network } from '@xchainjs/xchain-client'
 
 // Create new instance of the client and query chain for balances. 
 const connectWallet = async () => {
@@ -111,7 +112,7 @@ const transactionData = async () => {
         console.log(`Caught ${error}`)
     }
 }
-// By default getTransactions() returns the tranactions for the current address
+// By default getTransactions() returns the transactions for the current address
 const transactionHistory = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
     let phrase = await decryptFromKeystore(keystore1, password)

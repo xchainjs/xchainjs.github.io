@@ -4,13 +4,27 @@
 
 ## isTerraNativeAsset
 
-Type guard to check whether string is a valid `TerraNativeAsset`
+Checks wether asset is a Terra Native asset
 
 ### Parameters
 
--   `denom` **[string][1]** Denomination.
+-   `asset`  
 
-Returns **[boolean][2]** `true` or `false`
+## getTerraNativeAsset
+
+Returns Terra Native asset from denom
+
+### Parameters
+
+-   `denom`  
+
+## getTerraNativeDenom
+
+Returns Terra Native asset from denom
+
+### Parameters
+
+-   `asset`  
 
 ## getTerraChains
 
@@ -18,7 +32,7 @@ Helper to get chain definitions (chainId + lcd)
 
 ### Parameters
 
--   `url` **[string][1]** API url (optional - default: [https://assets.terra.money][3]) (optional, default `'https://assets.terra.money'`)
+-   `url` **[string][1]** API url (optional - default: [https://assets.terra.money][2]) (optional, default `'https://assets.terra.money'`)
 
 ## mergeChainIds
 
@@ -35,14 +49,90 @@ Get address prefix
 
 Returns **[string][1]** Prefix of an address
 
-## getDefaultFees
+## getGasPrices
 
-Returns default fee in LUNA.
+Returns gas prices
 
-Returns **Fees** The default fee (in LUNA).
+### Parameters
+
+-   `$0` **[Object][3]** 
+    -   `$0.url`  
+    -   `$0.network`  
+    -   `$0.cacheTime`   (optional, default `1000*60*60`)
+-   `url` **[string][1]** API enpdoint
+-   `cacheTime` **[number][4]** (optional) Time in milliseconds to get gas prices from cache
+    to avoid extra requests for same data. Use `0` to disable cache. Default value: One hour.
+
+Returns **GasPrices** Gas prices of all Terra native assets
+
+## getGasPriceByAsset
+
+Returns gas price for given asset
+
+### Parameters
+
+-   `$0` **[Object][3]** 
+    -   `$0.url`  
+    -   `$0.asset`  
+    -   `$0.network`  
+    -   `$0.cacheTime`   (optional, default `1000*60*60`)
+-   `url` **[string][1]** API enpdoint
+-   `asset` **Asset** Asset to get gas price for
+-   `network` **Network** 
+-   `cacheTime` **[number][4]** (optional) Time in milliseconds to get gas prices from cache
+    to avoid extra requests for same data. Use `0` to disable cache. Default value: One hour.
+
+Returns **GasPrices** Gas prices of all Terra native assets
+
+## calcFee
+
+Calculates fee by given estimated gas and gas price
+
+### Parameters
+
+-   `estimatedGas`  
+-   `gasPrice`  
+
+## getAccount
+
+Returns account infos
+
+### Parameters
+
+-   `address`  
+-   `lcd`  
+
+## getEstimatedFee
+
+Estimates fee paid by given Terra native (fee) asset
+
+Note: LCDClient (via `terra.js`) supports already an `estimateFee` function, but it requires another request to get data of `AccountInfo`
+However, there is a more simple way (very similar to `terra-station` - check its `src/txs/Tx.tsx` + `src/txs/send/SendForm.tsx`)
+
+Steps:
+1\. Get gas prices
+2\. Estimate gas
+3\. Estimate fee
+
+### Parameters
+
+-   `$0` **[Object][3]** 
+    -   `$0.chainId`  
+    -   `$0.cosmosAPIURL`  
+    -   `$0.sender`  
+    -   `$0.recipient`  
+    -   `$0.amount`  
+    -   `$0.asset`  
+    -   `$0.feeAsset`  
+    -   `$0.memo`  
+    -   `$0.network`  
+
+Returns **BaseAmount** Fee amount
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[2]: https://assets.terra.money
 
-[3]: https://assets.terra.money
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

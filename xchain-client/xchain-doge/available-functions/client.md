@@ -8,6 +8,7 @@ Custom Dogecoin client
 
 -   `params` **DogecoinClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.feeBounds`   (optional, default `{lower:const_1.LOWER_FEE_BOUND,upper:const_1.UPPER_FEE_BOUND}`)
     -   `params.sochainUrl`   (optional, default `'https://sochain.com/api/v2'`)
     -   `params.blockcypherUrl`   (optional, default `'https://api.blockcypher.com/v1'`)
     -   `params.phrase`  

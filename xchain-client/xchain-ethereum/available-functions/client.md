@@ -8,6 +8,7 @@ Custom Ethereum client
 
 -   `params` **EthereumClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.feeBounds`   (optional, default `{lower:const_1.LOWER_FEE_BOUND,upper:const_1.UPPER_FEE_BOUND}`)
     -   `params.ethplorerUrl`   (optional, default `'https://api.ethplorer.io'`)
     -   `params.ethplorerApiKey`   (optional, default `'freekey'`)
     -   `params.explorerUrl`  
@@ -41,7 +42,10 @@ Get the current address.
 -   `walletIndex` **[number][2]** (optional) HD wallet index (optional, default `0`)
 
 
--   Throws **`"Phrase must be provided"`** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
+-   Throws **any** Error
+    Thrown if HDNode is not defined. Note: A phrase is needed to create a wallet and to derive an address from it.
+-   Throws **any** Error
+    Thrown if wallet index &lt; 0.
 
 Returns **Address** The current address.
 
@@ -54,7 +58,8 @@ Get etherjs wallet interface.
 -   `walletIndex` **[number][2]** (optional) HD wallet index (optional, default `0`)
 
 
--   Throws **`"Phrase must be provided"`** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
+-   Throws **any** Error
+    Thrown if HDNode is not defined. Note: A phrase is needed to create a wallet and to derive an address from it.
 
 Returns **Wallet** The current etherjs wallet interface.
 
@@ -195,19 +200,18 @@ Call a contract function.
 ### Parameters
 
 -   `$0` **[Object][5]** 
-    -   `$0.walletIndex`   (optional, default `0`)
+    -   `$0.signer`  
     -   `$0.contractAddress`  
+    -   `$0.walletIndex`   (optional, default `0`)
     -   `$0.abi`  
     -   `$0.funcName`  
     -   `$0.funcParams`   (optional, default `[]`)
--   `walletIndex` **[number][2]** (optional) HD wallet index
+-   `Signer` **signer** (optional) The address a transaction is send from. If not set, signer will be defined based on `walletIndex`
 -   `contractAddress` **Address** The contract address.
+-   `walletIndex` **[number][2]** (optional) HD wallet index
 -   `abi` **ContractInterface** The contract ABI json.
 -   `funcName` **[string][1]** The function to be called.
--   `funcParams` **[Array][4]&lt;any>** The parameters of the function.
-
-
--   Throws **`"contractAddress must be provided"`** Thrown if the given contract address is empty.
+-   `funcParams` **[Array][4]&lt;unknown>** (optional) The parameters of the function.
 
 Returns **T** The result of the contract function call.
 
@@ -222,15 +226,11 @@ Call a contract function.
     -   `$0.abi`  
     -   `$0.funcName`  
     -   `$0.funcParams`   (optional, default `[]`)
-    -   `$0.walletIndex`   (optional, default `0`)
 -   `contractAddress` **Address** The contract address.
 -   `abi` **ContractInterface** The contract ABI json.
 -   `funcName` **[string][1]** The function to be called.
 -   `funcParams` **[Array][4]&lt;any>** The parameters of the function.
 -   `walletIndex` **[number][2]** (optional) HD wallet index
-
-
--   Throws **`"contractAddress must be provided"`** Thrown if the given contract address is empty.
 
 Returns **BigNumber** The result of the contract function call.
 
@@ -244,8 +244,8 @@ Check allowance.
     -   `$0.contractAddress`  
     -   `$0.spenderAddress`  
     -   `$0.amount`  
-    -   `$0.walletIndex`   (optional, default `0`)
--   `contractAddress` **Address** The spender address.
+    -   `$0.walletIndex`  
+-   `contractAddress` **Address** The contract address.
 -   `spenderAddress` **Address** The spender address.
 -   `amount` **BaseAmount** The amount to check if it's allowed to spend or not (optional).
 -   `walletIndex` **[number][2]** (optional) HD wallet index
@@ -261,55 +261,67 @@ Check allowance.
 -   `$0` **[Object][5]** 
     -   `$0.contractAddress`  
     -   `$0.spenderAddress`  
-    -   `$0.feeOptionKey`   (optional, default `xchain_client_1.FeeOption.Fastest`)
+    -   `$0.feeOption`   (optional, default `xchain_client_1.FeeOption.Fastest`)
     -   `$0.amount`  
     -   `$0.walletIndex`   (optional, default `0`)
+    -   `$0.signer`  
     -   `$0.gasLimitFallback`  
 -   `contractAddress` **Address** The contract address.
 -   `spenderAddress` **Address** The spender address.
--   `FeeOption` **feeOptionKey** Fee option (optional)
+-   `Signer` **signer** (optional) The address a transaction is send from. If not set, signer will be defined based on `walletIndex`
+-   `FeeOption` **feeOption** Fee option (optional)
 -   `amount` **BaseAmount** The amount of token. By default, it will be unlimited token allowance. (optional)
 -   `walletIndex` **[number][2]** (optional) HD wallet index
+
+
+-   Throws **any** Error If gas could not been estimated
 
 Returns **TransactionResponse** The transaction result.
 
 ## estimateApprove
 
-Estimate gas limit of approve.
+Estimate gas for calling `approve`.
 
 ### Parameters
 
 -   `$0` **[Object][5]** 
+    -   `$0.fromAddress`  
     -   `$0.contractAddress`  
     -   `$0.spenderAddress`  
-    -   `$0.walletIndex`   (optional, default `0`)
     -   `$0.amount`  
 -   `contractAddress` **Address** The contract address.
 -   `spenderAddress` **Address** The spender address.
--   `walletIndex` **[number][2]** (optional) HD wallet index
+-   `fromAddress` **Address** The address the approve transaction is sent from.
 -   `amount` **BaseAmount** The amount of token. By default, it will be unlimited token allowance. (optional)
 
-Returns **BigNumber** The estimated gas limit.
+Returns **BigNumber** Estimated gas
 
 ## transfer
 
-Transfer ETH.
+Transfers ETH or ERC20 token
+
+Note: A given `feeOption` wins over `gasPrice` and `gasLimit`
 
 ### Parameters
 
 -   `$0` **[Object][5]** 
     -   `$0.walletIndex`   (optional, default `0`)
-    -   `$0.asset`  
+    -   `$0.signer`  
+    -   `$0.asset`   (optional, default `xchain_util_1.AssetETH`)
     -   `$0.memo`  
     -   `$0.amount`  
     -   `$0.recipient`  
-    -   `$0.feeOptionKey`  
+    -   `$0.feeOption`   (optional, default `xchain_client_1.FeeOption.Fast`)
     -   `$0.gasPrice`  
     -   `$0.gasLimit`  
 -   `params` **TxParams** The transfer options.
--   `FeeOption` **feeOptionKey** Fee option (optional)
+-   `Signer` **signer** (optional) The address a transaction is send from. If not set, signer will be defined based on `walletIndex`
+-   `FeeOption` **feeOption** Fee option (optional)
 -   `BaseAmount` **gasPrice** Gas price (optional)
--   `BigNumber` **gasLimit** Gas limit (optional)A given `feeOptionKey` wins over `gasPrice` and `gasLimit`
+-   `BigNumber` **gasLimit** Gas limit (optional)
+
+
+-   Throws **any** Error Thrown if address of given `Asset` could not be parsed
 
 Returns **TxHash** The transaction hash.
 
@@ -340,10 +352,13 @@ Estimate gas.
 ### Parameters
 
 -   `params` **TxParams** The transaction and fees options.
-    -   `params.asset`  
+    -   `params.asset`   (optional, default `xchain_util_1.AssetETH`)
     -   `params.recipient`  
     -   `params.amount`  
     -   `params.memo`  
+
+
+-   Throws **any** Error Thrown if address could not parsed from given ERC20 asset
 
 Returns **BaseAmount** The estimated gas fee.
 
