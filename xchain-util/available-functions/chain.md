@@ -12,11 +12,86 @@ Type guard to check whether string  is based on type `Chain`
 
 Returns **[boolean][2]** `true` or `false`
 
+## eqChain
+
+Sees if one chain is equal to another chain
+
+### Parameters
+
+-   `a`  chain a
+-   `b`  chain b
+
+Returns **any** boolean: True if equal else False
+
 ## chainToString
 
 Convert chain to string.
 
 Returns **[string][1]** The string based on the given chain type.
+
+## isBtcChain
+
+Check whether chain is BTC chain
+
+### Parameters
+
+-   `chain`  
+
+## isLtcChain
+
+Check whether chain is LTC chain
+
+### Parameters
+
+-   `chain`  
+
+## isThorChain
+
+Check whether chain is THOR chain
+
+### Parameters
+
+-   `chain`  
+
+## isBnbChain
+
+Check whether chain is BNB chain
+
+### Parameters
+
+-   `chain`  
+
+## isEthChain
+
+Check whether chain is ETH chain
+
+### Parameters
+
+-   `chain`  
+
+## isBchChain
+
+Check whether chain is BCH chain
+
+### Parameters
+
+-   `chain`  
+
+## isDogeChain
+
+Check whether chain is DOGE chain
+
+### Parameters
+
+-   `chain`  
+
+## isTerraChain
+
+Check whether chain is TERRA chain
+
+### Parameters
+
+-   `chain`  
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 

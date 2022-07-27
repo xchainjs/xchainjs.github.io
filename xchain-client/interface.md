@@ -6,7 +6,7 @@ sort: 2
 
 ## Installation
 
-```
+```bash
 yarn add @xchainjs/xchain-client
 ```
 

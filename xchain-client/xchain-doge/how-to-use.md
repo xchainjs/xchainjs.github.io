@@ -88,6 +88,7 @@ const transferDoge = async () => {
     } catch (error) {
          console.log(`Caught: ${error}`)
     }
+}
 // Transfer with fee rate set 
     let feeRate = await dogeClient.getFeeRates()
     try {

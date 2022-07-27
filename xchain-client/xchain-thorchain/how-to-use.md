@@ -6,19 +6,19 @@ sort: 2
 
 ## Installation
 
-```
+```bash
 yarn add @xchainjs/xchain-thorchain
 ```
 
 Following peer dependencies have to be installed into your project. These are not included in `@xchainjs/xchain-thorchain`.
 
-```
+```bash
 yarn add @xchainjs/xchain-client @xchainjs/xchain-crypto @xchainjs/xchain-util @xchainjs/xchain-cosmos axios @cosmos-client/core bech32-buffer
 ```
 
 ## Thorchain Client Testing
 
-```
+```bash
 yarn install
 yarn test
 ```
@@ -38,6 +38,7 @@ import fs = require('fs')
 import { Client, getChainIds, getDefaultClientUrl} from '@xchainjs/xchain-thorchain'
 import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
+import { Network } from '@xchainjs/xchain-client'
 
 // Create new instance of the client and query chain for balances. 
 const connectWallet = async () => {
@@ -111,7 +112,7 @@ const transactionData = async () => {
         console.log(`Caught ${error}`)
     }
 }
-// By default getTransactions() returns the tranactions for the current address
+// By default getTransactions() returns the transactions for the current address
 const transactionHistory = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
     let phrase = await decryptFromKeystore(keystore1, password)

@@ -6,13 +6,13 @@ sort: 2
 
 ## Installation
 
-```
+```bash
 yarn add @xchainjs/xchain-util
 ```
 
 The following peer dependencies have to be installed into your project. These are not included in `@xchainjs/xchain-util`.
 
-```
+```bash
 yarn add bignumber.js
 ```
 

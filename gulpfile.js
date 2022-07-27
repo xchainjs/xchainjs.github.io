@@ -28,6 +28,18 @@ var packages = [
     path: 'xchain-util/available-functions',
   },
   {
+    module: 'xchain-thorchain-amm',
+    path: 'xchain-thorchain-amm/available-functions',
+  },
+  {
+    module: 'xchain-midgard',
+    path: 'xchain-midgard/available-functions',
+  },
+  {
+    module: 'xchain-thornode',
+    path: 'xchain-thornode/available-functions',
+  },
+  {
     module: 'xchain-bitcoin',
     path: 'xchain-client/xchain-bitcoin/available-functions',
   },

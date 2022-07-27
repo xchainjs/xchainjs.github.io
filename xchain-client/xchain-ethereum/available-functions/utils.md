@@ -40,7 +40,27 @@ Get token address from asset.
 
 -   `asset` **Asset** 
 
-Returns **([string][2] \| null)** The token address.
+Returns **(Address \| null)** The token address.
+
+## isEthAsset
+
+Checks whether an `Asset` is `AssetETH` or not
+
+### Parameters
+
+-   `asset` **Asset** 
+
+Returns **[boolean][1]** Result of check if an asset is ETH or not
+
+## getAssetAddress
+
+Parses asset address from `Asset`
+
+### Parameters
+
+-   `asset` **Asset** 
+
+Returns **(Address \| null)** Asset address
 
 ## validateSymbol
 
@@ -140,6 +160,79 @@ Filter self txs
 
 Returns **[Array][5]&lt;T>** \*
 
+## getApprovalAmount
+
+Returns approval amount
+
+If given amount is not set or zero, `MAX_APPROVAL` amount is used
+
+### Parameters
+
+-   `amount`  
+
+## estimateCall
+
+Call a contract function.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.provider`  
+    -   `$0.contractAddress`  
+    -   `$0.abi`  
+    -   `$0.funcName`  
+    -   `$0.funcParams`   (optional, default `[]`)
+-   `provider` **Provider** Provider to interact with the contract.
+-   `contractAddress` **Address** The contract address.
+-   `abi` **ContractInterface** The contract ABI json.
+-   `funcName` **[string][2]** The function to be called.
+-   `funcParams` **[Array][5]&lt;unknown>** The parameters of the function.
+
+Returns **BigNumber** The result of the contract function call.
+
+## call
+
+Calls a contract function.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.provider`  
+    -   `$0.signer`  
+    -   `$0.contractAddress`  
+    -   `$0.abi`  
+    -   `$0.funcName`  
+    -   `$0.funcParams`   (optional, default `[]`)
+-   `provider` **Provider** Provider to interact with the contract.
+-   `Signer` **signer** of the transaction (optional - needed for sending transactions only)
+-   `contractAddress` **Address** The contract address.
+-   `abi` **ContractInterface** The contract ABI json.
+-   `funcName` **[string][2]** The function to be called.
+-   `funcParams` **[Array][5]&lt;unknow>** (optional) The parameters of the function.
+
+Returns **T** The result of the contract function call.
+
+## estimateApprove
+
+Estimate gas for calling `approve`.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.provider`  
+    -   `$0.contractAddress`  
+    -   `$0.spenderAddress`  
+    -   `$0.fromAddress`  
+    -   `$0.abi`  
+    -   `$0.amount`  
+-   `provider` **Provider** Provider to interact with the contract.
+-   `contractAddress` **Address** The contract address.
+-   `spenderAddress` **Address** The spender address.
+-   `fromAddress` **Address** The address a transaction is sent from.
+-   `amount` **BaseAmount** (optional) The amount of token. By default, it will be unlimited token allowance.
+
+Returns **BigNumber** Estimated gas
+
 ## getDecimal
 
 Get Decimals
@@ -154,6 +247,27 @@ Get Decimals
 
 Returns **[Number][6]** the decimal of a given asset
 
+## isApproved
+
+Check allowance.
+
+### Parameters
+
+-   `$0` **[Object][4]** 
+    -   `$0.provider`  
+    -   `$0.contractAddress`  
+    -   `$0.spenderAddress`  
+    -   `$0.fromAddress`  
+    -   `$0.amount`  
+-   `provider` **Provider** Provider to interact with the contract.
+-   `contractAddress` **Address** The contract (ERC20 token) address.
+-   `spenderAddress` **Address** The spender address (router).
+-   `fromAddress` **Address** The address a transaction is sent from.
+-   `amount` **BaseAmount** The amount to check if it's allowed to spend or not (optional).
+-   `walletIndex` **[number][6]** (optional) HD wallet index
+
+Returns **[boolean][1]** `true` or `false`.
+
 ## getTokenBalances
 
 Get Token Balances
@@ -163,6 +277,14 @@ Get Token Balances
 -   `tokenBalances` **[Array][5]&lt;TokenBalance>** 
 
 Returns **[Array][5]&lt;Balance>** the parsed balances
+
+## strip0x
+
+Removes `0x` or `0X` from address
+
+### Parameters
+
+-   `addr`  
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 

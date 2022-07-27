@@ -9,7 +9,19 @@ Custom Cosmos client
 -   `params` **XChainClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
     -   `params.phrase`  
-    -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`44'/118'/0'/0/`,[xchain_client_1.Network.Testnet]:`44'/118'/0'/0/`,[xchain_client_1.Network.Stagenet]:`44'/118'/0'/0/`}``)
+    -   `params.clientUrls`   (optional, default `util_1.getDefaultClientUrls()`)
+    -   `params.chainIds`   (optional, default `util_1.getDefaultChainIds()`)
+    -   `params.rootDerivationPaths`   (optional, default `util_1.getDefaultRootDerivationPaths()`)
+
+## setNetwork
+
+Updates current network.
+
+### Parameters
+
+-   `network` **Network** 
+
+Returns **void** 
 
 ## getExplorerUrl
 
@@ -60,12 +72,6 @@ Validate the given address.
 
 Returns **[boolean][3]** `true` or `false`
 
-## getMainAsset
-
-Get the main asset based on the network.
-
-Returns **[string][1]** The main asset based on the network.
-
 ## getBalance
 
 Get the balance of a given address.
@@ -80,7 +86,8 @@ Returns **[Array][4]&lt;Balance>** The balance of the address.
 
 ## getTransactions
 
-Get transaction history of a given address with pagination options.
+Get transaction history of a given address and asset with pagination options.
+If `asset` is not set, history will include `ATOM` txs only
 By default it will return the transaction history of the current wallet.
 
 ### Parameters
@@ -91,7 +98,7 @@ Returns **TxsPage** The transaction history.
 
 ## getTransactionData
 
-Get the transaction details of a given transaction id.
+Get the transaction details of a given transaction id. Supports `ATOM` txs only.
 
 ### Parameters
 
@@ -107,10 +114,12 @@ Transfer balances.
 
 -   `params` **TxParams** The transfer options.
     -   `params.walletIndex`  
-    -   `params.asset`  
+    -   `params.asset`   (optional, default `const_1.AssetAtom`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT)`)
+    -   `params.feeAmount`   (optional, default `const_1.DEFAULT_FEE`)
 
 Returns **TxHash** The transaction hash.
 
@@ -122,20 +131,24 @@ Transfer offline balances.
 
 -   `params` **TxOfflineParams** The transfer offline options.
     -   `params.walletIndex`  
-    -   `params.asset`  
+    -   `params.asset`   (optional, default `const_1.AssetAtom`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
     -   `params.from_account_number`  
     -   `params.from_sequence`  
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT)`)
+    -   `params.feeAmount`   (optional, default `const_1.DEFAULT_FEE`)
 
 Returns **[string][1]** The signed transaction bytes.
 
 ## getFees
 
-Get the current fee.
+Returns fees.
+It tries to get chain fees from THORChain `inbound_addresses` first
+If it fails, it returns DEFAULT fees.
 
-Returns **Fees** The current fee.
+Returns **Fees** Current fees
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
