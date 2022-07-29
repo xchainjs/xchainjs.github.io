@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# XCHAIN Thornode
+# XCHAIN THORNODE
 
 Thornode api for XChain clients
 

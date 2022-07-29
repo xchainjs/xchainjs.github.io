@@ -15,6 +15,69 @@ yarn add @xchainjs/xchain-client @xchainjs/xchain-crypto @xchainjs/xchain-util @
 ```
 
 ## Basic Usage Exmples
+
+Swap from BNB -> RUNE
+
+```ts
+// Imports
+import { AssetRuneNative, } from '@xchainjs/xchain-util'
+import fs = require('fs');
+import { Network } from '@xchainjs/xchain-client'
+import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
+import { assetAmount, assetFromString, assetToBase, Chain  } from '@xchainjs/xchain-util'
+import { CryptoAmount, EstimateSwapParams, Wallet, Midgard, SwapEstimate, ThorchainAMM } from '@xchainjs/xchain-thorchain-amm'
+import BigNumber from 'bignumber.js'
+require('dotenv').config();
+
+// Swap from BUSD to RUNE
+const doSwap = async () => {
+  let phrase = await decryptFromKeystore(keystore1, password)
+  const mainnetWallet = new Wallet(Network.Mainnet, phrase|| 'you forgot to set the phrase')
+  const swapParams = {
+    input: new CryptoAmount(assetToBase(assetAmount(1)), BUSD),
+    destinationAsset: AssetRuneNative,
+    slipLimit: new BigNumber(0.03),
+  }
+  try {
+    const outPutCanSwap = await thorchainAmm.estimateSwap(swapParams)
+    print(outPutCanSwap, swapParams.input)
+    if (outPutCanSwap.canSwap) {
+      const output = await thorchainAmm.doSwap(
+        mainnetWallet,
+        swapParams,
+        mainnetWallet.clients[Chain.THORChain].getAddress(),
+      )
+      console.log(`Tx hash: ${output.hash},\n Tx url: ${output.url}\n WaitTime: ${output.waitTimeSeconds}`)
+      const checkTx = await thorchainAmm.checkTx(output.hash)
+      console.log(checkTx)
+    }
+  } catch (error: any) {
+    console.log(error.message)
+  }
+}
+
+```
+
+```ts
+//Outputs
+{
+  input: '$ 1',
+  totalFees: {
+    inboundFee: 'ᚱ 0.01174119',
+    swapFee: 'ᚱ 0.00000003',
+    outboundFee: 'ᚱ 0.06',
+    affiliateFee: 'ᚱ 0'
+  },
+  slipPercentage: '0.00000008471754229581',
+  netOutput: 'ᚱ 0.30831966',
+  waitTimeSeconds: '0',
+  canSwap: true,
+  errors: undefined
+}
+Tx hash: "Hash will be here",
+Tx url: "URL will be here" 
+```
+
 Estimating a swap from BTC -> BUSD
 ```ts
 import { Network } from '@xchainjs/xchain-client'
