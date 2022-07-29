@@ -16,6 +16,9 @@ Following peer dependencies have to be installed into your project. These are no
 yarn add cosmos-client/core
 ```
 
+## Extras
+Important note: Make sure to install same version of cosmos-client/core as xchain-cosmos is using (currently "@cosmos-client/core": "^0.45.1", ). In other case things might break.
+
 ## Cosmos Client Testing
 
 ```bash
