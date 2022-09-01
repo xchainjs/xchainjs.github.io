@@ -75,6 +75,10 @@ var packages = [
     module: 'xchain-bitcoincash',
     path: 'xchain-client/xchain-bitcoincash/available-functions',
   },
+  {
+    module: 'xchain-avax',
+    path: 'xchain-client/xchain-avax/available-functions',
+  },
 ]
 
 function getGeneratedFiles(dir) {
