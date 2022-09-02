@@ -32,11 +32,10 @@ yarn test
 import fs = require('fs');
 import { Client } from "@xchainjs/xchain-ethereum"
 import { Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 
 //Connect wallet, validate address and check balance 
 const connectWallet = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let address = ethClient.getAddress()
     let isValid = ethClient.validateAddress(address)
@@ -72,7 +71,7 @@ import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 const transferEth = async () => {
     let amountToTransfer = 0.001
     let recipient = await getRecipientAddress()
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, ETH_DECIMAL))
     console.log("Building transaction")
@@ -102,7 +101,7 @@ getTransactions()
 ```ts
 // Retrieve transaction data for a particular hash
 const transactionData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let hash = "insert hash"
     try {
@@ -115,7 +114,7 @@ const transactionData = async () => {
 
 // Retrieve transaction history for a particular address
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let Address = ethClient.getAddress()
     try {
@@ -136,7 +135,7 @@ Retrieve estimated gas prices and gas limits from ethereum client\
 ```ts
 // Retrieve fee estimations from transaction parameters
 const feeEstimations = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let amountToTransfer = 0.001
     let amount = assetToBase(assetAmount(amountToTransfer, ETH_DECIMAL))
@@ -162,7 +161,7 @@ Call the function with correct parameters
 
 // Call a contract function  
 const estimateCall = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let address = ethClient.getAddress()
     let contractAddress = "insert contract function"
@@ -182,7 +181,7 @@ const estimateCall = async () => {
 
 // Check Allowance
 const isApproved = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let address = ethClient.getAddress()
     let contractAddress = "insert contract function"
@@ -209,7 +208,7 @@ Use helper functions to retrieve explorer interface or explorer data on addresse
 ```ts
 
 const explorerUrl = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ethClient = new Client({network: Network.Mainnet, phrase})
     let address = ethClient.getAddress()
     let hash = "0xa4707105d861fab959421203ef299d6ca5131067e58812062b2aa94494047f06"

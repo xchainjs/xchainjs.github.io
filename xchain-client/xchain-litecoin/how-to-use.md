@@ -34,11 +34,10 @@ Check balance of asset on address
 //Imports 
 import { Client } from "@xchainjs/xchain-litecoin"
 import { Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 
 // Connect wallet and retrieve address and balance of assets on address
 const connectWallet =async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ltcClient = new Client({network: Network.Mainnet, phrase})
     let address = ltcClient.getAddress()
     console.log(address)
@@ -71,7 +70,7 @@ import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 const transferlitecoin = async () => {
     let amountToTransfer = 0.01
     let recipient = "insert recipient"
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ltcClient = new Client({network: Network.Mainnet, phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, LTC_DECIMAL))
     console.log("Building transaction")
@@ -99,7 +98,7 @@ getFeeRates() > returns object `{ average: 100.5, fast: 201, fastest: 1005 }`
 ```ts
 // Call getFee() and or getFeeRates() for fee estimations
 const returnFees = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ltcClient = new Client({network: Network.Mainnet, phrase})
     try {
         const {fast, fastest, average} = await ltcClient.getFees()
@@ -133,7 +132,7 @@ or transaction history
 
 // Return transanction data from a txid/hash
 const transactionData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ltcClient = new Client({network: Network.Mainnet, phrase})
     let hash = "insert hash"
     try {
@@ -146,7 +145,7 @@ const transactionData = async () => {
 // Return transaction history
 // txHistoryParams > address, offset?, startTime?, asset?, limit?
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const ltcClient = new Client({network: Network.Mainnet, phrase})
     let Address = ltcClient.getAddress()
     try {

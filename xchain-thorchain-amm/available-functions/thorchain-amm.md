@@ -10,8 +10,7 @@ Has access to Midgard and THORNode data
 
 ### Parameters
 
--   `midgard`  an instance of the midgard API (could be pointing to stagenet,testnet,mainnet)
--   `expirePoolCacheMillis`  how long should the pools be cached before expiry (optional, default `6000`)
+-   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet)
 -   `chainAttributes`  atrributes used to calculate waitTime & conf counting (optional, default `chain_defaults_1.DefaultChainAttributes`)
 
 ### estimateSwap

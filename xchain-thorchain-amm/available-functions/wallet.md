@@ -8,8 +8,8 @@ Wallet Class for managing all xchain-\* wallets with a mnemonic seed.
 
 ### Parameters
 
--   `network`  stagenet,testnet,mainnet
 -   `phrase`  mnemonic phrase
+-   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet)
 
 ### getAllBalances
 
@@ -29,19 +29,3 @@ Executes a Swap from THORChainAMM.doSwap()
 -   `swap`  object with all the required details for a swap.
 
 Returns **any** transaction details and explorer url
-
-### sendETHDeposit
-
-Transaction to THORChain inbound address.
-
-#### Parameters
-
--   `params` **DepositParams** The transaction options.
-
-
--   Throws **`"halted chain"`** Thrown if chain is halted.
--   Throws **`"halted trading"`** Thrown if trading is halted.
--   Throws **`"amount is not approved"`** Thrown if the amount is not allowed to spend
--   Throws **`"router address is not defined"`** Thrown if router address is not defined
-
-Returns **TxHash** The transaction hash.

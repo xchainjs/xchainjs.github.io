@@ -35,11 +35,10 @@ Check balance of asset on address
 //Imports 
 import { Client, DOGE_DECIMAL} from "@xchainjs/xchain-doge"
 import { Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 
 // Connect wallet to new Client 
 const connectWallet = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     let address = dogeClient.getAddress()
     let isValid = dogeClient.validateAddress(address)
@@ -73,7 +72,7 @@ import { assetToBase, baseToAsset, assetAmount} from "@xchainjs/xchain-util"
 const transferDoge = async () => {
     let amountToTransfer = 0.01
     let recipient = await getRecipientAddress()
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, DOGE_DECIMAL))
     console.log("Building transaction", JSON.stringify(amount.amount()))
@@ -113,7 +112,7 @@ Fees are returned as base Amount.
 ```ts
 // Get fees 
 const feeData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     try {
         const {fast, fastest, average} = await dogeClient.getFees()
@@ -125,7 +124,7 @@ const feeData = async () => {
 }
 // Get Fee Rates
 const feeRates = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     try {
         const feeRates = await dogeClient.getFeeRates() // returned as number
@@ -137,7 +136,7 @@ const feeRates = async () => {
 
 // Get both Fees and Rates
 const getFeesWithRates = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     try {
         const feesWithRates = await dogeClient.getFeesWithRates()
@@ -159,7 +158,7 @@ getTransactions() can be filtered with `limit? offset? startTime?`
 // Retrieve transaction data for a transaction hash 
 
 const transactionData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     let hash = "insert hash"
     try {
@@ -173,7 +172,7 @@ const transactionData = async () => {
 // Retrieve transaction history for a particular address
 
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let dogeClient = new Client({ network: Network.Mainnet, phrase})
     let Address = dogeClient.getAddress()
     try {

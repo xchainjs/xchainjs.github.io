@@ -15,7 +15,7 @@ Returns **[boolean][1]** `true` or `false`.
 ## ASSET_DECIMAL
 
 Default number of asset decimals
-For history reason and by starting the project on Binance chain assets, it's 8 decimal.
+For history reason and by starting the project on Binance chain assets, it's 8 decimal.F
 
 For example:
 
@@ -112,6 +112,10 @@ Formats a `BaseAmount` value into a `string`
 -   `amount` **BaseAmount** 
 
 Returns **[string][3]** The formatted base amount string from the given base amount.
+
+## AssetAVAX
+
+Base "chain" asset of Avalanche chain.
 
 ## AssetBNB
 

@@ -29,13 +29,10 @@ Use the client to getAddress() & getBalance() of address
 //Imports
 import { Client } from "@xchainjs/xchain-bitcoin"
 import { Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore} from "@xchainjs/xchain-crypto"
 
 // Connect wallet to new btc client 
 const connectWallet = async () => {
-    let keystore = JSON.parse(fs.readFileSync('keystore.json', 'utf8'))
-    let password = process.env.PASSWORD
-    let phrase = await decryptFromKeystore(keystore, password)
+    let phrase = "phrase"
     const btcClient = new Client({ network: Network.Mainnet, phrase})
     let address = btcClient.getAddress()     
     console.log(`Asset Address is: ${address}`)
@@ -67,9 +64,7 @@ let amountToTransfer = 0.0001
 let recipient = 'Recipent_address'
 
 const transfer = async () => {
-    let keystore = JSON.parse(fs.readFileSync('keystore.json', 'utf8'))
-    let password = process.env.PASSWORD
-    let phrase = await decryptFromKeystore(keystore, password)
+    let phrase = "phrase"
     let btcClient = new Client({network: Network.Mainnet, phrase })
     let amount = assetToBase(assetAmount(amountToTransfer, 8))
     try {
@@ -145,7 +140,7 @@ Create new btcClient instance\
 Call getTransaction(hash) returns JSON object
 ```ts
 const transactionData = async () => {
-    let phrase = await decryptFromKeystore(keystore, password)
+    let phrase = "phrase"
     let btcClient = new Client({network: Network.Mainnet, phrase })
     let hash = "txhash string" 
     try{
@@ -168,7 +163,7 @@ Results can be filtered with extra parameters { offset, limit, startTime, asset?
 
 ```ts
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     let btcClient = new Client({ network: Network.Mainnet, phrase })
     let Address = keystore1Address
 
