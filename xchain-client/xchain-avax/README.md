@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# XCHAIN TERRA
+# XCHAIN AVAX
 
 Custom Terra client and utilities used by XChainJS clients
 
