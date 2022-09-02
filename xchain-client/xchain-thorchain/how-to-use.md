@@ -35,16 +35,14 @@ ThorchainClient includes chainIds. getChainIds() return alls chain id's for defa
 ```ts
 
 // Imports 
-import fs = require('fs')
 import { Client, getChainIds, getDefaultClientUrl} from '@xchainjs/xchain-thorchain'
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 import { Network } from '@xchainjs/xchain-client'
 
 // Create new instance of the client and query chain for balances. 
 const connectWallet = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     let address = thorClient.getAddress()
     console.log(`Address: ${address}`)
@@ -72,7 +70,7 @@ import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
  
 const transferRune = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     let amountToTransfer = 0.1
     let amount = assetToBase(assetAmount(amountToTransfer, DECIMAL ))
@@ -102,7 +100,7 @@ Retrieve transaction data using transaction hash and address
 
 const transactionData = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     let hash = "insert hash"
     let address = thorClient.getAddress()
@@ -116,7 +114,7 @@ const transactionData = async () => {
 // By default getTransactions() returns the transactions for the current address
 const transactionHistory = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     
     try {
@@ -137,7 +135,7 @@ Thorchain runs on fee type of Flatfee set to `0.02` rune
 // Returns Fees Fast: 0.02 Fastest: 0.02 Average: 0.02
 const fee = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     try {
         const {fast, fastest, average} = await thorClient.getFees()
@@ -155,7 +153,7 @@ const fee = async () => {
 
 const explorerUrl = async () => {
     const chainIds = await getChainIds(getDefaultClientUrl())
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
     let hash = "insert hash"
     try {

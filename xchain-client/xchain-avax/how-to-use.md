@@ -26,12 +26,10 @@ yarn test
 ## Basic Usage Example 
 ###Imports
 ```ts
-import fs = require('fs');
 import { Client, defaultAvaxParams } from "@xchainjs/xchain-avax"
 import { FeeOption, Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetToBase, baseToAsset, assetAmount, Asset, Chain  } from "@xchainjs/xchain-util"
-require('dotenv').config();
+
 ```
 
 ### Connect wallet to new Avax Chain Client
@@ -47,7 +45,7 @@ const assetRIP: Asset = {
 // Create new Avax Client Instance
 const connectWallet =async () => {
     defaultAvaxParams.network = Network.Mainnet
-    defaultAvaxParams.phrase = await decryptFromKeystore(keystore1, password)
+    defaultAvaxParams.phrase = "phrase"
     const avaxClient = new Client(defaultAvaxParams)
     let address = avaxClient.getAddress()
     console.log(`Address: ${address}`)
@@ -55,7 +53,7 @@ const connectWallet =async () => {
     if( isValid === true ){
         try {
             const balance = await avaxClient.getBalance(address)
-            let assetAmount = (baseToAsset(balance[0].amount)).amount()
+            let assetAmount = (baseToAsset(balance[1].amount)).amount()
             console.log(`With balance: ${assetAmount}`)
     
         } catch (error) {
@@ -68,10 +66,10 @@ const connectWallet =async () => {
 ### Transfer Avax using AvaxClient
 ```ts
 const transferAvax = async () => {
-    let amountToTransfer = 0.01
+    let amountToTransfer = 0.1
     let recipient = "address"
     defaultAvaxParams.network = Network.Mainnet
-    defaultAvaxParams.phrase = await decryptFromKeystore(keystore1, password)
+    defaultAvaxParams.phrase = "phrase"
     const avaxClient = new Client(defaultAvaxParams)
     let amount = assetToBase(assetAmount(amountToTransfer, 18))
     console.log("Building transaction", JSON.stringify(amount.amount()))
@@ -92,8 +90,8 @@ const transferAvax = async () => {
 ## Get fees 
 ```ts
 const returnFees = async () => {
-    defaultAvaxParams.network = Network.Testnet
-    defaultAvaxParams.phrase = await decryptFromKeystore(keystore1, password)
+    defaultAvaxParams.network = Network.Mainnet
+    defaultAvaxParams.phrase = "phrase"
     const avaxClient = new Client(defaultAvaxParams)
     let amountToTransfer = 20
     let amount = assetToBase(assetAmount(amountToTransfer, 18))
@@ -116,7 +114,7 @@ const returnFees = async () => {
 ```ts
 const transactionData = async () => {
     defaultAvaxParams.network = Network.Mainnet
-    defaultAvaxParams.phrase = await decryptFromKeystore(keystore1, password)
+    defaultAvaxParams.phrase = "phrase"
     const avaxClient = new Client(defaultAvaxParams)
     let hash = "0x60721cf788b7cd4e56acf6479e71dfbd12e6c79c15e76595e4e52409bf686d4c"
 
@@ -130,7 +128,7 @@ const transactionData = async () => {
 // Address History
 const transactionHistory = async () => {
     defaultAvaxParams.network = Network.Mainnet
-    defaultAvaxParams.phrase = await decryptFromKeystore(keystore1, password)
+    defaultAvaxParams.phrase = "phrase"
     const avaxClient = new Client(defaultAvaxParams)
     let Address = avaxClient.getAddress()
 

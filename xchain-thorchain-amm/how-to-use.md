@@ -66,17 +66,14 @@ Swap from BNB -> RUNE
 ```ts
 // Imports
 import { AssetRuneNative, } from '@xchainjs/xchain-util'
-import fs = require('fs');
 import { Network } from '@xchainjs/xchain-client'
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetAmount, assetFromString, assetToBase, Chain  } from '@xchainjs/xchain-util'
 import { CryptoAmount, EstimateSwapParams, Wallet, Midgard, SwapEstimate, ThorchainAMM } from '@xchainjs/xchain-thorchain-amm'
 import BigNumber from 'bignumber.js'
-require('dotenv').config();
 
 // Swap from BUSD to RUNE
 const doSwap = async () => {
-  let phrase = await decryptFromKeystore(keystore1, password)
+  let phrase = "phrase"
   const mainnetWallet = new Wallet(Network.Mainnet, phrase|| 'you forgot to set the phrase')
   const swapParams = {
     input: new CryptoAmount(assetToBase(assetAmount(1)), BUSD),

@@ -38,12 +38,11 @@ Set `phrase` and `network` when creating an instance.
 //Imports
 import { AssetAtom, Client, COSMOS_DECIMAL } from "@xchainjs/xchain-cosmos"
 import { Network} from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 
 // Create new instance of the client and query chain for balances.
 const connectWallet = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosClient = new Client({network: Network.Mainnet, phrase})
     let address = cosmosClient.getAddress()
     let isValid = cosmosClient.validateAddress(address)
@@ -72,7 +71,7 @@ Build transaction.
 
 ```ts
 const transfer = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosclient = new Client({network: Network.Mainnet, phrase})
     let amountToTransfer = 0.1
     let amount = assetToBase(assetAmount(amountToTransfer, COSMOS_DECIMAL))
@@ -117,7 +116,7 @@ Retrieve transaction data using transaction hash and address
 
 const transactionData = async () => {
     let txHash = 'insert txHash'
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosClient = new Client({network: Network.Mainnet, phrase})
     try {
         const txData = await cosmosClient.getTransactionData(txHash)
@@ -130,7 +129,7 @@ const transactionData = async () => {
 // By default getTransactions() returns the transactions for the current address
 
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosClient = new Client({network: Network.Mainnet, phrase})
     const address = cosmosClient.getAddress()
     const url = cosmosClient.getExplorerUrl()
@@ -148,7 +147,7 @@ const transactionHistory = async () => {
 
 ```ts
 const feeData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosClient = new Client({network: Network.Mainnet, phrase})
     try {
         const {fast, fastest, average} = await cosmosClient.getFees()
@@ -166,7 +165,7 @@ const feeData = async () => {
 // Query Cosmos client for network data and explorer data
 
 const explorerUrl = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const cosmosClient = new Client({network: Network.Mainnet, phrase})
     let hash = "insert hash"
     try {

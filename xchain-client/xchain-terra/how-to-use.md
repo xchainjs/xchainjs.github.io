@@ -33,13 +33,12 @@ Use the TerraClient to getAddress() & getBalance() of address
 
 ```ts
 // Imports 
-import { Network } from "@xchainjs/xchain-client"
-import { decryptFromKeystore } from "@xchainjs/xchain-crypto"
+import { Network, Client } from "@xchainjs/xchain-client"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 
 // Connect wallet to new Terra client instance & check balances of assets 
 const connectWallet = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase})
     let address = terraClient.getAddress()
     console.log(address)
@@ -64,7 +63,7 @@ const transferTerra = async () => {
     let recipient = await getRecipientAddress() 
     let amountToTransfer = 0.01
     let amount = assetToBase(assetAmount(amountToTransfer, TERRA_DECIMAL))
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase})
     console.log("Building Transaction")
     try {
@@ -89,7 +88,7 @@ const transferTerra = async () => {
 ```ts
 // Return trasanction data from a txid/hash
 const transactionData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase })
     let hash = "insert hash"
     try {
@@ -106,7 +105,7 @@ const transactionData = async () => {
 // Return transaction history
 // txHistoryParams > address, offset?, startTime?, asset?, limit? 
 const transactionHistory = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase })
     let Address = terraClient.getAddress()
     try {
@@ -128,7 +127,7 @@ Returns fee in BaseLunaAmount
 ```ts
 
 const getTransferFees = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase })
     try {
         const {fast, fastest, average} = await terraClient.getFees()
@@ -148,7 +147,7 @@ Using in-built functions to return useful links and data
 
 ```ts
 const networkData = async () => {
-    let phrase = await decryptFromKeystore(keystore1, password)
+    let phrase = "phrase"
     const terraClient = new Client({network: Network.Mainnet, phrase })
     let txid = "insert hash"
     let address = terraClient.getAddress()
