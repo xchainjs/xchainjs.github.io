@@ -1134,21 +1134,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cosmos-client/core@^0.45.1":
-  version "0.45.3"
-  resolved "https://registry.yarnpkg.com/@cosmos-client/core/-/core-0.45.3.tgz#c6da446737e7014843595a33fa30ba1b69de87db"
-  integrity sha512-X/w/wfC62fA6ifgHiVBC8maTV87qJ3b7bingTcFvIHz3P2PRSkgD1xPG5qofMUz9yWbR3FrRj46HRy3/G6v5Dg==
-  dependencies:
-    axios "^0.23.0"
-    bech32 "^1.1.4"
-    bip32 "^2.0.6"
-    bip39 "^3.0.4"
-    protobufjs "^6.11.2"
-    rxjs "^7.4.0"
-    secp256k1 "^4.0.2"
-    tweetnacl "^1.0.3"
-
-"@cosmos-client/core@^0.45.10":
+"@cosmos-client/core@0.45.13":
   version "0.45.13"
   resolved "https://registry.yarnpkg.com/@cosmos-client/core/-/core-0.45.13.tgz#53a99f65c53b0cdefee245582a8bbea6f2a04e7d"
   integrity sha512-OTszam3HnH+PSRh9oW/NkEocrOuQnClCGxRmFSOk25Lck8CTtDeKLzkpNbeyFDJVyJvW5IGLL//n9f43UMwbXQ==
@@ -3276,11 +3262,6 @@
   dependencies:
     "@typescript-eslint/types" "4.11.0"
     eslint-visitor-keys "^2.0.0"
-
-"@xchainjs/xchain-util@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@xchainjs/xchain-util/-/xchain-util-0.7.1.tgz#6df007e4715778314c772aba2685447aa9b10fc7"
-  integrity sha512-CTYdrfJ7i9cHJY1AxDPq5c/4uHC2LWIt1F5WeuTriuGK5flRf9mPze7PmAZk05FI983kjKF/JiDKV/iewafTHQ==
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"

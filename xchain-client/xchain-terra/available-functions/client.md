@@ -54,7 +54,7 @@ By passing just `feeAsset` (but not `feeAmount` and `gasLimit`), `feeAmount` and
 
 -   `$0` **[Object][1]** 
     -   `$0.walletIndex`   (optional, default `0`)
-    -   `$0.asset`   (optional, default `const_1.AssetLUNA`)
+    -   `$0.asset`   (optional, default `xchain_util_1.AssetLUNA`)
     -   `$0.amount`  
     -   `$0.recipient`  
     -   `$0.memo`  

@@ -32,6 +32,10 @@ var packages = [
     path: 'xchain-thorchain-amm/available-functions',
   },
   {
+    module: 'xchain-thorchain-query',
+    path: 'xchain-thorchain-query/available-functions',
+  },
+  {
     module: 'xchain-midgard',
     path: 'xchain-midgard/available-functions',
   },

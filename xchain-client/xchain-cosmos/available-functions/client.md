@@ -114,7 +114,7 @@ Transfer balances.
 
 -   `params` **TxParams** The transfer options.
     -   `params.walletIndex`  
-    -   `params.asset`   (optional, default `const_1.AssetAtom`)
+    -   `params.asset`   (optional, default `xchain_util_1.AssetAtom`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
@@ -131,7 +131,7 @@ Transfer offline balances.
 
 -   `params` **TxOfflineParams** The transfer offline options.
     -   `params.walletIndex`  
-    -   `params.asset`   (optional, default `const_1.AssetAtom`)
+    -   `params.asset`   (optional, default `xchain_util_1.AssetAtom`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
