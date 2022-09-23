@@ -9,6 +9,7 @@ Wallet Class for managing all xchain-\* wallets with a mnemonic seed.
 ### Parameters
 
 -   `phrase`  mnemonic phrase
+-   `thorchainQuery`  
 -   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet)
 
 ### getAllBalances

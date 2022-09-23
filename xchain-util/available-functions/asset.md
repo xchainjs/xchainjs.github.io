@@ -342,6 +342,24 @@ Checks equality of two `Assets`
 
 Returns **[boolean][1]** Result of equality check
 
+## isAssetRuneNative
+
+Checks whether an asset is `AssetRuneNative`
+
+### Parameters
+
+-   `asset` **Asset** 
+
+Returns **[boolean][1]** `true` or `false`
+
+## strip0x
+
+Removes `0x` or `0X` from address
+
+### Parameters
+
+-   `addr`  
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

@@ -9,9 +9,10 @@ This class manages retrieving information from up to date Thorchain
 ### Parameters
 
 -   `midgard`  an instance of the midgard API (could be pointing to stagenet,testnet,mainnet)
+-   `thornode`  
 -   `expirePoolCacheMillis`  how long should the pools be cached before expiry (optional, default `6000`)
 -   `expireAsgardCacheMillis`  how long should the inboundAsgard Addresses be cached before expiry (optional, default `TEN_MINUTES`)
--   `expireInboundDetailsCacheMillis`  how long should the InboundDetails be cached before expiry (optional, default `TEN_MINUTES`)
+-   `expireInboundDetailsCacheMillis`  how long should the InboundDetails be cached before expiry (optional, default `6000`)
 -   `expireNetworkValuesCacheMillis`  how long should the Mimir/Constants be cached before expiry (optional, default `TEN_MINUTES`)
 
 ### getExchangeRate
@@ -95,7 +96,6 @@ Ex. convert(input:100 BUSD, outAsset: BTC) -> 0.0001234 BTC
 #### Parameters
 
 -   `input`  amount/asset to convert to outAsset
--   `outAsset`  
--   `ouAsset`  the Asset you want to convert to
+-   `outAsset`  the Asset you want to convert to
 
 Returns **any** CryptoAmount of input

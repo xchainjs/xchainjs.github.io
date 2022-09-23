@@ -278,14 +278,6 @@ Get Token Balances
 
 Returns **[Array][5]&lt;Balance>** the parsed balances
 
-## strip0x
-
-Removes `0x` or `0X` from address
-
-### Parameters
-
--   `addr`  
-
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

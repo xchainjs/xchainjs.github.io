@@ -16,8 +16,8 @@ Utility Class to combine an amount (asset/base) with the Asset
 This guard protects against trying to perform math with different assets
 
 Example.
-const x = new CryptoAmount(baseAmount(1),AssetBTC)
-const y = new CryptoAmount(baseAmount(1),AssetETH)
+const x = new CryptoAmount(assetAmount(1),AssetBTC)
+const y = new CryptoAmount(assetAmount(1),AssetETH)
 
 x.plus(y) &lt;- will throw error "cannot perform math on 2 diff assets BTC.BTC ETH.ETH
 

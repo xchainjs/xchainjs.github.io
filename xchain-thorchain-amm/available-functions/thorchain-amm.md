@@ -10,8 +10,7 @@ Has access to Midgard and THORNode data
 
 ### Parameters
 
--   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet)
--   `chainAttributes`  atrributes used to calculate waitTime & conf counting (optional, default `chain_defaults_1.DefaultChainAttributes`)
+-   `thorchainQuery`  an instance of the ThorchainQuery
 
 ### estimateSwap
 
@@ -20,37 +19,16 @@ Uses current pool data, works out inbound and outboud fee, affiliate fees and wo
 
 #### Parameters
 
--   `params`  amount to swap
+-   `params` **[Object][1]** amount to swap
+    -   `params.input`  
+    -   `params.destinationAsset`  
+    -   `params.destinationAddress`  
+    -   `params.affiliateAddress`   (optional, default `''`)
+    -   `params.interfaceID`   (optional, default `999`)
+    -   `params.affiliateFeePercent`   (optional, default `0`)
+    -   `params.slipLimit`  
 
 Returns **any** The SwapEstimate
-
-### getFeesIn
-
-Convinience method to convert TotalFees to a different CryptoAmount
-
-TotalFees are always calculated and returned in RUNE, this method can
-be used to show the equivalent fees in another Asset Type
-
-#### Parameters
-
--   `fees`  : TotalFees - the fees you want to convert
--   `asset`  : Asset - the asset you want the fees converted to
-
-Returns **any** TotalFees in asset
-
-### convert
-
-Returns the exchange of a CryptoAmount to a different Asset
-
-Ex. convert(input:100 BUSD, outAsset: BTC) -> 0.0001234 BTC
-
-#### Parameters
-
--   `input`  amount/asset to convert to outAsset
--   `outAsset`  
--   `ouAsset`  the Asset you want to convert to
-
-Returns **any** CryptoAmount of input
 
 ### doSwap
 
@@ -59,76 +37,8 @@ Conducts a swap with the given inputs. Should be called after estimateSwap() to 
 #### Parameters
 
 -   `wallet`  wallet to use
--   `params`  swap paraps
--   `destinationAddress`  were to send the output of the swap
--   `affiliateAddress`  were to send the affilate Address, should be a THOR address (optional) (optional, default `''`)
--   `interfaceID`  id if the calling interface (optional) (optional, default `999`)
+-   `params`  swap params
 
 Returns **SwapSubmitted** Tx Hash, URL of BlockExplorer and expected wait time.
 
-### isValidSwap
-
-Basic Checks for swap information
-
-#### Parameters
-
--   `params`  
-
-### calcSwapEstimate
-
-Does the calculations for the swap.
-Used by estimateSwap
-
-#### Parameters
-
--   `params`  
--   `sourceInboundDetails`  
--   `destinationInboundDetails`  
--   `sourcePool`  
--   `destinationPool`  
-
-### getSwapEstimateErrors
-
-Looks for errors or issues within swap prams before doing the swap.
-
-#### Parameters
-
--   `params`  
--   `estimate`  
--   `sourceInboundDetails`  
--   `destinationInboundDetails`  
--   `sourcePool`  
--   `destinationPool`  
-
-### outboundDelay
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548][1]
-    **
-
-Works out how long an outbound Tx will be held by THORChain before sending.
-
-#### Parameters
-
--   `outboundAmount`  : CryptoAmount  being sent.
-
-Returns **any** required delay in seconds
-
-### confCounting
-
--   **See: [https://docs.thorchain.org/chain-clients/overview][2]
-    **
-
-Finds the required confCount required for an inbound or outbound Tx to THORChain. Estimate based on Midgard data only.
-
-Finds the gas asset of the given asset (e.g. BUSD is on BNB), finds the value of asset in Gas Asset then finds the required confirmation count.
-ConfCount is then times by 6 seconds.
-
-#### Parameters
-
--   `inbound`  : CryptoAmount - amount/asset of the outbound amount.
-
-Returns **any** time in seconds before a Tx is confirmed by THORChain
-
-[1]: https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548
-
-[2]: https://docs.thorchain.org/chain-clients/overview
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
