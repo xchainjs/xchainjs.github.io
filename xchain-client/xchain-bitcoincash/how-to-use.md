@@ -26,16 +26,15 @@ yarn test
 ## Basic Usage Example 
 
 ### Connect wallet to new Bitcoincash Client
-
+Network default is Mainnet
 ```ts
 // Imports
 import { Client } from "@xchainjs/xchain-bitcoincash"
-import { Network } from "@xchainjs/xchain-client"
 
 // Connect wallet to new BitcoinCash Client & validate address
 const connectWallet = async () => {
     let phrase = "phrase"
-    const bchClient = new Client({network: Network.Mainnet, phrase})
+    const bchClient = new Client({phrase})
     let address = bchClient.getAddress()
     let isValid = bchClient.validateAddress(address)
     if( isValid === true ){
@@ -67,7 +66,7 @@ const transferBitcoinCash = async () => {
     let amountToTransfer = 0.01
     let recipient = await getRecipientAddress()
     let phrase = "phrase"
-    const bchClient = new Client({network: Network.Mainnet, phrase })
+    const bchClient = new Client({ phrase })
     let amount = assetToBase(assetAmount(amountToTransfer, BCH_DECIMAL))
     console.log("Building transaction")
     try {
@@ -109,7 +108,7 @@ getFeeRates() returns feeRates as `number`
 // Query client for fees and fee rates
 const returnFees = async () => {
     llet phrase = "phrase"
-    const bchClient = new Client({network: Network.Mainnet, phrase })
+    const bchClient = new Client({phrase })
     try {
         const {fast, fastest, average} = await bchClient.getFees()
         console.log(`Fees Fast: ${baseToAsset(fast).amount()} Fastest: ${baseToAsset(fastest).amount()} Average: ${baseToAsset(average).amount()}`)
@@ -128,7 +127,7 @@ const returnFees = async () => {
 // Returns transaction object for a particular txId
 const transactionData = async () => {
     let phrase = "phrase"
-    const bchClient = new Client({network: Network.Mainnet, phrase })
+    const bchClient = new Client({phrase })
     let hash = "insert hash"
 
     try {
@@ -142,7 +141,7 @@ const transactionData = async () => {
 // Returns transaction history for a particular address
 const transactionHistory = async () => {
     let phrase = "phrase"
-    const bchClient = new Client({network: Network.Mainnet, phrase })
+    const bchClient = new Client({phrase })
     let Address = bchClient.getAddress()
 
     try {

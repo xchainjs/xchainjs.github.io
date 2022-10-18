@@ -258,6 +258,14 @@ symbol: `BBB-CCC` or `CCC` (if no ticker available)
 
 Returns **(Asset \| null)** The asset from the given string.
 
+## assetFromStringEx
+
+Similar to an `assetFromString`, but throws an exception for invalid asset strings
+
+### Parameters
+
+-   `s`  
+
 ## assetToString
 
 -   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][7]

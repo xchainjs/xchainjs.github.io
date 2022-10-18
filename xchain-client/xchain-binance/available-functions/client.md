@@ -7,6 +7,9 @@ Custom Binance client
 ## Parameters
 
 -   `params` **XChainClientParams** 
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
+    -   `params.phrase`  
+    -   `params.rootDerivationPaths`   (optional, default `{[xchain_client_1.Network.Mainnet]:"44'/931'/0'/0/",[xchain_client_1.Network.Stagenet]:"44'/931'/0'/0/",[xchain_client_1.Network.Testnet]:"44'/931'/0'/0/"}`)
 
 ## getBncClient
 

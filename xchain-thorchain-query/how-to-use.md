@@ -31,14 +31,13 @@ yarn test
 import { AssetBTC, AssetBCH} from '@xchainjs/xchain-util';
 import { assetToBase,assetAmount, assetFromString, AssetRuneNative } from '@xchainjs/xchain-util';
 import { EstimateSwapParams, ThorchainQuery, ThorchainCache, Midgard, Thornode, CryptoAmount, TxDetails} from "@xchainjs/xchain-thorchain-query"
-import { Network } from "@xchainjs/xchain-client"
 
 ```
 
 ### Estimate a single swap 
 ```ts
 // Instantiate a new ThorchainQuery class with api's
-const thorchainCache = new ThorchainCache(new Midgard(Network.Mainnet), new Thornode(Network.Mainnet))
+const thorchainCache = new ThorchainCache()
 
 // Estimate a swap from USDC to RUNE
 // Create asset from string

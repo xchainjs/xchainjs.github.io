@@ -30,20 +30,21 @@ yarn test
 
 Create new thorchain client\
 Client has two different sets of parameters `XchainClientParams & ThorchainClientParams`\
-ThorchainClient includes chainIds. getChainIds() return alls chain id's for default Client Url. 
+ThorchainClient includes chainIds. getChainIds() return alls chain id's for default Client Url.\
+Network default is Mainnet
 
 ```ts
 
 // Imports 
 import { Client, getChainIds, getDefaultClientUrl} from '@xchainjs/xchain-thorchain'
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
-import { Network } from '@xchainjs/xchain-client'
+
 
 // Create new instance of the client and query chain for balances. 
 const connectWallet = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     let address = thorClient.getAddress()
     console.log(`Address: ${address}`)
     try {
@@ -69,9 +70,9 @@ Build transaction.
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
  
 const transferRune = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     let amountToTransfer = 0.1
     let amount = assetToBase(assetAmount(amountToTransfer, DECIMAL ))
     let recipient = "thor1cf4dsll8rema8y3xvvsn2t786xrkhp3d679qxh" 
@@ -99,9 +100,9 @@ Retrieve transaction data using transaction hash and address
 ```ts
 
 const transactionData = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+ 
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     let hash = "insert hash"
     let address = thorClient.getAddress()
     try {
@@ -113,9 +114,9 @@ const transactionData = async () => {
 }
 // By default getTransactions() returns the transactions for the current address
 const transactionHistory = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     
     try {
         const txHistory = await thorClient.getTransactions() 
@@ -134,9 +135,9 @@ Thorchain runs on fee type of Flatfee set to `0.02` rune
 ```ts
 // Returns Fees Fast: 0.02 Fastest: 0.02 Average: 0.02
 const fee = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     try {
         const {fast, fastest, average} = await thorClient.getFees()
         console.log(`Fees Fast: ${baseToAsset(fast).amount()} Fastest: ${baseToAsset(fastest).amount()} Average: ${baseToAsset(average).amount()}`)
@@ -152,9 +153,9 @@ const fee = async () => {
 // Query thorchain client for network data and explorer data
 
 const explorerUrl = async () => {
-    const chainIds = await getChainIds(getDefaultClientUrl())
+
     let phrase = "phrase"
-    const thorClient = new Client({network: Network.Mainnet, phrase: phrase, chainIds})
+    const thorClient = new Client({phrase})
     let hash = "insert hash"
     try {
         const networkData = thorClient.getExplorerUrl()

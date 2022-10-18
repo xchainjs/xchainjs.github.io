@@ -7,7 +7,7 @@ Custom Bitcoin Cash client
 ## Parameters
 
 -   `params` **BitcoinCashClientParams** 
-    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.feeBounds`   (optional, default `{lower:const_1.LOWER_FEE_BOUND,upper:const_1.UPPER_FEE_BOUND}`)
     -   `params.haskoinUrl`   (optional, default `{[xchain_client_1.Network.Testnet]:'https://haskoin.ninerealms.com/bchtest',[xchain_client_1.Network.Mainnet]:'https://haskoin.ninerealms.com/bch',[xchain_client_1.Network.Stagenet]:'https://haskoin.ninerealms.com/bch'}`)
     -   `params.phrase`  

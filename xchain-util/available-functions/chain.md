@@ -85,14 +85,6 @@ Check whether chain is DOGE chain
 
 -   `chain`  
 
-## isTerraChain
-
-Check whether chain is TERRA chain
-
-### Parameters
-
--   `chain`  
-
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

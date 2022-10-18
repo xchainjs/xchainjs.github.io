@@ -86,14 +86,6 @@ Helper to get THORChain's chain id
 
 -   `nodeUrl` **[string][1]** THORNode url
 
-## getChainIds
-
-Helper to get all THORChain's chain id
-
-### Parameters
-
--   `client` **ClientUrl** urls (use `getDefaultClientUrl()` if you don't need to use custom urls)
-
 ## buildUnsignedTx
 
 Builds final unsigned TX
@@ -184,18 +176,6 @@ Get the balance of a given address.
 -   `CosmosSDKClient` **cosmosClient** 
 
 Returns **[Array][3]&lt;Balance>** The balance of the address.
-
-## getDefaultClientUrl
-
-Get the client url.
-
-Returns **ClientUrl** The client url (both mainnet and testnet) for thorchain.
-
-## getDefaultExplorerUrls
-
-Get default explorer urls.
-
-Returns **ExplorerUrls** Default explorer urls (both mainnet and testnet) for thorchain.
 
 ## getExplorerUrl
 

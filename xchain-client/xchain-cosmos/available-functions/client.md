@@ -7,7 +7,7 @@ Custom Cosmos client
 ## Parameters
 
 -   `params` **XChainClientParams** 
-    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.phrase`  
     -   `params.clientUrls`   (optional, default `util_1.getDefaultClientUrls()`)
     -   `params.chainIds`   (optional, default `util_1.getDefaultChainIds()`)

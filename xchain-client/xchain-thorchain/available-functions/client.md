@@ -7,12 +7,12 @@ Custom Thorchain Client
 ## Parameters
 
 -   `params` **XChainClientParams** 
-    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.phrase`  
-    -   `params.clientUrl`  
-    -   `params.explorerUrls`  
+    -   `params.clientUrl`   (optional, default `{[xchain_client_1.Network.Testnet]:{node:'deprecated',rpc:'deprecated'},[xchain_client_1.Network.Stagenet]:{node:'https://stagenet-thornode.ninerealms.com',rpc:'https://stagenet-rpc.ninerealms.com'},[xchain_client_1.Network.Mainnet]:{node:'https://thornode.ninerealms.com',rpc:'https://rpc.ninerealms.com'}}`)
+    -   `params.explorerUrls`   (optional, default `util_1.defaultExplorerUrls`)
     -   `params.rootDerivationPaths`   (optional, default `{[xchain_client_1.Network.Mainnet]:"44'/931'/0'/0/",[xchain_client_1.Network.Stagenet]:"44'/931'/0'/0/",[xchain_client_1.Network.Testnet]:"44'/931'/0'/0/"}`)
-    -   `params.chainIds`  
+    -   `params.chainIds`   (optional, default `{[xchain_client_1.Network.Mainnet]:'thorchain-mainnet-v1',[xchain_client_1.Network.Stagenet]:'chain-id-stagenet',[xchain_client_1.Network.Testnet]:'deprecated'}`)
 
 ## getTransactions
 

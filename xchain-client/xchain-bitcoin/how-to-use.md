@@ -23,17 +23,16 @@ yarn test
 
 Decrypt keystore returns `phrase`\
 Create a new client instance\
-Use the client to getAddress() & getBalance() of address
-
+Use the client to getAddress() & getBalance() of address\
+Network default is Mainnet
 ```ts
 //Imports
 import { Client } from "@xchainjs/xchain-bitcoin"
-import { Network } from "@xchainjs/xchain-client"
 
 // Connect wallet to new btc client 
 const connectWallet = async () => {
     let phrase = "phrase"
-    const btcClient = new Client({ network: Network.Mainnet, phrase})
+    const btcClient = new Client({ phrase})
     let address = btcClient.getAddress()     
     console.log(`Asset Address is: ${address}`)
 
@@ -65,7 +64,7 @@ let recipient = 'Recipent_address'
 
 const transfer = async () => {
     let phrase = "phrase"
-    let btcClient = new Client({network: Network.Mainnet, phrase })
+    let btcClient = new Client({phrase })
     let amount = assetToBase(assetAmount(amountToTransfer, 8))
     try {
         const txid = await btcClient.transfer({
@@ -164,7 +163,7 @@ Results can be filtered with extra parameters { offset, limit, startTime, asset?
 ```ts
 const transactionHistory = async () => {
     let phrase = "phrase"
-    let btcClient = new Client({ network: Network.Mainnet, phrase })
+    let btcClient = new Client({phrase })
     let Address = keystore1Address
 
     try {

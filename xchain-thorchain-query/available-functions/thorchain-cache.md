@@ -8,8 +8,8 @@ This class manages retrieving information from up to date Thorchain
 
 ### Parameters
 
--   `midgard`  an instance of the midgard API (could be pointing to stagenet,testnet,mainnet)
--   `thornode`  
+-   `midgard`  an instance of the midgard API (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultMidgard`)
+-   `thornode`   (optional, default `defaultThornode`)
 -   `expirePoolCacheMillis`  how long should the pools be cached before expiry (optional, default `6000`)
 -   `expireAsgardCacheMillis`  how long should the inboundAsgard Addresses be cached before expiry (optional, default `TEN_MINUTES`)
 -   `expireInboundDetailsCacheMillis`  how long should the InboundDetails be cached before expiry (optional, default `6000`)
@@ -99,3 +99,15 @@ Ex. convert(input:100 BUSD, outAsset: BTC) -> 0.0001234 BTC
 -   `outAsset`  the Asset you want to convert to
 
 Returns **any** CryptoAmount of input
+
+### getInboundAddresses
+
+Returns **any** inbound adresses item
+
+### getInboundDetails
+
+Returns **any** inbound details
+
+### getNetworkValues
+
+Returns **any** network values

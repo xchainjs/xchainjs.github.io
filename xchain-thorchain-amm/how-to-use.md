@@ -71,7 +71,6 @@ Swap from BNB -> RUNE
 ```ts
 // Imports
 import { AssetRuneNative, } from '@xchainjs/xchain-util'
-import { Network } from '@xchainjs/xchain-client'
 import { assetAmount, assetFromString, assetToBase, Chain  } from '@xchainjs/xchain-util'
 import { CryptoAmount, EstimateSwapParams, Wallet, Midgard, SwapEstimate, ThorchainAMM } from '@xchainjs/xchain-thorchain-amm'
 import BigNumber from 'bignumber.js'

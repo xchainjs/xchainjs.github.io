@@ -72,10 +72,6 @@ var packages = [
     path: 'xchain-client/xchain-doge/available-functions',
   },
   {
-    module: 'xchain-terra',
-    path: 'xchain-client/xchain-terra/available-functions',
-  },
-  {
     module: 'xchain-bitcoincash',
     path: 'xchain-client/xchain-bitcoincash/available-functions',
   },
