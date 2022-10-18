@@ -10,7 +10,7 @@ Has access to Midgard and THORNode data
 
 ### Parameters
 
--   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet)
+-   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultCache`)
 -   `chainAttributes`  atrributes used to calculate waitTime & conf counting (optional, default `chain_defaults_1.DefaultChainAttributes`)
 
 ### estimateSwap
@@ -190,6 +190,53 @@ Stage 4
 -   `txStatus`  
 -   `scheduledQueueItem`  
 -   `lastBlockHeight`  
+
+### estimateAddLP
+
+Estimates a liquidity position for given crypto amount value, both asymmetrical and symetrical
+
+#### Parameters
+
+-   `params`  parameters needed for a estimated liquidity position
+
+Returns **any** type object EstimateLP
+
+### checkLiquidityPosition
+
+#### Parameters
+
+-   `asset`  
+-   `assetOrRuneAddress`  
+-   `null-null`  Asset for lp
+-   `address`  address used for Lp
+
+Returns **any** Type Object liquidityPosition
+
+### getPoolRatios
+
+Do not send assetNativeRune, There is no pool for it.
+
+#### Parameters
+
+-   `asset`  asset required to find the pool
+
+Returns **any** object type ratios
+
+### estimateWithdrawLP
+
+#### Parameters
+
+-   `params`  
+
+### getDustValues
+
+// can this become a quried constant? added to inbound_addresses or something
+
+#### Parameters
+
+-   `asset`  asset needed to retrieve dust values
+
+Returns **any** object type dust values
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 

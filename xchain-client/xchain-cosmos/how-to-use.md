@@ -31,19 +31,18 @@ yarn test
 ### Connect wallet to new Cosmos Client
 
 Create new thorchain client\
-Set `phrase` and `network` when creating an instance.
-
+Set `phrase` and `network` when creating an instance.\
+Network default is Mainnet
 ```ts
 
 //Imports
 import { AssetAtom, Client, COSMOS_DECIMAL } from "@xchainjs/xchain-cosmos"
-import { Network} from "@xchainjs/xchain-client"
 import { assetToBase, baseToAsset, assetAmount } from "@xchainjs/xchain-util"
 
 // Create new instance of the client and query chain for balances.
 const connectWallet = async () => {
     let phrase = "phrase"
-    const cosmosClient = new Client({network: Network.Mainnet, phrase})
+    const cosmosClient = new Client({phrase})
     let address = cosmosClient.getAddress()
     let isValid = cosmosClient.validateAddress(address)
     console.log(address)
@@ -72,7 +71,7 @@ Build transaction.
 ```ts
 const transfer = async () => {
     let phrase = "phrase"
-    const cosmosclient = new Client({network: Network.Mainnet, phrase})
+    const cosmosclient = new Client({ phrase})
     let amountToTransfer = 0.1
     let amount = assetToBase(assetAmount(amountToTransfer, COSMOS_DECIMAL))
     let recipient = "cosmos1f2hzu2cup9tk427w5tpfysvx9cf4c9wkud0qn9" 
@@ -117,7 +116,7 @@ Retrieve transaction data using transaction hash and address
 const transactionData = async () => {
     let txHash = 'insert txHash'
     let phrase = "phrase"
-    const cosmosClient = new Client({network: Network.Mainnet, phrase})
+    const cosmosClient = new Client({ phrase})
     try {
         const txData = await cosmosClient.getTransactionData(txHash)
         console.log(`From ${JSON.stringify(txData)}`)
@@ -130,7 +129,7 @@ const transactionData = async () => {
 
 const transactionHistory = async () => {
     let phrase = "phrase"
-    const cosmosClient = new Client({network: Network.Mainnet, phrase})
+    const cosmosClient = new Client({phrase})
     const address = cosmosClient.getAddress()
     const url = cosmosClient.getExplorerUrl()
     console.log(url)
@@ -148,7 +147,7 @@ const transactionHistory = async () => {
 ```ts
 const feeData = async () => {
     let phrase = "phrase"
-    const cosmosClient = new Client({network: Network.Mainnet, phrase})
+    const cosmosClient = new Client({ phrase})
     try {
         const {fast, fastest, average} = await cosmosClient.getFees()
         console.log(`Fees Fast: ${baseToAsset(fast).amount()} Fastest: ${baseToAsset(fastest).amount()} Average: ${baseToAsset(average).amount()}`)
@@ -166,7 +165,7 @@ const feeData = async () => {
 
 const explorerUrl = async () => {
     let phrase = "phrase"
-    const cosmosClient = new Client({network: Network.Mainnet, phrase})
+    const cosmosClient = new Client({ phrase})
     let hash = "insert hash"
     try {
         const networkData = cosmosClient.getExplorerUrl()

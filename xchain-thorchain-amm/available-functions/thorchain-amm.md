@@ -10,7 +10,7 @@ Has access to Midgard and THORNode data
 
 ### Parameters
 
--   `thorchainQuery`  an instance of the ThorchainQuery
+-   `thorchainQuery`  an instance of the ThorchainQuery (optional, default `defaultQuery`)
 
 ### estimateSwap
 
@@ -40,5 +40,39 @@ Conducts a swap with the given inputs. Should be called after estimateSwap() to 
 -   `params`  swap params
 
 Returns **SwapSubmitted** Tx Hash, URL of BlockExplorer and expected wait time.
+
+### estimateAddLiquidity
+
+Wraps estimate from thorchain query
+
+#### Parameters
+
+-   `params`  estimate add liquidity
+
+Returns **any** Estimate add lp object
+
+### estimateWithdrawLiquidity
+
+Wraps estimate withdraw from thorchain query
+
+#### Parameters
+
+-   `params`  estimate withdraw liquidity
+
+Returns **any** Estimate withdraw lp object
+
+### addLiquidityPosition
+
+#### Parameters
+
+-   `wallet`  wallet class
+-   `params`  liquidity parameters
+
+### withdrawLiquidityPosition
+
+#### Parameters
+
+-   `wallet`  wallet needed to perform tx
+-   `params`  liquidity parameters
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

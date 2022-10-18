@@ -26,15 +26,16 @@ yarn test
 ## Basic Usage Example
 
 ### Connect wallet to new Binance Chain Client
-
+Network default is Mainnet
 ```ts
 //Imports 
 import { Client } from '@xchainjs/xchain-binance'
-import { FeeOption, Network } from "@xchainjs/xchain-client"
+import { FeeOption } from "@xchainjs/xchain-client"
+
 // Connect wallet to new btc client 
 const connectWallet = async () => {
     let phrase = "phrase"
-    const bncClient = new Client({network: Network.Mainnet, phrase })  
+    const bncClient = new Client({phrase })  
     let address = bncClient.getAddress()
     console.log(`Asset Address is: ${address}`)
 
@@ -59,7 +60,7 @@ const transferBnb = async () => {
     let amountToTransfer = 0.0001
     let recipient = await getRecipientAddress()
     let phrase = "phrase"
-    const bncClient = new Client({network: Network.Mainnet, phrase })
+    const bncClient = new Client({phrase })
     let amount = assetToBase(assetAmount(amountToTransfer, 8))
     console.log("Building transaction")
     try {
@@ -133,7 +134,7 @@ const multisendTransfer = async () => {
     let amountA = assetToBase(assetAmount(amountToTransfer, 8))
     let amountB = assetToBase(assetAmount(amountToTransfer, 8))
     let phrase = "phrase"
-    const bncClient = new Client({network: Network.Mainnet, phrase })
+    const bncClient = new Client({phrase})
     console.log("Building transaction ")
     try {
         const txId = await bncClient.multiSend({

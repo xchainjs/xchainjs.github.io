@@ -30,3 +30,69 @@ Executes a Swap from THORChainAMM.doSwap()
 -   `swap`  object with all the required details for a swap.
 
 Returns **any** transaction details and explorer url
+
+### addLiquidity
+
+BASED OFF [https://dev.thorchain.or›g/thorchain-dev/network/memos][1]
+
+#### Parameters
+
+-   `params`  input parameters needed to add liquidity
+
+Returns **any** transaction details submitted
+
+### withdrawLiquidity
+
+#### Parameters
+
+-   `params`  parameters required for liquidity position
+
+Returns **any** object with tx response, url and wait time in seconds
+
+### addAssetLP
+
+#### Parameters
+
+-   `params`  parameters for add liquidity
+-   `constructedMemo`  memo needed for thorchain
+-   `assetClient`  passing XchainClient
+-   `waitTimeSeconds`  wait time for the tx to be confirmed
+-   `inboundAsgard`  inbound Asgard address for the LP
+
+Returns **any** tx object
+
+### withdrawAssetLP
+
+#### Parameters
+
+-   `params`  parameters for withdraw liquidity
+-   `constructedMemo`  memo needed for thorchain execution
+-   `assetClient`  asset client to call transfer
+-   `waitTimeSeconds`  return back estimated wait
+-   `inboundAsgard`  destination address
+
+Returns **any** tx object
+
+### addRuneLP
+
+#### Parameters
+
+-   `params`  deposit parameters
+-   `memo`  memo needed to withdraw lp
+-   `thorchainClient`  
+-   `waitTimeSeconds`  
+
+Returns **any** tx object
+
+### withdrawRuneLP
+
+#### Parameters
+
+-   `params`  withdraw parameters
+-   `memo`  memo needed to withdraw lp
+-   `thorchainClient`  
+-   `waitTimeSeconds`  
+
+Returns **any** tx object
+
+[1]: https://dev.thorchain.or›g/thorchain-dev/network/memos

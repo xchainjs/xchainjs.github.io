@@ -7,7 +7,7 @@ Custom Ethereum client
 ## Parameters
 
 -   `params` **EthereumClientParams** 
-    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.feeBounds`   (optional, default `{lower:const_1.LOWER_FEE_BOUND,upper:const_1.UPPER_FEE_BOUND}`)
     -   `params.ethplorerUrl`   (optional, default `'https://api.ethplorer.io'`)
     -   `params.ethplorerApiKey`   (optional, default `'freekey'`)

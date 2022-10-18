@@ -26,17 +26,17 @@ yarn test
 ## Basic usage examples
 
 ### Connect wallet to new Ethereum client and check address and balances
-
+Network default is Mainnet
 ```ts
 // Imports
 import fs = require('fs');
 import { Client } from "@xchainjs/xchain-ethereum"
-import { Network } from "@xchainjs/xchain-client"
+
 
 //Connect wallet, validate address and check balance 
 const connectWallet = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let address = ethClient.getAddress()
     let isValid = ethClient.validateAddress(address)
     console.log(address)
@@ -72,7 +72,7 @@ const transferEth = async () => {
     let amountToTransfer = 0.001
     let recipient = await getRecipientAddress()
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, ETH_DECIMAL))
     console.log("Building transaction")
     try {
@@ -102,7 +102,7 @@ getTransactions()
 // Retrieve transaction data for a particular hash
 const transactionData = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let hash = "insert hash"
     try {
         const txData = await ethClient.getTransactionData(hash)
@@ -115,7 +115,7 @@ const transactionData = async () => {
 // Retrieve transaction history for a particular address
 const transactionHistory = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({ phrase})
     let Address = ethClient.getAddress()
     try {
         const txHistory = await ethClient.getTransactions({address: Address})
@@ -136,7 +136,7 @@ Retrieve estimated gas prices and gas limits from ethereum client\
 // Retrieve fee estimations from transaction parameters
 const feeEstimations = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let amountToTransfer = 0.001
     let amount = assetToBase(assetAmount(amountToTransfer, ETH_DECIMAL))
     let recipient = "insert address"
@@ -162,7 +162,7 @@ Call the function with correct parameters
 // Call a contract function  
 const estimateCall = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let address = ethClient.getAddress()
     let contractAddress = "insert contract function"
     let abi = "insert abi"
@@ -182,7 +182,7 @@ const estimateCall = async () => {
 // Check Allowance
 const isApproved = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let address = ethClient.getAddress()
     let contractAddress = "insert contract function"
     let amountToTransfer = 0.001
@@ -209,7 +209,7 @@ Use helper functions to retrieve explorer interface or explorer data on addresse
 
 const explorerUrl = async () => {
     let phrase = "phrase"
-    const ethClient = new Client({network: Network.Mainnet, phrase})
+    const ethClient = new Client({phrase})
     let address = ethClient.getAddress()
     let hash = "0xa4707105d861fab959421203ef299d6ca5131067e58812062b2aa94494047f06"
     try {

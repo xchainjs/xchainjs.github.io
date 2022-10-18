@@ -7,11 +7,11 @@ Custom Litecoin client
 ## Parameters
 
 -   `params` **LitecoinClientParams** 
-    -   `params.network`   (optional, default `xchain_client_1.Network.Testnet`)
+    -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.feeBounds`   (optional, default `{lower:const_1.LOWER_FEE_BOUND,upper:const_1.UPPER_FEE_BOUND}`)
     -   `params.sochainUrl`   (optional, default `'https://sochain.com/api/v2'`)
     -   `params.phrase`  
-    -   `params.nodeUrl`  
+    -   `params.nodeUrls`   (optional, default `{[xchain_client_1.Network.Mainnet]:'https://litecoin.ninerealms.com',[xchain_client_1.Network.Stagenet]:'https://litecoin.ninerealms.com',[xchain_client_1.Network.Testnet]:'https://testnet.ltc.thorchain.info'}`)
     -   `params.nodeAuth`   (optional, default `{username:'thorchain',password:'password'}`)
     -   `params.rootDerivationPaths`   (optional, default ``{[xchain_client_1.Network.Mainnet]:`m/84'/2'/0'/0/`,[xchain_client_1.Network.Testnet]:`m/84'/1'/0'/0/`,[xchain_client_1.Network.Stagenet]:`m/84'/2'/0'/0/`}``)
 

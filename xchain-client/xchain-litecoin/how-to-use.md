@@ -27,13 +27,13 @@ yarn test
 ### Connect wallet to new Litecoin Client
 Create new instance of Litecoin Client\
 Retrieve and validate address\
-Check balance of asset on address
+Check balance of asset on address\
+Network default is Mainnet
 
 ```ts
 
 //Imports 
 import { Client } from "@xchainjs/xchain-litecoin"
-import { Network } from "@xchainjs/xchain-client"
 
 // Connect wallet and retrieve address and balance of assets on address
 const connectWallet =async () => {
@@ -71,7 +71,7 @@ const transferlitecoin = async () => {
     let amountToTransfer = 0.01
     let recipient = "insert recipient"
     let phrase = "phrase"
-    const ltcClient = new Client({network: Network.Mainnet, phrase})
+    const ltcClient = new Client({ phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, LTC_DECIMAL))
     console.log("Building transaction")
     try {
@@ -99,7 +99,7 @@ getFeeRates() > returns object `{ average: 100.5, fast: 201, fastest: 1005 }`
 // Call getFee() and or getFeeRates() for fee estimations
 const returnFees = async () => {
     let phrase = "phrase"
-    const ltcClient = new Client({network: Network.Mainnet, phrase})
+    const ltcClient = new Client({phrase})
     try {
         const {fast, fastest, average} = await ltcClient.getFees()
         console.log(`Fees Fast: ${baseToAsset(fast).amount()} Fastest: ${baseToAsset(fastest).amount()} Average: ${baseToAsset(average).amount()}`)
@@ -133,7 +133,7 @@ or transaction history
 // Return transanction data from a txid/hash
 const transactionData = async () => {
     let phrase = "phrase"
-    const ltcClient = new Client({network: Network.Mainnet, phrase})
+    const ltcClient = new Client({phrase})
     let hash = "insert hash"
     try {
         const txData = await ltcClient.getTransactionData(hash)
@@ -146,7 +146,7 @@ const transactionData = async () => {
 // txHistoryParams > address, offset?, startTime?, asset?, limit?
 const transactionHistory = async () => {
     let phrase = "phrase"
-    const ltcClient = new Client({network: Network.Mainnet, phrase})
+    const ltcClient = new Client({phrase})
     let Address = ltcClient.getAddress()
     try {
         const txHistory = await ltcClient.getTransactions({address: Address, limit: 4})

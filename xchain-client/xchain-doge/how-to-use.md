@@ -29,12 +29,12 @@ yarn test
 
 Create new instance of Dogecoin Client\
 Retrieve and validate address\
-Check balance of asset on address
+Check balance of asset on address\
+Network default is Mainnet
 
 ```ts
 //Imports 
 import { Client, DOGE_DECIMAL} from "@xchainjs/xchain-doge"
-import { Network } from "@xchainjs/xchain-client"
 
 // Connect wallet to new Client 
 const connectWallet = async () => {
@@ -73,7 +73,7 @@ const transferDoge = async () => {
     let amountToTransfer = 0.01
     let recipient = await getRecipientAddress()
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({phrase})
     let amount = assetToBase(assetAmount(amountToTransfer, DOGE_DECIMAL))
     console.log("Building transaction", JSON.stringify(amount.amount()))
     try {
@@ -113,7 +113,7 @@ Fees are returned as base Amount.
 // Get fees 
 const feeData = async () => {
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({phrase})
     try {
         const {fast, fastest, average} = await dogeClient.getFees()
         console.log(`Fees Fast: ${baseToAsset(fast).amount()} Fastest: ${baseToAsset(fastest).amount()} Average: ${baseToAsset(average).amount()}`)
@@ -125,7 +125,7 @@ const feeData = async () => {
 // Get Fee Rates
 const feeRates = async () => {
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({phrase})
     try {
         const feeRates = await dogeClient.getFeeRates() // returned as number
         console.log(feeRates.average, feeRates.fast, feeRates.fastest)
@@ -137,7 +137,7 @@ const feeRates = async () => {
 // Get both Fees and Rates
 const getFeesWithRates = async () => {
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({phrase})
     try {
         const feesWithRates = await dogeClient.getFeesWithRates()
         console.log(feesWithRates.fees, feesWithRates.rates)
@@ -159,7 +159,7 @@ getTransactions() can be filtered with `limit? offset? startTime?`
 
 const transactionData = async () => {
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({ phrase})
     let hash = "insert hash"
     try {
         const txData = await dogeClient.getTransactionData(hash)
@@ -173,7 +173,7 @@ const transactionData = async () => {
 
 const transactionHistory = async () => {
     let phrase = "phrase"
-    let dogeClient = new Client({ network: Network.Mainnet, phrase})
+    let dogeClient = new Client({phrase})
     let Address = dogeClient.getAddress()
     try {
         const txHistory = await dogeClient.getTransactions({address: Address}) 
