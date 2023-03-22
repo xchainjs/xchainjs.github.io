@@ -28,10 +28,6 @@ var packages = [
     path: 'xchain-util/available-functions',
   },
   {
-    module: 'xchain-utxo-providers',
-    path: 'xchain-utxo-providers/available-functions',
-  },
-  {
     module: 'xchain-thorchain-amm',
     path: 'xchain-thorchain-amm/available-functions',
   },
@@ -83,6 +79,10 @@ var packages = [
     module: 'xchain-avax',
     path: 'xchain-client/xchain-avax/available-functions',
   },
+  {
+    module: 'xchain-utxo-providers',
+    path: 'xchain-utxo-providers/available-functions',
+  },
 ]
 
 function getGeneratedFiles(dir) {
@@ -103,7 +103,7 @@ function getTitle(filename) {
     .join(' ')
 }
 
-function cleanAll() {
+ function cleanAll() {
   var files = ['lib']
 
   packages.forEach((item) => {
@@ -128,7 +128,6 @@ function xchain_lib_build(lib) {
     )
     .js.pipe(gulp.dest(`lib/${lib}`))
 }
-
 function xchain_lib_documentation(lib, dest) {
   return mergeStream(
     ...fs

@@ -307,7 +307,7 @@ Note: A given `feeOption` wins over `gasPrice` and `gasLimit`
 -   `$0` **[Object][5]** 
     -   `$0.walletIndex`   (optional, default `0`)
     -   `$0.signer`  
-    -   `$0.asset`   (optional, default `xchain_util_1.AssetETH`)
+    -   `$0.asset`   (optional, default `const_1.AssetETH`)
     -   `$0.memo`  
     -   `$0.amount`  
     -   `$0.recipient`  
@@ -352,7 +352,7 @@ Estimate gas.
 ### Parameters
 
 -   `params` **TxParams** The transaction and fees options.
-    -   `params.asset`   (optional, default `xchain_util_1.AssetETH`)
+    -   `params.asset`   (optional, default `const_1.AssetETH`)
     -   `params.recipient`  
     -   `params.amount`  
     -   `params.memo`  

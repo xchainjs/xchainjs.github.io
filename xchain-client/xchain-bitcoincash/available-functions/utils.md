@@ -27,16 +27,6 @@ reference to [https://github.com/Permissionless-Software-Foundation/bch-js/blob/
 
 Returns **[number][4]** The fee amount.
 
-## getBalance
-
-Get the balances of an address.
-
-### Parameters
-
--   `params` **AddressParams** 
-
-Returns **[Array][5]&lt;Balance>** The balances of the given address.
-
 ## bchNetwork
 
 Get BCH network to be used with bitcore-lib.
@@ -89,7 +79,7 @@ Checks whether address is Cash Address
 
 -   `address` **Address** 
 
-Returns **[boolean][6]** Is cash address.
+Returns **[boolean][5]** Is cash address.
 
 ## parseTransaction
 
@@ -120,62 +110,7 @@ Validate the BCH address.
 -   `address` **[string][1]** 
 -   `network` **Network** 
 
-Returns **[boolean][6]** `true` or `false`.
-
-## getTxHex
-
-Helper to get `hex` of `Tx`
-
-It will try to get it from cache before requesting it from Sochain
-
-### Parameters
-
--   `$0` **[Object][7]** 
-    -   `$0.txHash`  
-    -   `$0.haskoinUrl`  
-
-## scanUTXOs
-
-Scan UTXOs from sochain.
-
-### Parameters
-
--   `$0` **[Object][7]** 
-    -   `$0.haskoinUrl`  
-    -   `$0.address`  
--   `haskoinUrl` **[string][1]** sochain Node URL.
--   `address` **Address** 
-
-Returns **[Array][5]&lt;UTXO>** The UTXOs of the given address.
-
-## buildTx
-
-Build transcation.
-
-### Parameters
-
--   `params` **BuildParams** The transaction build options.
-    -   `params.amount`  
-    -   `params.recipient`  
-    -   `params.memo`  
-    -   `params.feeRate`  
-    -   `params.sender`  
-    -   `params.network`  
-    -   `params.haskoinUrl`  
-
-Returns **Transaction** 
-
-## broadcastTx
-
-Broadcast the transaction.
-
-### Parameters
-
--   `params` **BroadcastTxParams** The transaction broadcast options.
-    -   `params.haskoinUrl`  
-    -   `params.txHex`  
-
-Returns **TxHash** The transaction hash.
+Returns **[boolean][5]** `true` or `false`.
 
 ## calcFee
 
@@ -209,8 +144,4 @@ Returns **Fees** The default fees.
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

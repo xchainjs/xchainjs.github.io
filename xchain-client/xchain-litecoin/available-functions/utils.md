@@ -65,19 +65,6 @@ Validate the LTC address.
 
 Returns **[boolean][5]** `true` or `false`.
 
-## getTxHex
-
-Helper to get `hex` of `Tx`
-
-It will try to get it from cache before requesting it from Sochain
-
-### Parameters
-
--   `$0` **[Object][6]** 
-    -   `$0.txHash`  
-    -   `$0.sochainUrl`  
-    -   `$0.network`  
-
 ## scanUTXOs
 
 Scan UTXOs from sochain.
@@ -85,10 +72,10 @@ Scan UTXOs from sochain.
 ### Parameters
 
 -   `params` **ScanUTXOParam** 
+    -   `params.apiKey`  
     -   `params.sochainUrl`  
     -   `params.network`  
     -   `params.address`  
-    -   `params.withTxHex`   (optional, default `false`)
 
 Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
 
@@ -99,6 +86,7 @@ Build transcation.
 ### Parameters
 
 -   `params` **BuildParams** The transaction build options.
+    -   `params.apiKey`  
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
@@ -106,7 +94,6 @@ Build transcation.
     -   `params.sender`  
     -   `params.network`  
     -   `params.sochainUrl`  
-    -   `params.withTxHex`   (optional, default `false`)
 
 Returns **Transaction** 
 
@@ -162,5 +149,3 @@ Returns **[string][1]** The address prefix based on the network.\*
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

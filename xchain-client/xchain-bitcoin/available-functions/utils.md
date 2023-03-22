@@ -44,22 +44,6 @@ Get Bitcoin network to be used with bitcoinjs.
 
 Returns **Bitcoin.Network** The BTC network.
 
-## getBalance
-
-Get the balances of an address.
-
-### Parameters
-
--   `$0` **[Object][5]** 
-    -   `$0.params`  
-    -   `$0.haskoinUrl`  
-    -   `$0.confirmedOnly`  
--   `sochainUrl` **[string][1]** sochain Node URL.
--   `network` **Network** 
--   `address` **Address** 
-
-Returns **[Array][3]&lt;Balance>** The balances of the given address.
-
 ## validateAddress
 
 Validate the BTC address.
@@ -69,71 +53,7 @@ Validate the BTC address.
 -   `address` **Address** 
 -   `network` **Network** 
 
-Returns **[boolean][6]** `true` or `false`.
-
-## getTxHex
-
-Helper to get `hex` of `Tx`
-
-It will try to get it from cache before requesting it from Sochain
-
-### Parameters
-
--   `$0` **[Object][5]** 
-    -   `$0.txHash`  
-    -   `$0.sochainUrl`  
-    -   `$0.network`  
-
-## scanUTXOs
-
-Scan UTXOs from sochain.
-
-### Parameters
-
--   `$0` **[Object][5]** 
-    -   `$0.sochainUrl`  
-    -   `$0.haskoinUrl`  
-    -   `$0.network`  
-    -   `$0.address`  
-    -   `$0.confirmedOnly`   (optional, default `true`)
-    -   `$0.withTxHex`   (optional, default `false`)
--   `sochainUrl` **[string][1]** sochain Node URL.
--   `network` **Network** 
--   `address` **Address** 
-
-Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
-
-## buildTx
-
-Build transcation.
-
-### Parameters
-
--   `params` **BuildParams** The transaction build options.
-    -   `params.amount`  
-    -   `params.recipient`  
-    -   `params.memo`  
-    -   `params.feeRate`  
-    -   `params.sender`  
-    -   `params.network`  
-    -   `params.sochainUrl`  
-    -   `params.haskoinUrl`  
-    -   `params.spendPendingUTXO`   (optional, default `false`)
-    -   `params.withTxHex`   (optional, default `false`)
-
-Returns **Transaction** 
-
-## broadcastTx
-
-Broadcast the transaction.
-
-### Parameters
-
--   `params` **BroadcastTxParams** The transaction broadcast options.
-    -   `params.haskoinUrl`  
-    -   `params.txHex`  
-
-Returns **TxHash** The transaction hash.
+Returns **[boolean][5]** `true` or `false`.
 
 ## calcFee
 
@@ -176,6 +96,4 @@ Returns **[string][1]** The address prefix based on the network.\*
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
-
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

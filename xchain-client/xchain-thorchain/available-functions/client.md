@@ -10,9 +10,9 @@ Custom Thorchain Client
     -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.phrase`  
     -   `params.clientUrl`   (optional, default `{[xchain_client_1.Network.Testnet]:{node:'deprecated',rpc:'deprecated'},[xchain_client_1.Network.Stagenet]:{node:'https://stagenet-thornode.ninerealms.com',rpc:'https://stagenet-rpc.ninerealms.com'},[xchain_client_1.Network.Mainnet]:{node:'https://thornode.ninerealms.com',rpc:'https://rpc.ninerealms.com'}}`)
-    -   `params.explorerUrls`   (optional, default `util_1.defaultExplorerUrls`)
+    -   `params.explorerUrls`   (optional, default `const_1.defaultExplorerUrls`)
     -   `params.rootDerivationPaths`   (optional, default `{[xchain_client_1.Network.Mainnet]:"44'/931'/0'/0/",[xchain_client_1.Network.Stagenet]:"44'/931'/0'/0/",[xchain_client_1.Network.Testnet]:"44'/931'/0'/0/"}`)
-    -   `params.chainIds`   (optional, default `{[xchain_client_1.Network.Mainnet]:'thorchain-mainnet-v1',[xchain_client_1.Network.Stagenet]:'chain-id-stagenet',[xchain_client_1.Network.Testnet]:'deprecated'}`)
+    -   `params.chainIds`   (optional, default `{[xchain_client_1.Network.Mainnet]:'thorchain-mainnet-v1',[xchain_client_1.Network.Stagenet]:'thorchain-stagenet-v2',[xchain_client_1.Network.Testnet]:'deprecated'}`)
 
 ## getTransactions
 
@@ -190,6 +190,16 @@ Get the transaction details of a given transaction id.
 
 Returns **Tx** The transaction details of the given transaction id.
 
+## getTransactionDataThornode
+
+This function is used when in bound or outbound tx is not of thorchain
+
+### Parameters
+
+-   `txId`  transaction hash
+
+Returns **any** Tx object
+
 ## getDepositTransaction
 
 Get the transaction details of a given transaction id. (from /thorchain/txs/hash)
@@ -210,10 +220,11 @@ Transaction with MsgNativeTx.
 
 -   `params` **DepositParam** The transaction options.
     -   `params.walletIndex`   (optional, default `0`)
-    -   `params.asset`   (optional, default `xchain_util_1.AssetRuneNative`)
+    -   `params.asset`   (optional, default `const_1.AssetRuneNative`)
     -   `params.amount`  
     -   `params.memo`  
-    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEPOSIT_GAS_LIMIT_VALUE)`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEPOSIT_GAS_LIMIT_VALUE)`)
+    -   `params.sequence`  
 
 
 -   Throws **`"insufficient funds"`** Thrown if the wallet has insufficient funds.
@@ -229,11 +240,12 @@ Transfer balances with MsgSend
 
 -   `params` **TxParams** The transfer options.
     -   `params.walletIndex`   (optional, default `0`)
-    -   `params.asset`   (optional, default `xchain_util_1.AssetRuneNative`)
+    -   `params.asset`   (optional, default `const_1.AssetRuneNative`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
-    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEFAULT_GAS_LIMIT_VALUE)`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT_VALUE)`)
+    -   `params.sequence`  
 
 
 -   Throws **`"insufficient funds"`** Thrown if the wallet has insufficient funds.
@@ -249,15 +261,15 @@ Transfer without broadcast balances with MsgSend
 
 -   `params` **TxOfflineParams** The transfer offline options.
     -   `params.walletIndex`   (optional, default `0`)
-    -   `params.asset`   (optional, default `xchain_util_1.AssetRuneNative`)
+    -   `params.asset`   (optional, default `const_1.AssetRuneNative`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
     -   `params.fromRuneBalance`  
-    -   `params.fromAssetBalance`   (optional, default `xchain_util_1.baseAmount(0,util_1.DECIMAL)`)
+    -   `params.fromAssetBalance`   (optional, default `xchain_util_1.baseAmount(0,const_1.DECIMAL)`)
     -   `params.fromAccountNumber`   (optional, default `long_1.default.ZERO`)
     -   `params.fromSequence`   (optional, default `long_1.default.ZERO`)
-    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(util_1.DEFAULT_GAS_LIMIT_VALUE)`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT_VALUE)`)
 
 Returns **[string][1]** The signed transaction bytes.
 

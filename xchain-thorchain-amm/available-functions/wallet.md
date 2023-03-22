@@ -31,8 +31,37 @@ Executes a Swap from THORChainAMM.doSwap()
 
 Returns **any** transaction details and explorer url
 
+### validateSwap
+
+Validate swap object
+
+#### Parameters
+
+-   `swap`  swap parameters
+
+### swapRuneTo
+
+Function handles all swaps from Rune to asset
+
+#### Parameters
+
+-   `swap`  swap parameters
+
+Returns **any** tx submitted object
+
+### swapNonRune
+
+Function handles all swaps from Non Rune
+
+#### Parameters
+
+-   `swap`  swap object
+
+Returns **any** TxSubmitted object
+
 ### addLiquidity
 
+Function handles liquidity Add
 BASED OFF [https://dev.thorchain.or›g/thorchain-dev/network/memos][1]
 
 #### Parameters
@@ -43,13 +72,36 @@ Returns **any** transaction details submitted
 
 ### withdrawLiquidity
 
+Function handles liquidity Withdraw
+
 #### Parameters
 
 -   `params`  parameters required for liquidity position
 
 Returns **any** object with tx response, url and wait time in seconds
 
+### addSavers
+
+#### Parameters
+
+-   `assetAmount`  amount to add
+-   `memo`  memo required
+-   `toAddress`  
+-   `waitTimeSeconds`  expected wait for the transaction to be processed
+
+### withdrawSavers
+
+#### Parameters
+
+-   `dustAssetAmount`  
+-   `memo`  memo required
+-   `toAddress`  
+-   `waitTimeSeconds`  expected wait for the transaction to be processed
+-   `assetAmount`  amount to withdraw
+
 ### addAssetLP
+
+Function handles liquidity add for all non rune assets
 
 #### Parameters
 
@@ -63,6 +115,8 @@ Returns **any** tx object
 
 ### withdrawAssetLP
 
+Function handles liquidity Withdraw for Non rune assets
+
 #### Parameters
 
 -   `params`  parameters for withdraw liquidity
@@ -75,6 +129,8 @@ Returns **any** tx object
 
 ### addRuneLP
 
+Function handles liquidity Add for Rune only
+
 #### Parameters
 
 -   `params`  deposit parameters
@@ -85,6 +141,8 @@ Returns **any** tx object
 Returns **any** tx object
 
 ### withdrawRuneLP
+
+Function handles liquidity Withdraw for Rune only
 
 #### Parameters
 
