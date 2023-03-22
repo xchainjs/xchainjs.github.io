@@ -28,6 +28,10 @@ var packages = [
     path: 'xchain-util/available-functions',
   },
   {
+    module: 'xchain-utxo-providers',
+    path: 'xchain-utxo-providers/available-functions',
+  },
+  {
     module: 'xchain-thorchain-amm',
     path: 'xchain-thorchain-amm/available-functions',
   },
