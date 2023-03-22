@@ -79,10 +79,6 @@ var packages = [
     module: 'xchain-avax',
     path: 'xchain-client/xchain-avax/available-functions',
   },
-  {
-    module: 'xchain-utxo-providers',
-    path: 'xchain-utxo-providers/available-functions',
-  },
 ]
 
 function getGeneratedFiles(dir) {
