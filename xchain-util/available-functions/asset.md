@@ -113,19 +113,6 @@ Formats a `BaseAmount` value into a `string`
 
 Returns **[string][3]** The formatted base amount string from the given base amount.
 
-## AssetAVAX
-
-Base "chain" asset of Avalanche chain.
-
-## AssetBNB
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset of Binance chain.
-
-Based on definition in Thorchain `common`
-
 ## AssetBTC
 
 -   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
@@ -135,83 +122,12 @@ Base "chain" asset on bitcoin main net.
 
 Based on definition in Thorchain `common`
 
-## AssetBCH
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset on bitcoin cash main net.
-
-Based on definition in Thorchain `common`
-
-## AssetLTC
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset on litecoin main net.
-
-Based on definition in Thorchain `common`
-
-## AssetDOGE
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/781-add-doge-chain/common/asset.go#L24][6]
-    **
-
-Dogecoin asset
-Based on definition in Thorchain
-
 ## AssetETH
 
 -   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
     **
 
 Base "chain" asset on ethereum main net.
-
-Based on definition in Thorchain `common`
-
-## AssetRune67C
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset for RUNE-67C on Binance test net.
-
-Based on definition in Thorchain `common`
-
-## AssetRuneB1A
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset for RUNE-B1A on Binance main net.
-
-Based on definition in Thorchain `common`
-
-## AssetRuneNative
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset on thorchain main net.
-
-Based on definition in Thorchain `common`
-
-## AssetRuneERC20
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset for RUNE on ethereum main net.
-
-Based on definition in Thorchain `common`
-
-## AssetRuneERC20Testnet
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][5]
-    **
-
-Base "chain" asset for RUNE on ethereum main net.
 
 Based on definition in Thorchain `common`
 
@@ -238,7 +154,7 @@ Returns **[boolean][1]** `true` or `false`
 
 ## assetFromString
 
--   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][7]
+-   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][6]
 
     If the naming convention fails, it returns null
     **
@@ -268,7 +184,7 @@ Similar to an `assetFromString`, but throws an exception for invalid asset strin
 
 ## assetToString
 
--   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][7]
+-   **See: [https://docs.thorchain.org/developers/transaction-memos#asset-notation][6]
     **
 
 Returns an `Asset` as a string using following naming convention:
@@ -350,16 +266,6 @@ Checks equality of two `Assets`
 
 Returns **[boolean][1]** Result of equality check
 
-## isAssetRuneNative
-
-Checks whether an asset is `AssetRuneNative`
-
-### Parameters
-
--   `asset` **Asset** 
-
-Returns **[boolean][1]** `true` or `false`
-
 ## strip0x
 
 Removes `0x` or `0X` from address
@@ -378,6 +284,4 @@ Removes `0x` or `0X` from address
 
 [5]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24
 
-[6]: https://gitlab.com/thorchain/thornode/-/blob/781-add-doge-chain/common/asset.go#L24
-
-[7]: https://docs.thorchain.org/developers/transaction-memos#asset-notation
+[6]: https://docs.thorchain.org/developers/transaction-memos#asset-notation

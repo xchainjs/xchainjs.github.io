@@ -24,8 +24,8 @@ Uses current pool data, works out inbound and outboud fee, affiliate fees and wo
     -   `params.destinationAsset`  
     -   `params.destinationAddress`  
     -   `params.affiliateAddress`   (optional, default `''`)
-    -   `params.interfaceID`   (optional, default `999`)
-    -   `params.affiliateFeePercent`   (optional, default `0`)
+    -   `params.interfaceID`   (optional, default `` `555` ``)
+    -   `params.affiliateFeeBasisPoints`   (optional, default `0`)
     -   `params.slipLimit`  
 
 Returns **any** The SwapEstimate
@@ -74,5 +74,21 @@ Returns **any** Estimate withdraw lp object
 
 -   `wallet`  wallet needed to perform tx
 -   `params`  liquidity parameters
+
+### addSaver
+
+#### Parameters
+
+-   `wallet`  wallet needed to execute tx
+-   `addAssetAmount`  asset amount being added to savers
+
+Returns **any** submitted tx
+
+### withdrawSaver
+
+#### Parameters
+
+-   `wallet`  wallet to execute the transaction
+-   `withdrawParams`  params needed for withdraw
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

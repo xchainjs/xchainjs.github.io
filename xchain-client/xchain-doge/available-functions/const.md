@@ -10,4 +10,19 @@
 Minimum transaction fee
 100000 satoshi/kB (similar to current `minrelaytxfee`)
 
+## DOGEChain
+
+Chain identifier for Dogecoin
+
+## AssetDOGE
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][2]
+    **
+
+Base "chain" asset on dogecoin
+
+Based on definition in Thorchain `common`
+
 [1]: https://github.com/dogecoin/dogecoin/blob/master/src/validation.h#L58
+
+[2]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24

@@ -99,7 +99,7 @@ function getTitle(filename) {
     .join(' ')
 }
 
-function cleanAll() {
+ function cleanAll() {
   var files = ['lib']
 
   packages.forEach((item) => {
@@ -124,7 +124,6 @@ function xchain_lib_build(lib) {
     )
     .js.pipe(gulp.dest(`lib/${lib}`))
 }
-
 function xchain_lib_documentation(lib, dest) {
   return mergeStream(
     ...fs

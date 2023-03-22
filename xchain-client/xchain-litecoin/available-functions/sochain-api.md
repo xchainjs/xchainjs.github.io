@@ -12,6 +12,7 @@ Get address information.
 ### Parameters
 
 -   `$0` **[Object][2]** 
+    -   `$0.apiKey`  
     -   `$0.sochainUrl`  
     -   `$0.network`  
     -   `$0.address`  
@@ -31,9 +32,31 @@ Get transaction by hash.
 ### Parameters
 
 -   `$0` **[Object][2]** 
+    -   `$0.apiKey`  
     -   `$0.sochainUrl`  
     -   `$0.network`  
     -   `$0.hash`  
+-   `sochainUrl` **[string][3]** The sochain node url.
+-   `network` **[string][3]** network id
+-   `hash` **[string][3]** The transaction hash.
+
+Returns **Transactions** 
+
+## getTxs
+
+-   **See: [https://sochain.com/api#get-tx][4]
+    **
+
+Get transactions
+
+### Parameters
+
+-   `$0` **[Object][2]** 
+    -   `$0.apiKey`  
+    -   `$0.address`  
+    -   `$0.sochainUrl`  
+    -   `$0.network`  
+    -   `$0.page`  
 -   `sochainUrl` **[string][3]** The sochain node url.
 -   `network` **[string][3]** network id
 -   `hash` **[string][3]** The transaction hash.
@@ -50,6 +73,7 @@ Get address balance.
 ### Parameters
 
 -   `$0` **[Object][2]** 
+    -   `$0.apiKey`  
     -   `$0.sochainUrl`  
     -   `$0.network`  
     -   `$0.address`  
@@ -69,10 +93,11 @@ Get unspent txs
 ### Parameters
 
 -   `$0` **[Object][2]** 
+    -   `$0.apiKey`  
     -   `$0.sochainUrl`  
     -   `$0.network`  
     -   `$0.address`  
-    -   `$0.startingFromTxId`  
+    -   `$0.page`  
 -   `sochainUrl` **[string][3]** The sochain node url.
 -   `network` **[string][3]** 
 -   `address` **[string][3]** 

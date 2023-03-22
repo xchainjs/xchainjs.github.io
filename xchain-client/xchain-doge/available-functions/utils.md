@@ -44,16 +44,6 @@ Get Dogecoin network to be used with bitcoinjs.
 
 Returns **Dogecoin.networks.Network** The Doge network.
 
-## getBalance
-
-Get the balances of an address.
-
-### Parameters
-
--   `params`  
-
-Returns **[Array][3]&lt;Balance>** The balances of the given address.
-
 ## validateAddress
 
 Validate the Doge address.
@@ -64,61 +54,6 @@ Validate the Doge address.
 -   `network` **Network** 
 
 Returns **[boolean][5]** `true` or `false`.
-
-## getTxHex
-
-Helper to get `hex` of `Tx`
-
-It will try to get it from cache before requesting it from Sochain
-
-### Parameters
-
--   `$0` **[Object][6]** 
-    -   `$0.txHash`  
-    -   `$0.sochainUrl`  
-    -   `$0.network`  
-
-## scanUTXOs
-
-Scan UTXOs from sochain.
-
-### Parameters
-
--   `params` **[Object][6]** 
-    -   `params.sochainUrl`  
-    -   `params.network`  
-    -   `params.address`  
-    -   `params.withTxHex`  
-
-Returns **[Array][3]&lt;UTXO>** The UTXOs of the given address.
-
-## buildTx
-
-Build transcation.
-
-### Parameters
-
--   `params` **BuildParams** The transaction build options.
-    -   `params.amount`  
-    -   `params.recipient`  
-    -   `params.memo`  
-    -   `params.feeRate`  
-    -   `params.sender`  
-    -   `params.network`  
-    -   `params.sochainUrl`  
-    -   `params.withTxHex`   (optional, default `false`)
-
-Returns **Transaction** 
-
-## broadcastTx
-
-Broadcast the transaction.
-
-### Parameters
-
--   `params` **BroadcastTxParams** The transaction broadcast options.
-
-Returns **TxHash** The transaction hash.
 
 ## calcFee
 
@@ -162,5 +97,3 @@ Returns **[string][1]** The address prefix based on the network.\*
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

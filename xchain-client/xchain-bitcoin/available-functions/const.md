@@ -10,4 +10,19 @@
 Minimum transaction fee
 1000 satoshi/kB (similar to current `minrelaytxfee`)
 
+## BTCChain
+
+Chain identifier for Bitcoin mainnet
+
+## AssetBTC
+
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24][2]
+    **
+
+Base "chain" asset on bitcoin main net.
+
+Based on definition in Thorchain `common`
+
 [1]: https://github.com/bitcoin/bitcoin/blob/db88db47278d2e7208c50d16ab10cb355067d071/src/validation.h#L56
+
+[2]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24

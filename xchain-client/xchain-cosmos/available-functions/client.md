@@ -9,9 +9,9 @@ Custom Cosmos client
 -   `params` **XChainClientParams** 
     -   `params.network`   (optional, default `xchain_client_1.Network.Mainnet`)
     -   `params.phrase`  
-    -   `params.clientUrls`   (optional, default `util_1.getDefaultClientUrls()`)
-    -   `params.chainIds`   (optional, default `util_1.getDefaultChainIds()`)
-    -   `params.rootDerivationPaths`   (optional, default `util_1.getDefaultRootDerivationPaths()`)
+    -   `params.clientUrls`   (optional, default `utils_1.getDefaultClientUrls()`)
+    -   `params.chainIds`   (optional, default `utils_1.getDefaultChainIds()`)
+    -   `params.rootDerivationPaths`   (optional, default `utils_1.getDefaultRootDerivationPaths()`)
 
 ## setNetwork
 
@@ -114,7 +114,7 @@ Transfer balances.
 
 -   `params` **TxParams** The transfer options.
     -   `params.walletIndex`  
-    -   `params.asset`   (optional, default `xchain_util_1.AssetAtom`)
+    -   `params.asset`   (optional, default `const_1.AssetATOM`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  
@@ -131,7 +131,7 @@ Transfer offline balances.
 
 -   `params` **TxOfflineParams** The transfer offline options.
     -   `params.walletIndex`  
-    -   `params.asset`   (optional, default `xchain_util_1.AssetAtom`)
+    -   `params.asset`   (optional, default `const_1.AssetATOM`)
     -   `params.amount`  
     -   `params.recipient`  
     -   `params.memo`  

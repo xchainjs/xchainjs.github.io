@@ -24,10 +24,10 @@ Uses current pool data, works out inbound and outboud fee, affiliate fees and wo
     -   `params.input`  
     -   `params.destinationAsset`  
     -   `params.destinationAddress`  
+    -   `params.slipLimit`   (optional, default `new bignumber_js_1.BigNumber('0.03')`)
+    -   `params.interfaceID`   (optional, default `'555'`)
     -   `params.affiliateAddress`   (optional, default `''`)
-    -   `params.interfaceID`   (optional, default `999`)
-    -   `params.affiliateFeePercent`   (optional, default `0`)
-    -   `params.slipLimit`  
+    -   `params.affiliateFeeBasisPoints`   (optional, default `0`)
 
 Returns **any** The SwapEstimate
 
@@ -137,60 +137,6 @@ Works out how long an outbound Tx will be held by THORChain before sending.
 
 Returns **any** required delay in seconds
 
-### checkTx
-
-For a given in Tx Hash (as returned by THORChainAMM.DoSwap()), finds the status of any THORChain transaction
-This function should be polled.
-
-#### Parameters
-
--   `inboundTxHash`  needed to determine transactions stage
--   `sourceChain`  extra parameter
-
-Returns **any** object tx status
-
-### checkTxDefined
-
-Stage 1
-
-#### Parameters
-
--   `txStatus`  
--   `sourceChain`  
-
-### checkObservedOnly
-
-Stage 2, THORNode has seen it. See if observed only (conf counting) or it has been processed by THORChain
-
-#### Parameters
-
--   `txStatus`  
--   `scheduledQueueItem`  
--   `observed_tx`  
--   `sourceChain`  
-
-### checkOutboundQueue
-
-Stage 3
-
-#### Parameters
-
--   `txStatus`  
--   `scheduledQueueItem`  
--   `lastBlockHeight`  
--   `txData`  
--   `scheduledQueue`  
-
-### checkOutboundTx
-
-Stage 4
-
-#### Parameters
-
--   `txStatus`  
--   `scheduledQueueItem`  
--   `lastBlockHeight`  
-
 ### estimateAddLP
 
 Estimates a liquidity position for given crypto amount value, both asymmetrical and symetrical
@@ -237,6 +183,22 @@ Returns **any** object type ratios
 -   `asset`  asset needed to retrieve dust values
 
 Returns **any** object type dust values
+
+### estimateWithdrawSaver
+
+#### Parameters
+
+-   `withdrawParams`  height?, asset, address, withdrawalBasisPoints
+
+Returns **any** savers withdrawal quote with extras
+
+### getSaverPosition
+
+#### Parameters
+
+-   `params`  getSaver object > asset, addresss, height?
+
+Returns **any** Savers position object
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
