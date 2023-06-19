@@ -6,7 +6,7 @@ sort: 1
 
 ## Third-party library
 
-It communicates with Thorchain by using [`cosmos-client`](https://github.com/cosmos-client/cosmos-client-ts)
+It communicates with Mayachain by using [`cosmos-client`](https://github.com/cosmos-client/cosmos-client-ts)
 
 ### Client URL
 * Mainnet: `http://3.132.133.211:1317`
