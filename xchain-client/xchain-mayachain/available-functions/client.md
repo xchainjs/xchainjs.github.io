@@ -12,7 +12,7 @@ Custom Mayachain Client
     -   `params.clientUrl`   (optional, default `{[xchain_client_1.Network.Testnet]:{node:'deprecated',rpc:'deprecated'},[xchain_client_1.Network.Stagenet]:{node:'https://stagenet.mayanode.mayachain.info',rpc:'https://stagenet.tendermint.mayachain.info'},[xchain_client_1.Network.Mainnet]:{node:'https://mayanode.mayachain.info',rpc:'https://tendermint.mayachain.info'}}`)
     -   `params.explorerUrls`   (optional, default `const_1.defaultExplorerUrls`)
     -   `params.rootDerivationPaths`   (optional, default `{[xchain_client_1.Network.Mainnet]:"44'/931'/0'/0/",[xchain_client_1.Network.Stagenet]:"44'/931'/0'/0/",[xchain_client_1.Network.Testnet]:"44'/931'/0'/0/"}`)
-    -   `params.chainIds`   (optional, default `{[xchain_client_1.Network.Mainnet]:'mayachain-mainnet-v1',[xchain_client_1.Network.Stagenet]:'mayachain-stagenet-v2',[xchain_client_1.Network.Testnet]:'deprecated'}`)
+    -   `params.chainIds`   (optional, default `{[xchain_client_1.Network.Mainnet]:'mayachain-mainnet-v1',[xchain_client_1.Network.Stagenet]:'mayachain-stagenet-v1',[xchain_client_1.Network.Testnet]:'deprecated'}`)
 
 ## getTransactions
 
