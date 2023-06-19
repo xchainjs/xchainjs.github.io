@@ -19,7 +19,8 @@ Available testnet seeds [`here`](https://stagenet.mayanode.mayachain.info/mayach
 * Mainnet: [`https://www.explorer.mayachain.info`](https://www.explorer.mayachain.info)
 
 ### Chain ID
-* Mainnet: `mayachain`
+* Mainnet: `mayachain-mainnet-v1`
+* Stagenet `mayacgain-stagenet-v1`
 
 ## Dependencies
 
