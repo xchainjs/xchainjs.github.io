@@ -40,6 +40,10 @@ var packages = [
     path: 'xchain-midgard-query/available-functions',
   },
   {
+    module: 'xchain-cosmos-sdk',
+    path: 'xchain-cosmos-sdk/available-functions',
+  },
+  {
     module: 'xchain-midgard',
     path: 'xchain-midgard/available-functions',
   },
