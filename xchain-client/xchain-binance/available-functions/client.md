@@ -94,6 +94,10 @@ Validate the given address.
 
 Returns **[boolean][4]** `true` or `false`
 
+## getAssetInfo
+
+Returns **any** asset info
+
 ## getAccount
 
 Get account data of wallets or by given address.

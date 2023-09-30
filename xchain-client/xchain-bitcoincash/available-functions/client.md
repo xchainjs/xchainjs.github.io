@@ -6,7 +6,7 @@ Custom Bitcoin Cash client
 
 ## Parameters
 
--   `params` **UtxoClientParams**  (optional, default `exports.defaultBCHParams`)
+-   `params` **UtxoClientParams**  (optional, default `exports.defaultBchParams`)
 
 ## getAddress
 
@@ -24,6 +24,10 @@ The address is then decoded into type P2WPKH and returned.
 -   Throws **`"Address not defined"`** Thrown if failed creating account from phrase.
 
 Returns **Address** The current address.
+
+## getAssetInfo
+
+Returns **any** BCH asset info
 
 ## validateAddress
 

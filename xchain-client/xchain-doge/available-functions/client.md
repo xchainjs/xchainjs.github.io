@@ -40,6 +40,10 @@ The address is then decoded into type P2WPKH and returned.
 
 Returns **Address** The current address.
 
+## getAssetInfo
+
+Returns **any** Doge asset info
+
 ## validateAddress
 
 Validate the given address.

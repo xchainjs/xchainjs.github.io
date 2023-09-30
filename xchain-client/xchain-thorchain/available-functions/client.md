@@ -179,6 +179,18 @@ Get the balance of a given address.
 
 Returns **[Array][5]&lt;Balance>** The balance of the address.
 
+## getAssetInfo
+
+Returns **any** asset info
+
+## fetchTransaction
+
+### Parameters
+
+-   `txId`  tx hash
+
+Returns **any** txResponse
+
 ## getTransactionData
 
 Get the transaction details of a given transaction id.
@@ -266,7 +278,7 @@ Transfer without broadcast balances with MsgSend
     -   `params.recipient`  
     -   `params.memo`  
     -   `params.fromRuneBalance`  
-    -   `params.fromAssetBalance`   (optional, default `xchain_util_1.baseAmount(0,const_1.DECIMAL)`)
+    -   `params.fromAssetBalance`   (optional, default `xchain_util_1.baseAmount(0,const_1.RUNE_DECIMAL)`)
     -   `params.fromAccountNumber`   (optional, default `long_1.default.ZERO`)
     -   `params.fromSequence`   (optional, default `long_1.default.ZERO`)
     -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT_VALUE)`)
