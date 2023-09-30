@@ -20,13 +20,17 @@ Uses current pool data, works out inbound and outboud fee, affiliate fees and wo
 #### Parameters
 
 -   `params` **[Object][1]** amount to swap
-    -   `params.input`  
+    -   `params.fromAsset`  
+    -   `params.amount`  
+    -   `params.fromAddress`  
     -   `params.destinationAsset`  
     -   `params.destinationAddress`  
     -   `params.affiliateAddress`   (optional, default `''`)
     -   `params.interfaceID`   (optional, default `` `555` ``)
-    -   `params.affiliateFeeBasisPoints`   (optional, default `0`)
-    -   `params.slipLimit`  
+    -   `params.affiliateBps`   (optional, default `0`)
+    -   `params.toleranceBps`  
+    -   `params.wallet`  
+    -   `params.walletIndex`  
 
 Returns **any** The SwapEstimate
 
@@ -75,6 +79,24 @@ Returns **any** Estimate withdraw lp object
 -   `wallet`  wallet needed to perform tx
 -   `params`  liquidity parameters
 
+### estimateAddSaver
+
+#### Parameters
+
+-   `addAssetAmount`  
+
+### estimateWithdrawSaver
+
+#### Parameters
+
+-   `withdrawParams`  
+
+### getSaverPosition
+
+#### Parameters
+
+-   `getsaver`  
+
 ### addSaver
 
 #### Parameters
@@ -90,5 +112,43 @@ Returns **any** submitted tx
 
 -   `wallet`  wallet to execute the transaction
 -   `withdrawParams`  params needed for withdraw
+
+### getLoanQuoteOpen
+
+#### Parameters
+
+-   `loanOpenParams`  
+
+### getLoanQuoteClose
+
+#### Parameters
+
+-   `loanCloseParams`  
+
+### addLoan
+
+#### Parameters
+
+-   `wallet`  wallet needed to execute transaction
+-   `loanOpenParams`  params needed to open the loan
+
+Returns **any** submitted tx
+
+### withdrawLoan
+
+#### Parameters
+
+-   `wallet`  wallet to execute the transaction
+-   `loanCloseParams`  params needed for withdrawing the loan
+
+### getThornamesByAddress
+
+Get all Thornames and its data associated owned by an address
+
+#### Parameters
+
+-   `address`  address
+
+Returns **any** thornames data
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
