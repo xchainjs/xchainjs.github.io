@@ -44,10 +44,6 @@ var packages = [
     path: 'xchain-cosmos-sdk/available-functions',
   },
   {
-    module: 'xchain-midgard',
-    path: 'xchain-midgard/available-functions',
-  },
-  {
     module: 'xchain-thornode',
     path: 'xchain-thornode/available-functions',
   },

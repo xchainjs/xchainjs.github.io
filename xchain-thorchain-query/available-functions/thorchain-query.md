@@ -13,72 +13,35 @@ Has access to Midgard and THORNode data
 -   `thorchainCache`  an instance of the ThorchainCache (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultCache`)
 -   `chainAttributes`  atrributes used to calculate waitTime & conf counting (optional, default `chain_defaults_1.DefaultChainAttributes`)
 
-### estimateSwap
-
-Provides a swap estimate for the given swap detail. Will check the params for errors before trying to get the estimate.
-Uses current pool data, works out inbound and outboud fee, affiliate fees and works out the expected wait time for the swap (in and out)
+### quoteSwap
 
 #### Parameters
 
--   `params` **[Object][1]** amount to swap
-    -   `params.input`  
-    -   `params.destinationAsset`  
-    -   `params.destinationAddress`  
-    -   `params.slipLimit`   (optional, default `new bignumber_js_1.BigNumber('0.03')`)
-    -   `params.interfaceID`   (optional, default `'555'`)
-    -   `params.affiliateAddress`   (optional, default `''`)
-    -   `params.affiliateFeeBasisPoints`   (optional, default `0`)
+-   `quoteSwapParams` **[Object][1]**  input params
+    -   `quoteSwapParams.fromAsset`  
+    -   `quoteSwapParams.destinationAsset`  
+    -   `quoteSwapParams.amount`  
+    -   `quoteSwapParams.destinationAddress`  
+    -   `quoteSwapParams.streamingInterval`  
+    -   `quoteSwapParams.streamingQuantity`  
+    -   `quoteSwapParams.fromAddress`  
+    -   `quoteSwapParams.toleranceBps`  
+    -   `quoteSwapParams.affiliateBps`  
+    -   `quoteSwapParams.affiliateAddress`  
+    -   `quoteSwapParams.height`  
 
-Returns **any** The SwapEstimate
+### outboundDelay
 
-### isValidSwap
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548][2]
+    **
 
-Basic Checks for swap information
-
-#### Parameters
-
--   `params`  
-
-### calcSwapEstimate
-
-Does the calculations for the swap.
-Used by estimateSwap
+Works out how long an outbound Tx will be held by THORChain before sending.
 
 #### Parameters
 
--   `params`  
--   `sourceInboundDetails`  
--   `destinationInboundDetails`  
--   `sourcePool`  
--   `destinationPool`  
+-   `outboundAmount`  : CryptoAmount  being sent.
 
-### constructSwapMemo
-
-#### Parameters
-
--   `params`  swap object
-
-Returns **any** constructed memo string
-
-### getSwapEstimateErrors
-
-Looks for errors or issues within swap prams before doing the swap.
-
-#### Parameters
-
--   `params`  
--   `estimate`  
--   `sourceInboundDetails`  
--   `destinationInboundDetails`  
--   `sourcePool`  
--   `destinationPool`  
-
-### checkCoverFees
-
-#### Parameters
-
--   `params`  
--   `estimate`  
+Returns **any** required delay in seconds
 
 ### getFeesIn
 
@@ -110,7 +73,7 @@ Returns **any** CryptoAmount of input
 
 ### confCounting
 
--   **See: [https://docs.thorchain.org/chain-clients/overview][2]
+-   **See: [https://docs.thorchain.org/chain-clients/overview][3]
     **
 
 Finds the required confCount required for an inbound or outbound Tx to THORChain. Estimate based on Midgard data only.
@@ -123,19 +86,6 @@ ConfCount is then times by 6 seconds.
 -   `inbound`  : CryptoAmount - amount/asset of the outbound amount.
 
 Returns **any** time in seconds before a Tx is confirmed by THORChain
-
-### outboundDelay
-
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548][3]
-    **
-
-Works out how long an outbound Tx will be held by THORChain before sending.
-
-#### Parameters
-
--   `outboundAmount`  : CryptoAmount  being sent.
-
-Returns **any** required delay in seconds
 
 ### estimateAddLP
 
@@ -200,8 +150,60 @@ Returns **any** savers withdrawal quote with extras
 
 Returns **any** Savers position object
 
+### getLoanQuoteOpen
+
+#### Parameters
+
+-   `loanOpenParams` **[Object][1]** params needed for the end Point
+    -   `loanOpenParams.asset`  
+    -   `loanOpenParams.amount`  
+    -   `loanOpenParams.targetAsset`  
+    -   `loanOpenParams.destination`  
+    -   `loanOpenParams.minOut`  
+    -   `loanOpenParams.affiliateBps`  
+    -   `loanOpenParams.affiliate`  
+    -   `loanOpenParams.height`  
+
+### getLoanQuoteClose
+
+#### Parameters
+
+-   `loanOpenParams` **[Object][1]** params needed for the end Point
+    -   `loanOpenParams.asset`  
+    -   `loanOpenParams.amount`  
+    -   `loanOpenParams.loanAsset`  
+    -   `loanOpenParams.loanOwner`  
+    -   `loanOpenParams.minOut`  
+    -   `loanOpenParams.height`  
+
+### getThornameDetails
+
+#### Parameters
+
+-   `thorname`  input param
+-   `height`  
+
+Returns **any** retrieves details for a thorname
+
+### estimateThorname
+
+Generate the memo and estimate the cost of register or update a THORName
+
+#### Parameters
+
+-   `params`  
+-   `thorname`  Name to register
+-   `chain`  Chain to update / register
+-   `chainAddress`  Address to add to chain alias
+-   `owner`  Owner address (rune address)
+-   `preferredAsset`  referred asset
+-   `expirity`  expirity of the domain in MILLISECONDS
+-   `isUpdate`  true only if the domain is already register and you want to update its data
+
+Returns **any** memo and value of deposit
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[2]: https://docs.thorchain.org/chain-clients/overview
+[2]: https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548
 
-[3]: https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548
+[3]: https://docs.thorchain.org/chain-clients/overview
