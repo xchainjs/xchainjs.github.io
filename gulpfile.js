@@ -36,6 +36,10 @@ var packages = [
     path: 'xchain-thorchain-query/available-functions',
   },
   {
+    module: 'xchain-midgard-query',
+    path: 'xchain-midgard-query/available-functions',
+  },
+  {
     module: 'xchain-midgard',
     path: 'xchain-midgard/available-functions',
   },
