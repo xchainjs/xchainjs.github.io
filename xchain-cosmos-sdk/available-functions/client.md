@@ -2,7 +2,7 @@
 
 **Extends xchain_client_1.BaseXChainClient**
 
-Generic implementation of the XChainClient interface to work with strings built with cosmos-sdk ([https://docs.cosmos.network/][1]) using the dependencies of the official @cosmjs monorepo.
+Generic implementation of the XChainClient interface chains built with cosmos-sdk ([https://docs.cosmos.network/][1]) using the dependencies of the official @cosmjs monorepo.
 
 ## Parameters
 

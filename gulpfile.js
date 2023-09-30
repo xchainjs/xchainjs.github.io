@@ -44,6 +44,10 @@ var packages = [
     path: 'xchain-cosmos-sdk/available-functions',
   },
   {
+    module: 'xchain-evm',
+    path: 'xchain-evm/available-functions',
+  },
+  {
     module: 'xchain-thornode',
     path: 'xchain-thornode/available-functions',
   },
