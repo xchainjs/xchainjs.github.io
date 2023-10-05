@@ -93,11 +93,45 @@ Returns **any** object with tx response, url and wait time in seconds
 
 #### Parameters
 
--   `dustAssetAmount`  
+-   `assetAmount`  amount to withdraw
 -   `memo`  memo required
 -   `toAddress`  
 -   `waitTimeSeconds`  expected wait for the transaction to be processed
--   `assetAmount`  amount to withdraw
+
+### registerThorname
+
+Register a THORName with a default expirity of one year. By default chain and chainAddress is getting from wallet instance and is BTC.
+By default owner is getting from wallet
+
+#### Parameters
+
+-   `params`  
+-   `thorname`  Name to register
+-   `chain`  Chain to add alias
+-   `chainAddress`  Address to add to chain alias
+-   `owner`  Owner address (rune address)
+-   `preferredAsset`  referred asset
+-   `expirity`  expirity of the domain in MILLISECONDS
+-   `isUpdate`  true only if the domain is already register and you want to update its data
+
+Returns **any** memo and value of deposit
+
+### updateThorname
+
+Register a THORName with a default expirity of one year. By default chain and chainAddress is getting from wallet instance and is BTC.
+By default owner is getting from wallet
+
+#### Parameters
+
+-   `params`  
+-   `thorname`  Name to register
+-   `chain`  Chain to add alias
+-   `chainAddress`  Address to add to chain alias
+-   `owner`  Owner address (rune address)
+-   `preferredAsset`  referred asset
+-   `expirity`  expirity of the domain in MILLISECONDS
+
+Returns **any** memo and value of deposit
 
 ### addAssetLP
 
@@ -108,8 +142,8 @@ Function handles liquidity add for all non rune assets
 -   `params`  parameters for add liquidity
 -   `constructedMemo`  memo needed for thorchain
 -   `assetClient`  passing XchainClient
--   `waitTimeSeconds`  wait time for the tx to be confirmed
 -   `inboundAsgard`  inbound Asgard address for the LP
+-   `waitTimeSeconds`  wait time for the tx to be confirmed
 
 Returns **any** tx object
 
@@ -122,8 +156,8 @@ Function handles liquidity Withdraw for Non rune assets
 -   `params`  parameters for withdraw liquidity
 -   `constructedMemo`  memo needed for thorchain execution
 -   `assetClient`  asset client to call transfer
--   `waitTimeSeconds`  return back estimated wait
 -   `inboundAsgard`  destination address
+-   `waitTimeSeconds`  return back estimated wait
 
 Returns **any** tx object
 
@@ -136,7 +170,6 @@ Function handles liquidity Add for Rune only
 -   `params`  deposit parameters
 -   `memo`  memo needed to withdraw lp
 -   `thorchainClient`  
--   `waitTimeSeconds`  
 
 Returns **any** tx object
 
@@ -149,7 +182,6 @@ Function handles liquidity Withdraw for Rune only
 -   `params`  withdraw parameters
 -   `memo`  memo needed to withdraw lp
 -   `thorchainClient`  
--   `waitTimeSeconds`  
 
 Returns **any** tx object
 

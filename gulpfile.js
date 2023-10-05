@@ -36,8 +36,16 @@ var packages = [
     path: 'xchain-thorchain-query/available-functions',
   },
   {
-    module: 'xchain-midgard',
-    path: 'xchain-midgard/available-functions',
+    module: 'xchain-midgard-query',
+    path: 'xchain-midgard-query/available-functions',
+  },
+  {
+    module: 'xchain-cosmos-sdk',
+    path: 'xchain-cosmos-sdk/available-functions',
+  },
+  {
+    module: 'xchain-evm',
+    path: 'xchain-evm/available-functions',
   },
   {
     module: 'xchain-thornode',

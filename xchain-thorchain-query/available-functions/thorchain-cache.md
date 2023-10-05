@@ -8,12 +8,11 @@ This class manages retrieving information from up to date Thorchain
 
 ### Parameters
 
--   `midgard`  an instance of the midgard API (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultMidgard`)
--   `thornode`   (optional, default `defaultThornode`)
+-   `thornode`  an instance of the thornode API (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultThornode`)
+-   `midgardQuery`  an instance of the midgard query class (could be pointing to stagenet,testnet,mainnet) (optional, default `defaultMidgardQuery`)
 -   `expirePoolCacheMillis`  how long should the pools be cached before expiry (optional, default `6000`)
 -   `expireInboundDetailsCacheMillis`  how long should the InboundDetails be cached before expiry (optional, default `6000`)
 -   `expireNetworkValuesCacheMillis`  how long should the Mimir/Constants be cached before expiry (optional, default `TEN_MINUTES`)
--   `expireAsgardCacheMillis`  how long should the inboundAsgard Addresses be cached before expiry
 
 ### getExchangeRate
 
@@ -40,45 +39,17 @@ Returns **any** Promise<LiquidityPool>
 ### getPools
 
 Get all the Liquidity Pools currently cached.
-if the cache is expired, the pools wioll be re-fetched from midgard
+if the cache is expired, the pools wioll be re-fetched from thornode
 
 Returns **any** Promise&lt;Record&lt;string, LiquidityPool>>
 
-### refereshPoolCache
+### refreshPoolCache
 
 Refreshes the Pool Cache
 
-NOTE: do not call refereshPoolCache() directly, call getPools() instead
-which will refresh the cache if it's expired
-
-### refereshInboundDetailCache
+### refreshInboundDetailCache
 
 Refreshes the InboundDetailCache Cache
-
-NOTE: do not call refereshInboundDetailCache() directly, call getInboundDetails() instead
-which will refresh the cache if it's expired
-
-### refereshNetworkValuesCache
-
-Refreshes the NetworkValuesCache Cache
-
-NOTE: do not call refereshNetworkValuesCache() directly, call getNetworkValuess() instead
-which will refresh the cache if it's expired
-
-### getExpectedSwapOutput
-
-Calcuate the expected slip, output & swapFee given the current pool depths
-
- swapFee - the amount of asset lost  according to slip calculations
- slip - the percent (0-1) of original amount lost to slipfees
- output - the amount of asset expected from the swap   \*
-
-#### Parameters
-
--   `inputAmount`  CryptoAmount amount to swap from
--   `destinationAsset`  destimation Asset to swap to
-
-Returns **any** SwapOutput - swap output object - output - fee - slip
 
 ### convert
 

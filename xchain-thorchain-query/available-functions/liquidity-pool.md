@@ -8,5 +8,4 @@ Represent a Liquidity Pool in Thorchain
 
 ### Parameters
 
--   `pool`  
 -   `thornodeDetails`  

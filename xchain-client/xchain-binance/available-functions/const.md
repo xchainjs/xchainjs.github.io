@@ -9,3 +9,7 @@ Chain identifier for BNB.
 ## AssetBNB
 
 Base "chain" asset of Binance chain.
+
+## BNB_DECIMAL
+
+Asset Decimal

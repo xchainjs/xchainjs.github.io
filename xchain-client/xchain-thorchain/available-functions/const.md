@@ -51,4 +51,8 @@ Base "chain" asset for RUNE on ethereum main net.
 
 Based on definition in Thorchain `common`
 
+## FallBackUrls
+
+Fall back node's and rpc's
+
 [1]: https://gitlab.com/thorchain/thornode/-/blob/master/common/asset.go#L12-24

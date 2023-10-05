@@ -84,6 +84,10 @@ Get the balance of a given address.
 
 Returns **[Array][4]&lt;Balance>** The balance of the address.
 
+## getAssetInfo
+
+Returns **any** asset info
+
 ## getTransactions
 
 Get transaction history of a given address and asset with pagination options.
