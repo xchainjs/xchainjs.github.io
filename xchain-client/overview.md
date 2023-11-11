@@ -13,6 +13,16 @@ During configuration, the following can be passed in:
 * Phrase (mandatory)
 * Service Keys (optional, if null, client will use config defaults or free service limits.)
 
+Service keys can also be configured by environment variables. The supported ones are: 
+
+- **ETHERSCAN_API_KEY**. Used by the ETH client to connect to the [Etherscan](https://docs.etherscan.io/) API service.
+- **SNOWTRACE_API_KEY**. Used by the AVAX client to connect to the [Snowtrace](https://docs.snowtrace.io/) API service.
+- **BSCSCAN_API_KEY**. Used by the BSC client to connect to the [Bscscan](https://docs.bscscan.com/) API service.
+- **BLOCKCYPHER_API_KEY**. Used by the BTC, LTC and DOGE to connect to the [Blockcypher](https://www.blockcypher.com/getting-started.html) API service.
+- **SOCHAIN_API_KEY**. Used by the BTC, LTC and DOGE to connect to the [Sochain](https://sochain.com/api/) API service.
+- **COVALENT_API_KEY**. Used to connect to the [Covalent](https://www.covalenthq.com/docs/unified-api/) API service.
+
+
 ### Set Network
 Sets a type of NETWORK, which is either MAINNET or TESTNET. 
 ```ts
