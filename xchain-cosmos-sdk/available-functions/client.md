@@ -17,10 +17,22 @@ Returns **Fees** fees estimation for average, fast and fastests scenarios.
 
 ## getAddress
 
+### Parameters
+
+-   `walletIndex`  
+
+**Meta**
+
+-   **deprecated**: this function eventually will be removed use getAddressAsync instead
+
+
+## getAddressAsync
+
 Get an address derived from the phrase defined in the constructor.
 
 ### Parameters
 
+-   `index`   (optional, default `0`)
 -   `walletIndex` **([number][2] \| [undefined][3])** derivation path index of address that will be generated
 
 Returns **[string][4]** user address at index defined on walletIndex
@@ -67,6 +79,21 @@ Get transaction info using txId
 -   `_assetAddress`  
 
 Returns **Tx** Transaction data
+
+## prepareTx
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **TxParams&Address** The transfer options.
+    -   `params.sender`  
+    -   `params.recipient`  
+    -   `params.asset`  
+    -   `params.amount`  
+    -   `params.memo`  
+
+Returns **PreparedTx** The raw unsigned transaction.
 
 [1]: https://docs.cosmos.network/
 

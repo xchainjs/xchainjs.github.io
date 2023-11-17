@@ -27,6 +27,17 @@ Returns **void**
 
 ## getAddress
 
+### Parameters
+
+-   `walletIndex`   (optional, default `0`)
+
+**Meta**
+
+-   **deprecated**: this function eventually will be removed use getAddressAsync instead
+
+
+## getAddressAsync
+
 Get the current address.
 
 ### Parameters
@@ -286,6 +297,8 @@ Note: A given `feeOption` wins over `gasPrice` and `gasLimit`
     -   `$0.recipient`  
     -   `$0.feeOption`   (optional, default `xchain_client_1.FeeOption.Fast`)
     -   `$0.gasPrice`  
+    -   `$0.maxFeePerGas`  
+    -   `$0.maxPriorityFeePerGas`  
     -   `$0.gasLimit`  
 -   `params` **TxParams** The transfer options.
 -   `Signer` **signer** (optional) The address a transaction is send from. If not set, signer will be defined based on `walletIndex`
@@ -300,10 +313,11 @@ Returns **TxHash** The transaction hash.
 
 ## estimateGasPrices
 
--   **See: [https://etherscan.io/apis#gastracker][6]
-    **
-
 Estimate gas price.
+
+### Parameters
+
+-   `protocol` **Protocol** Protocol to interact with. If there's no protocol provided, fee rates are retrieved from chain data providers
 
 Returns **GasPrices** The gas prices (average, fast, fastest) in `Wei` (`BaseAmount`)
 
@@ -318,6 +332,7 @@ Estimate gas.
     -   `params.recipient`  
     -   `params.amount`  
     -   `params.memo`  
+    -   `params.from`  
 
 
 -   Throws **any** Error Thrown if address could not parsed from given ERC20 asset
@@ -334,6 +349,35 @@ Estimate gas prices/limits (average, fast fastest).
 
 Returns **FeesWithGasPricesAndLimits** The estimated gas prices/limits.
 
+## prepareTx
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **TxParams&Address&FeeOption&BaseAmount&BigNumber** The transfer options.
+    -   `params.sender`  
+    -   `params.asset`   (optional, default `this.gasAsset`)
+    -   `params.memo`  
+    -   `params.amount`  
+    -   `params.recipient`  
+
+Returns **PreparedTx** The raw unsigned transaction.
+
+## prepareApprove
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **ApproveParams&Address&FeeOption&BaseAmount&BigNumber** The transfer options.
+    -   `params.contractAddress`  
+    -   `params.spenderAddress`  
+    -   `params.amount`  
+    -   `params.sender`  
+
+Returns **PreparedTx** The raw unsigned transaction.
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
@@ -343,5 +387,3 @@ Returns **FeesWithGasPricesAndLimits** The estimated gas prices/limits.
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
-
-[6]: https://etherscan.io/apis#gastracker

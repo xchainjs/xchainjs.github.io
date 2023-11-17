@@ -30,9 +30,19 @@ Has access to Midgard and THORNode data
     -   `quoteSwapParams.affiliateAddress`  
     -   `quoteSwapParams.height`  
 
+### validateAmount
+
+Validate a cryptoAmount is well formed
+
+#### Parameters
+
+-   `cryptoAmount` **CryptoAmount** CryptoAmount to validate
+
+Returns **(void \| [Error][2])** Error if the cryptoAmount is not well formed
+
 ### outboundDelay
 
--   **See: [https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548][2]
+-   **See: [https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548][3]
     **
 
 Works out how long an outbound Tx will be held by THORChain before sending.
@@ -73,7 +83,7 @@ Returns **any** CryptoAmount of input
 
 ### confCounting
 
--   **See: [https://docs.thorchain.org/chain-clients/overview][3]
+-   **See: [https://docs.thorchain.org/chain-clients/overview][4]
     **
 
 Finds the required confCount required for an inbound or outbound Tx to THORChain. Estimate based on Midgard data only.
@@ -204,6 +214,8 @@ Returns **any** memo and value of deposit
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[2]: https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[3]: https://docs.thorchain.org/chain-clients/overview
+[3]: https://gitlab.com/thorchain/thornode/-/blob/develop/x/thorchain/manager_txout_current.go#L548
+
+[4]: https://docs.thorchain.org/chain-clients/overview
