@@ -51,6 +51,17 @@ Returns **[string][1]** The explorer url for the given transaction id.
 
 ## getAddress
 
+### Parameters
+
+-   `index`   (optional, default `0`)
+
+**Meta**
+
+-   **deprecated**: this function eventually will be removed use getAddressAsync instead
+
+
+## getAddressAsync
+
 Get the current address.
 
 ### Parameters
@@ -117,7 +128,7 @@ Transfer balances.
 ### Parameters
 
 -   `params` **TxParams** The transfer options.
-    -   `params.walletIndex`  
+    -   `params.walletIndex`   (optional, default `0`)
     -   `params.asset`   (optional, default `const_1.AssetATOM`)
     -   `params.amount`  
     -   `params.recipient`  
@@ -153,6 +164,23 @@ It tries to get chain fees from THORChain `inbound_addresses` first
 If it fails, it returns DEFAULT fees.
 
 Returns **Fees** Current fees
+
+## prepareTx
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **TxParams&Address&BaseAmount&BigNumber** The transfer options.
+    -   `params.sender`  
+    -   `params.recipient`  
+    -   `params.amount`  
+    -   `params.memo`  
+    -   `params.asset`   (optional, default `const_1.AssetATOM`)
+    -   `params.feeAmount`   (optional, default `const_1.DEFAULT_FEE`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT)`)
+
+Returns **PreparedTx** The raw unsigned transaction.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 

@@ -73,6 +73,17 @@ Returns **[string][1]** The explorer url for the given transaction id based on t
 
 ## getAddress
 
+### Parameters
+
+-   `index`   (optional, default `0`)
+
+**Meta**
+
+-   **deprecated**: this function eventually will be removed use getAddressAsync instead
+
+
+## getAddressAsync
+
 Get the current address.
 
 ### Parameters
@@ -193,6 +204,16 @@ Returns **Fees** The current fee for multi-send transaction.
 Get the current fee for both single and multi-send transaction.
 
 Returns **SingleAndMultiFees** The current fee for both single and multi-send transaction.
+
+## prepareTx
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **TxParams&Address** The transfer options.
+
+Returns **PreparedTx** The unsigned transaction data.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 

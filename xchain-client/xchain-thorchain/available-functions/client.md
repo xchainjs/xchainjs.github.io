@@ -146,11 +146,22 @@ Returns **PubKey** The public key generated from the given phrase
 
 ## getAddress
 
+### Parameters
+
+-   `index`   (optional, default `0`)
+
+**Meta**
+
+-   **deprecated**: this function eventually will be removed use getAddressAsync instead
+
+
+## getAddressAsync
+
 Get the current address.
 
 ### Parameters
 
--   `index`   (optional, default `0`)
+-   `walletIndex`   (optional, default `0`)
 
 
 -   Throws **[Error][3]** Thrown if phrase has not been set before. A phrase is needed to create a wallet and to derive an address from it.
@@ -285,11 +296,33 @@ Transfer without broadcast balances with MsgSend
 
 Returns **[string][1]** The signed transaction bytes.
 
+**Meta**
+
+-   **deprecated**: use instead prepareTx
+
+
 ## getFees
 
 Gets fees from Node
 
 Returns **Fees** 
+
+## prepareTx
+
+Prepare transfer.
+
+### Parameters
+
+-   `params` **TxParams&Address&BigNumber** The transfer options.
+    -   `params.sender`  
+    -   `params.recipient`  
+    -   `params.amount`  
+    -   `params.memo`  
+    -   `params.asset`   (optional, default `const_1.AssetRuneNative`)
+    -   `params.gasLimit`   (optional, default `new bignumber_js_1.default(const_1.DEFAULT_GAS_LIMIT_VALUE)`)
+    -   `params.sequence`  
+
+Returns **PreparedTx** The raw unsigned transaction.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
