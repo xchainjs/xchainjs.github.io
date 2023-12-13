@@ -13,6 +13,7 @@ var tsConfig = {
   target: 'es6',
   lib: ['es6', 'dom', 'es2016', 'es2017'],
   moduleResolution: 'node',
+  skipLibCheck: true,
   noEmitHelpers: true,
   resolveJsonModule: true,
   allowSyntheticDefaultImports: true,
@@ -86,6 +87,34 @@ var packages = [
   {
     module: 'xchain-avax',
     path: 'xchain-client/xchain-avax/available-functions',
+  },
+  {
+    module: 'xchain-arbitrum',
+    path: 'xchain-client/xchain-arbitrum/available-functions',
+  },
+  {
+    module: 'xchain-mayachain-amm',
+    path: 'xchain-mayachain-amm/available-functions',
+  },
+  {
+    module: 'xchain-mayachain-query',
+    path: 'xchain-mayachain-query/available-functions',
+  },
+  {
+    module: 'xchain-mayamidgard-query',
+    path: 'xchain-mayamidgard-query/available-functions',
+  },
+  {
+    module: 'xchain-mayamidgard',
+    path: 'xchain-mayamidgard/available-functions',
+  },
+  {
+    module: 'xchain-kujira',
+    path: 'xchain-client/xchain-kuji/available-functions',
+  },
+  {
+    module: 'xchain-utxo',
+    path: 'xchain-utxo/available-functions',
   },
 ]
 

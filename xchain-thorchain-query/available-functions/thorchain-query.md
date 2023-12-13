@@ -24,7 +24,6 @@ Has access to Midgard and THORNode data
     -   `quoteSwapParams.destinationAddress`  
     -   `quoteSwapParams.streamingInterval`  
     -   `quoteSwapParams.streamingQuantity`  
-    -   `quoteSwapParams.fromAddress`  
     -   `quoteSwapParams.toleranceBps`  
     -   `quoteSwapParams.affiliateBps`  
     -   `quoteSwapParams.affiliateAddress`  

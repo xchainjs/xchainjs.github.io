@@ -22,7 +22,6 @@ Uses current pool data, works out inbound and outboud fee, affiliate fees and wo
 -   `params` **[Object][1]** amount to swap
     -   `params.fromAsset`  
     -   `params.amount`  
-    -   `params.fromAddress`  
     -   `params.destinationAsset`  
     -   `params.destinationAddress`  
     -   `params.affiliateAddress`   (optional, default `''`)
