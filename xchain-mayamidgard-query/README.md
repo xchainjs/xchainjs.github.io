@@ -2,8 +2,8 @@
 sort: 2
 ---
 
-# MAYACHAIN-QUERY
+# MAYAMIDGARD-QUERY
 
-Custom mayachain query package 
+Custom midgard query package 
 
 {% include list.liquid all=true %}
