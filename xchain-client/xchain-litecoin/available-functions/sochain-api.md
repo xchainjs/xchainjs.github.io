@@ -104,12 +104,6 @@ Get unspent txs
 
 Returns **[Array][8]&lt;LtcAddressUTXO>** 
 
-## getSuggestedTxFee
-
-Get Litecoin suggested transaction fee.
-
-Returns **[number][6]** The Litecoin suggested transaction fee per bytes in sat.
-
 [1]: https://sochain.com/api#get-display-data-address
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

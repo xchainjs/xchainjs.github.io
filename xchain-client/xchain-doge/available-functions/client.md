@@ -1,6 +1,6 @@
 # Client
 
-**Extends xchain_client_1.UTXOClient**
+**Extends xchain_utxo_1.Client**
 
 Custom Dogecoin client
 

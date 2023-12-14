@@ -7,8 +7,8 @@ sort: 1
 This package uses etherjs library, by default it uses several providers. (https://docs.ethers.io/v5/api-keys/)
 
 ### Explorer URL 
-* Mainnet: [https://snowtrace.io/](https://arbiscan.io/)
-* Testnet: [https://testnet.snowtrace.io/](https://goerli.arbiscan.io/)
+* Mainnet: [https://arbiscan.io/](https://arbiscan.io/)
+* Testnet: [https://goerli.arbiscan.io/](https://goerli.arbiscan.io/)
 
 ## RPC Ethers Providers 
 * Mainnet: [https://arb1.arbitrum.io/rpc](https://arb1.arbitrum.io/rpc)
